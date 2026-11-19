@@ -1,0 +1,68 @@
+# Secrets and local environment
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+secrets/
+
+# Agent harness state (not part of the deliverable)
+.opencode/
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.venv/
+venv/
+env/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.hypothesis/
+.tox/
+.nox/
+.coverage
+.coverage.*
+coverage.xml
+htmlcov/
+build/
+dist/
+site/
+*.egg-info/
+pip-wheel-metadata/
+
+# OS and editor
+.DS_Store
+Thumbs.db
+desktop.ini
+.idea/
+.vscode/
+*.swp
+*~
+
+# Local runtime artifacts
+mock_output/
+output/
+projects/*/manifests/idempotency.jsonl
+projects/*/manifests/generations/*.json
+projects/*/assets/source/perchance/*
+!projects/example-project/manifests/generations/.gitkeep
+*.log
+tmp/
+temp/
+.cache/
+
+# Large or regenerable outputs (keep the checked-in example exports)
+*.mp4
+*.webm
+*.psd
+*.aseprite
+*.ase
+
+# The example project includes one small MP4 preview as part of its evidence.
+!projects/example-project/**/*.mp4
+
+# Provider downloads that are not part of the example project
+projects/*/assets/source/downloads/

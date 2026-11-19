@@ -1,0 +1,108 @@
+{
+  "asset": "C:\\Teerth Stuff\\Games Stuff\\projects\\2dsprites\\2d-sprite-studio\\projects\\example-project\\assets\\approved\\ui_sparkle\\frames\\ui_sparkle.png",
+  "generated_at": "2026-11-13T05:12:22+00:00",
+  "technical_status": "TECHNICAL_PASS",
+  "visual_status": "NOT_REVIEWED",
+  "qa_status": "TECHNICAL_PASS",
+  "checks": [
+    {
+      "name": "file_integrity",
+      "ok": true,
+      "severity": "critical",
+      "detail": "image decoded successfully",
+      "value": "PNG"
+    },
+    {
+      "name": "dimensions",
+      "ok": true,
+      "severity": "critical",
+      "detail": "32x32; expected 32x32",
+      "value": [
+        32,
+        32
+      ]
+    },
+    {
+      "name": "colour_mode",
+      "ok": true,
+      "severity": "critical",
+      "detail": "mode=RGBA, expected=RGBA",
+      "value": "RGBA"
+    },
+    {
+      "name": "not_empty",
+      "ok": true,
+      "severity": "critical",
+      "detail": "visible content present",
+      "value": 0.162109
+    },
+    {
+      "name": "transparency",
+      "ok": true,
+      "severity": "critical",
+      "detail": "transparent pixels=858",
+      "value": 858
+    },
+    {
+      "name": "padding",
+      "ok": true,
+      "severity": "warning",
+      "detail": "min transparent padding 2px; required 2px",
+      "value": {
+        "left": 3,
+        "top": 3,
+        "right": 2,
+        "bottom": 2
+      }
+    },
+    {
+      "name": "cropping",
+      "ok": true,
+      "severity": "critical",
+      "detail": "content is inside the canvas",
+      "value": 2
+    },
+    {
+      "name": "pivot",
+      "ok": true,
+      "severity": "critical",
+      "detail": "pivot (16.0, 16.0) within 32x32",
+      "value": [
+        16.0,
+        16.0
+      ]
+    }
+  ],
+  "critical_failures": [],
+  "warnings": [],
+  "stats": {
+    "width": 32,
+    "height": 32,
+    "total_pixels": 1024,
+    "opaque_pixels": 166,
+    "transparent_pixels": 858,
+    "partial_pixels": 0,
+    "coverage": 0.162109,
+    "bbox": [
+      3,
+      3,
+      29,
+      29
+    ]
+  },
+  "sha256": "35797e4b907f51ef89c9b0d688cea5226863eab04b5a7b66fab00e13239e9308",
+  "spec": {
+    "width": 32,
+    "height": 32,
+    "mode": "RGBA",
+    "transparency_required": true,
+    "padding": 2,
+    "pivot": {
+      "x": 16,
+      "y": 16
+    },
+    "allow_edge_contact": false
+  },
+  "human_approved": false,
+  "human_approved_at": null
+}

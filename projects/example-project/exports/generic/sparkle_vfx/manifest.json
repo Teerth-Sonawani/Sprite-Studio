@@ -1,0 +1,301 @@
+{
+  "manifest_version": "1.0",
+  "asset_id": "sparkle_vfx",
+  "asset_root": ".",
+  "name": "Firefly Sparkle Burst",
+  "category": "vfx",
+  "subcategory": "sparkle",
+  "description": "A six-frame, 64x64 sparkle burst for pickups and firefly accents. A bright core expands into an amber four-point star, then contracts and fades.",
+  "project": "Mosslight",
+  "intended_use": "One-shot pickup/impact effect, screen-aligned, drawn above gameplay.",
+  "style_id": "mosslight_pixel_16",
+  "intended_engine": "godot",
+  "export_format": "png + sprite sheet + manifest",
+  "file_format": "png",
+  "width": 64,
+  "height": 64,
+  "colour_mode": "RGBA",
+  "transparent": true,
+  "pivot": {
+    "x": 32,
+    "y": 32
+  },
+  "anchor_point": "center",
+  "ground_contact": null,
+  "files": {
+    "frame": [
+      {
+        "role": "frame",
+        "path": "frame/sparkle_vfx__burst__frame_000.png",
+        "filename": "sparkle_vfx__burst__frame_000.png",
+        "format": "png",
+        "width": 64,
+        "height": 64,
+        "mode": "RGBA",
+        "transparent": true,
+        "alpha_coverage": 0.019775,
+        "sha256": "b9a35a3a2e2ea18b4afab89e8b3ce406243f7446cc884b690b3cdf5baeb68adf",
+        "bytes": 330,
+        "bbox": [
+          23,
+          23,
+          46,
+          45
+        ]
+      },
+      {
+        "role": "frame",
+        "path": "frame/sparkle_vfx__burst__frame_001.png",
+        "filename": "sparkle_vfx__burst__frame_001.png",
+        "format": "png",
+        "width": 64,
+        "height": 64,
+        "mode": "RGBA",
+        "transparent": true,
+        "alpha_coverage": 0.068604,
+        "sha256": "b40e3cf8faa267ee376c53106f1964eec33c00c3120ce89d056d2403a1083ba9",
+        "bytes": 427,
+        "bbox": [
+          15,
+          15,
+          50,
+          49
+        ]
+      },
+      {
+        "role": "frame",
+        "path": "frame/sparkle_vfx__burst__frame_002.png",
+        "filename": "sparkle_vfx__burst__frame_002.png",
+        "format": "png",
+        "width": 64,
+        "height": 64,
+        "mode": "RGBA",
+        "transparent": true,
+        "alpha_coverage": 0.154297,
+        "sha256": "efe85422ffcb960e6c09ad36067dc09bc22886e929fedf84fbb4dcad58dced03",
+        "bytes": 514,
+        "bbox": [
+          7,
+          6,
+          59,
+          57
+        ]
+      },
+      {
+        "role": "frame",
+        "path": "frame/sparkle_vfx__burst__frame_003.png",
+        "filename": "sparkle_vfx__burst__frame_003.png",
+        "format": "png",
+        "width": 64,
+        "height": 64,
+        "mode": "RGBA",
+        "transparent": true,
+        "alpha_coverage": 0.179688,
+        "sha256": "69e0de5e478b013ab22aa711e464dffa47bfdce91b2cca9a1f45b95096edb453",
+        "bytes": 596,
+        "bbox": [
+          3,
+          3,
+          61,
+          61
+        ]
+      },
+      {
+        "role": "frame",
+        "path": "frame/sparkle_vfx__burst__frame_004.png",
+        "filename": "sparkle_vfx__burst__frame_004.png",
+        "format": "png",
+        "width": 64,
+        "height": 64,
+        "mode": "RGBA",
+        "transparent": true,
+        "alpha_coverage": 0.086426,
+        "sha256": "3d7ba6959a0595b76ea058512b31f8ce6d3b7e5c140ecd261df69ca599e17207",
+        "bytes": 490,
+        "bbox": [
+          6,
+          7,
+          56,
+          58
+        ]
+      },
+      {
+        "role": "frame",
+        "path": "frame/sparkle_vfx__burst__frame_005.png",
+        "filename": "sparkle_vfx__burst__frame_005.png",
+        "format": "png",
+        "width": 64,
+        "height": 64,
+        "mode": "RGBA",
+        "transparent": true,
+        "alpha_coverage": 0.034424,
+        "sha256": "98233443ce4cbe11a1cf6cf285cdecf9ff992f559fcafda9edeffff6550ed948",
+        "bytes": 367,
+        "bbox": [
+          16,
+          21,
+          43,
+          48
+        ]
+      }
+    ],
+    "sheet": [
+      {
+        "role": "sheet",
+        "path": "sheet/sparkle_vfx__burst__sheet.png",
+        "filename": "sparkle_vfx__burst__sheet.png",
+        "format": "png",
+        "width": 384,
+        "height": 64,
+        "mode": "RGBA",
+        "transparent": true,
+        "alpha_coverage": 0.090535,
+        "sha256": "3880b1c75cb2b1268e4f12056c880b9decba1751f35fe663fd7f1c49463a25f9",
+        "bytes": 1589
+      }
+    ],
+    "sheet_metadata": [
+      {
+        "role": "sheet_metadata",
+        "path": "sheet_metadata/sparkle_vfx__burst__sheet.json",
+        "filename": "sparkle_vfx__burst__sheet.json",
+        "format": "json",
+        "sha256": "6bc08e03985e0634325ceb0edbae05cbecdc34b3ad5c498f39eae4374094ddbb",
+        "bytes": 1691
+      }
+    ],
+    "preview": [
+      {
+        "role": "preview",
+        "path": "preview/sparkle_vfx__burst__contact.png",
+        "filename": "sparkle_vfx__burst__contact.png",
+        "format": "png",
+        "width": 824,
+        "height": 198,
+        "mode": "RGBA",
+        "transparent": false,
+        "alpha_coverage": 1.0,
+        "sha256": "efd589e0412e01b0442b42fb58e76ce0c25f791762e584a83326fff72cc9ecc8",
+        "bytes": 9742
+      },
+      {
+        "role": "preview",
+        "path": "preview/sparkle_vfx__burst__preview.gif",
+        "filename": "sparkle_vfx__burst__preview.gif",
+        "format": "gif",
+        "width": 128,
+        "height": 152,
+        "mode": "P",
+        "transparent": false,
+        "alpha_coverage": 1.0,
+        "sha256": "24e7cab1555ab5b8fd29a3610751fa4813a5f6b8d78b6aea3f91d74daca47a65",
+        "bytes": 13431
+      },
+      {
+        "role": "preview",
+        "path": "preview/sparkle_vfx__burst__preview.webp",
+        "filename": "sparkle_vfx__burst__preview.webp",
+        "format": "webp",
+        "width": 128,
+        "height": 128,
+        "mode": "RGBA",
+        "transparent": true,
+        "alpha_coverage": 0.019775,
+        "sha256": "6890bdde3b2dda005c4270811c8d4ebbd50ffaf86615717818f2c53c1af728c0",
+        "bytes": 1846
+      }
+    ]
+  },
+  "animations": {
+    "burst": {
+      "spec": "sparkle_vfx_burst.yaml",
+      "frame_count": 6,
+      "frame_rate": 12.0,
+      "loop": false,
+      "loop_type": "once",
+      "direction": "screen_aligned",
+      "durations_ms": [
+        80,
+        80,
+        70,
+        70,
+        90,
+        110
+      ],
+      "frames": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "frame_start": 0,
+      "sheet": "sparkle_vfx__burst__sheet.png",
+      "notes": "One-shot sparkle burst. A small bright core appears, expands into a four-point amber star, peaks, then contracts back to a small core. The first and last frames are intentionally similar so a retrigger is visually clean."
+    }
+  },
+  "qa": {
+    "technical_status": "TECHNICAL_PASS",
+    "visual_status": "APPROVED",
+    "qa_status": "APPROVED",
+    "human_approved": false,
+    "report": "../qa/sparkle_vfx_review.json",
+    "review": {
+      "decision": "approve",
+      "reviewer": "OpenCode visual review agent",
+      "reviewer_type": "ai_agent",
+      "reviewed_at": "2026-11-13T05:12:22+00:00",
+      "notes": "The burst expands from frame 0 to frame 3 and contracts through frame 5; the increasing scale is the intended effect, not drift. The animation report's only warning is scale_variation (0.828 vs the default 0.800 limit), which is expected for an expanding VFX burst and is not a technical failure. Alpha falloff is clean, the 64x64 canvas is not clipped at maximum expansion and the preview reads at gameplay scale without obscuring a full 64px character. Sequenced as a non-looping one-shot. Demo/internal approval only.",
+      "scores": {
+        "silhouette": 4,
+        "identity": 4,
+        "style": 5,
+        "cleanliness": 5,
+        "animation": 4,
+        "in_game": 4
+      },
+      "evidence": [
+        "projects/example-project/assets/approved/sparkle_vfx/previews/sparkle_vfx__burst__contact.png",
+        "projects/example-project/assets/approved/sparkle_vfx/previews/sparkle_vfx__burst__preview.gif",
+        "projects/example-project/assets/approved/sparkle_vfx/previews/sparkle_vfx__burst__preview.webp",
+        "projects/example-project/assets/approved/sparkle_vfx/spritesheets/sparkle_vfx__burst__sheet.png",
+        "projects/example-project/qa/sparkle_vfx_burst_animation.json",
+        "projects/example-project/qa/sparkle_vfx_technical.json"
+      ],
+      "human_approved": false,
+      "approval_scope": "demo_or_internal"
+    }
+  },
+  "provenance": {
+    "provider": "scripted_pillow",
+    "mode": "procedural_demo",
+    "model_key": null,
+    "generation_id": null,
+    "prompt": null,
+    "prompt_file": "assets/source/prompts/sparkle_vfx.prompt.txt",
+    "source_files": [
+      "projects/example-project/assets/source/procedural/sparkle_vfx/sparkle_vfx__burst__source_000.png",
+      "projects/example-project/assets/source/procedural/sparkle_vfx/sparkle_vfx__burst__source_001.png",
+      "projects/example-project/assets/source/procedural/sparkle_vfx/sparkle_vfx__burst__source_002.png",
+      "projects/example-project/assets/source/procedural/sparkle_vfx/sparkle_vfx__burst__source_003.png",
+      "projects/example-project/assets/source/procedural/sparkle_vfx/sparkle_vfx__burst__source_004.png",
+      "projects/example-project/assets/source/procedural/sparkle_vfx/sparkle_vfx__burst__source_005.png"
+    ],
+    "license": "MIT (original procedural demo art for this workspace)",
+    "notes": "Original procedural demo art drawn by scripts/build_demo_assets.py. Not AI-generated and not a provider quality showcase.",
+    "created_at": "2026-11-13T05:12:23+00:00"
+  },
+  "created_at": "2026-11-13T05:12:23+00:00",
+  "updated_at": "2026-11-13T05:12:23+00:00",
+  "validation": {
+    "schema": "schemas/asset_manifest.schema.json",
+    "ok": true,
+    "errors": []
+  },
+  "export": {
+    "profile": "generic_png",
+    "exported_at": "2026-11-13T05:12:23+00:00",
+    "note": "File paths in this copy are relative to this export folder."
+  }
+}

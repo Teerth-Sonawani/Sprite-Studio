@@ -1,0 +1,113 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.local/schemas/asset_manifest.schema.json",
+  "title": "2D Sprite Studio Asset Manifest",
+  "type": "object",
+  "required": [
+    "manifest_version",
+    "asset_id",
+    "name",
+    "category",
+    "width",
+    "height",
+    "colour_mode",
+    "transparent",
+    "files",
+    "qa"
+  ],
+  "additionalProperties": true,
+  "properties": {
+    "manifest_version": { "type": "string" },
+    "asset_id": { "type": "string", "minLength": 1 },
+    "name": { "type": "string", "minLength": 1 },
+    "category": { "type": "string", "minLength": 1 },
+    "subcategory": { "type": ["string", "null"] },
+    "description": { "type": "string" },
+    "project": { "type": "string" },
+    "intended_use": { "type": "string" },
+    "style_id": { "type": "string" },
+    "intended_engine": { "type": "string" },
+    "export_format": { "type": "string" },
+    "file_format": { "type": "string" },
+    "width": { "type": "integer", "minimum": 1 },
+    "height": { "type": "integer", "minimum": 1 },
+    "colour_mode": { "type": "string" },
+    "transparent": { "type": "boolean" },
+    "pivot": {
+      "type": ["object", "null"],
+      "additionalProperties": true,
+      "properties": { "x": { "type": "number" }, "y": { "type": "number" } }
+    },
+    "anchor_point": { "type": "string" },
+    "ground_contact": { "type": ["string", "number", "null"] },
+    "files": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "required": ["role", "path", "filename", "sha256"],
+          "additionalProperties": true,
+          "properties": {
+            "role": { "type": "string" },
+            "path": { "type": "string" },
+            "filename": { "type": "string" },
+            "format": { "type": "string" },
+            "width": { "type": "integer", "minimum": 1 },
+            "height": { "type": "integer", "minimum": 1 },
+            "mode": { "type": "string" },
+            "transparent": { "type": "boolean" },
+            "alpha_coverage": { "type": "number" },
+            "sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+            "bytes": { "type": "integer", "minimum": 0 }
+          }
+        }
+      }
+    },
+    "animations": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "required": ["frame_count", "frame_rate", "loop"],
+        "additionalProperties": true,
+        "properties": {
+          "frame_count": { "type": "integer", "minimum": 0 },
+          "frame_rate": { "type": "number", "exclusiveMinimum": 0 },
+          "loop": { "type": "boolean" },
+          "durations_ms": { "type": "array", "items": { "type": "integer", "minimum": 1 } },
+          "frames": { "type": "array", "items": { "type": ["integer", "string", "null"] } },
+          "sheet": { "type": "string" }
+        }
+      }
+    },
+    "qa": {
+      "type": "object",
+      "required": ["technical_status", "visual_status", "qa_status"],
+      "additionalProperties": true,
+      "properties": {
+        "technical_status": { "enum": ["PENDING", "TECHNICAL_PASS", "VISUAL_REVIEW", "APPROVED", "REJECTED", "NOT_REVIEWED"] },
+        "visual_status": { "enum": ["PENDING", "TECHNICAL_PASS", "VISUAL_REVIEW", "APPROVED", "REJECTED", "NOT_REVIEWED"] },
+        "qa_status": { "enum": ["PENDING", "TECHNICAL_PASS", "VISUAL_REVIEW", "APPROVED", "REJECTED", "NOT_REVIEWED"] },
+        "human_approved": { "type": "boolean" },
+        "report": { "type": ["string", "null"] },
+        "review": { "type": ["object", "null"] }
+      }
+    },
+    "provenance": {
+      "type": "object",
+      "additionalProperties": true,
+      "properties": {
+        "provider": { "type": "string" },
+        "mode": { "type": "string" },
+        "model_key": { "type": ["string", "null"] },
+        "generation_id": { "type": ["string", "null"] },
+        "prompt": { "type": ["string", "null"] },
+        "source_files": { "type": "array", "items": { "type": "string" } },
+        "license": { "type": "string" }
+      }
+    },
+    "validation": { "type": "object", "additionalProperties": true },
+    "created_at": { "type": "string" },
+    "updated_at": { "type": "string" }
+  }
+}

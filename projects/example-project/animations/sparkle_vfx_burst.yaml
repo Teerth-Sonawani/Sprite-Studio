@@ -1,0 +1,62 @@
+animation_id: sparkle_vfx_burst
+asset_id: sparkle_vfx
+animation_name: burst
+
+frame_count: 6
+frame_rate: 12
+loop: false
+loop_type: once
+
+canvas_width: 64
+canvas_height: 64
+pivot_x: 32
+pivot_y: 32
+
+direction: screen_aligned
+movement_description: >-
+  One-shot sparkle burst. A small bright core appears, expands into a four-point
+  amber star, peaks, then contracts back to a small core. The first and last
+  frames are intentionally similar so a retrigger is visually clean.
+
+frame_start: 0
+sheet: sparkle_vfx__burst__sheet.png
+
+frame_sequence:
+  - frame: 0
+    pose: small core
+    duration_ms: 80
+    notes: Bright centre, 8px span
+  - frame: 1
+    pose: expansion
+    duration_ms: 80
+    notes: Amber points emerge
+  - frame: 2
+    pose: half burst
+    duration_ms: 70
+    notes: Four-point star plus two satellites
+  - frame: 3
+    pose: full burst
+    duration_ms: 70
+    notes: Widest point; still leaves canvas padding
+  - frame: 4
+    pose: contraction
+    duration_ms: 90
+    notes: Satellites fade first
+  - frame: 5
+    pose: residual core
+    duration_ms: 110
+    notes: Similar size and value to frame 0
+
+transition_requirements:
+  - frame 5 -> frame 0 is acceptable for a retrigger, not a seamless loop
+  - no frame touches the canvas edge
+visual_constraints:
+  - keep the warm core brighter than the amber falloff
+  - pure white only in the 1-2px core
+  - no full-screen bloom
+sprite_sheet:
+  layout: horizontal
+  cell_width: 64
+  cell_height: 64
+  spacing: 0
+  margin: 0

@@ -1,0 +1,69 @@
+# Studio-wide defaults. Paths are relative to the workspace root unless noted.
+studio:
+  name: 2D Sprite Studio
+  version: 1.0.0
+  units: pixels
+  default_asset_state: working
+  require_visual_review_for_release: true
+  max_correction_rounds: 3
+
+paths:
+  projects: projects
+  references: references
+  templates: templates
+  tools: tools
+  config: config
+  schemas: schemas
+  approved: assets/approved
+  working: assets/working
+  rejected: assets/rejected
+  source: assets/source
+  manifests: manifests
+  qa: qa
+  animations: animations
+  exports: exports
+
+generation:
+  default_provider: perchance
+  default_candidates: 3
+  max_candidates_per_asset: 6
+  require_reason_for_regeneration: true
+  preserve_rejected_candidates: true
+  max_credits_per_asset: 60
+  max_credits_per_session: 200
+  require_approval_for_chargeable: true
+  prefer_reference_conditioning: true
+
+qa:
+  technical_gate_blocks_export: true
+  approvals_require_evidence: true
+  human_signoff_required_for_release: true
+  default_preview_scales: [1, 2]
+  in_game_preview_sizes: [[16, 16], [32, 32], [64, 64], [128, 128]]
+  statuses: [PENDING, TECHNICAL_PASS, VISUAL_REVIEW, APPROVED, REJECTED]
+
+naming:
+  frame_pattern: "{asset_id}__{animation}__frame_{index:03d}.png"
+  sheet_pattern: "{asset_id}__{animation}__sheet.png"
+  preview_pattern: "{asset_id}__{animation}__preview.gif"
+  manifest_pattern: "{asset_id}.manifest.json"
+  forbidden_characters: [" ", "/", "\\", ":", "*", "?", '"', "<", ">", "|"]
+
+pixel_art:
+  nearest_neighbour_only: true
+  integer_scale_preferred: true
+  reject_anti_aliased_edges: false
+  palette_limit_default: 32
+
+previews:
+  checker_size: 8
+  gif_background: checker
+  apng_background: transparent
+  contact_sheet_columns: 4
+  contact_sheet_thumb: [128, 128]
+
+originality:
+  prohibit_copyrighted_characters: true
+  prohibit_logos: true
+  prohibit_artist_imitation_requests: true
+  note: Use descriptive visual characteristics, not protected names or signatures.

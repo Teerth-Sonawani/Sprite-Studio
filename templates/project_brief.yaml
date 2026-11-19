@@ -1,0 +1,47 @@
+# Project brief template. Keep this short enough that every asset task can read it.
+project_id: mosslight
+project_name: Mosslight
+genre: 2D exploration platformer
+engine: Godot 4.3
+platforms: [desktop, web]
+internal_resolution: 320x180
+window_scale: integer
+camera: side-on orthographic, no rotation
+perspective: flat side view; backgrounds may use layered parallax
+target_frame_rate: 60
+pixel_art: true
+pixel_snap: true
+
+visual_identity:
+  one_line: A cozy, mossy woodland world lit by warm fireflies.
+  theme: cozy woodland fantasy
+  mood: calm, curious, slightly mysterious
+  references:
+    - references/examples/moss_light_art_direction.md
+  prohibited:
+    - existing copyrighted characters
+    - logos
+    - direct imitation of a named living artist
+  palette: ["#10181c", "#1b2a2a", "#355c4a", "#5f8f5a", "#a8c66c", "#f2e8c9", "#e7a05a", "#7a4f3a"]
+  lighting: warm upper-left key; cool ambient; fireflies are warm accents
+  outline: 1px dark green-grey, selective; no pure black
+  proportions: characters 32-48px tall; NPCs may be 24-64px; props 16-64px
+  detail_budget: readable at 1x; no single-pixel noise unless intentional
+
+production:
+  asset_naming: "{asset_id}__{animation}__frame_{index:03d}.png"
+  source_retention: keep every generated source and candidate
+  approval_required_from: human art lead for release; AI visual review may mark demo/internal
+  export_formats: [generic_png, godot_4]
+  max_candidates: 3
+  max_correction_rounds: 3
+  max_credits_per_asset: 60
+
+ui:
+  resolution: 320x180
+  icon_sizes: [16, 24, 32]
+  font: project font, not generated in images
+  contrast: 4.5:1 minimum for text
+
+audio:
+  note: Out of scope for this workspace.

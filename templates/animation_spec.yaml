@@ -1,0 +1,59 @@
+# Animation spec template. Every animation must have one before frames are made.
+animation_id: moss_slime_walk
+asset_id: character_moss_slime_01
+animation_name: walk
+
+frame_count: 6
+frame_rate: 10
+loop: true
+loop_type: loop
+
+canvas_width: 64
+canvas_height: 64
+
+pivot_x: 32
+pivot_y: 60
+
+direction: side_right
+movement_description: >
+  Six-frame walk cycle. Contact, down, passing, up, opposite contact, opposite
+  passing. The body bobs by 1-2 px; the base stays near the ground line.
+
+frame_sequence:
+  - frame: 0
+    pose: contact right foot forward
+    duration_ms: 100
+    notes: base at y=60; eyes level
+  - frame: 1
+    pose: down, weight compressed
+    duration_ms: 100
+    notes: squash 1px vertically; keep head shape
+  - frame: 2
+    pose: passing, left foot lifts
+    duration_ms: 100
+    notes: body rises 1px
+  - frame: 3
+    pose: contact left foot forward
+    duration_ms: 100
+    notes: mirrored pose but preserve fern side
+  - frame: 4
+    pose: down, weight compressed
+    duration_ms: 100
+  - frame: 5
+    pose: passing, right foot lifts
+    duration_ms: 100
+    notes: last frame must lead cleanly into frame 0
+
+transition_requirements:
+  - frame 5 -> frame 0 reads as a continuous step
+  - no horizontal drift of the base pivot
+visual_constraints:
+  - keep eyes and fern cluster identical
+  - palette limited to style guide
+  - no motion blur
+sprite_sheet:
+  layout: horizontal
+  cell_width: 64
+  cell_height: 64
+  spacing: 0
+  margin: 0

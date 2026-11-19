@@ -1,0 +1,71 @@
+# Character sheet template. Use one sheet per character family, not per frame.
+character_id: character_moss_slime_01
+display_name: Moss Slime
+role: player character
+canonical_reference: assets/approved/moss_slime/frames/moss_slime__idle__frame_000.png
+
+identity:
+  species: moss slime
+  age_or_variant: adult
+  silhouette: round base, two fern sprouts, two large eyes
+  height_px: 32
+  width_px: 36
+  body_shape: soft dome with a slightly flattened base
+  distinguishing_features:
+    - asymmetric fern cluster
+    - amber eye highlights
+    - darker moss cap
+
+colour_map:
+  outline: "#1b2a2a"
+  base: "#5f8f5a"
+  highlight: "#a8c66c"
+  shadow: "#355c4a"
+  accent: "#e7a05a"
+  eyes: "#f2e8c9"
+
+views:
+  side_right: canonical
+  side_left: mirrored, except the fern asymmetry must be re-authored
+  front: optional for portraits
+  back: not required
+
+pivot:
+  x: 32
+  y: 60
+  anchor: bottom-center
+  ground_contact: base center
+
+scale_relationships:
+  door_height_px: 64
+  player_height_px: 32
+  npc_height_range_px: [24, 64]
+
+expression_set:
+  - neutral
+  - happy
+  - surprised
+  - hurt
+  - sleepy
+
+animation_set:
+  - idle
+  - walk
+  - run
+  - jump
+  - fall
+  - land
+  - hurt
+  - celebrate
+
+consistency_rules:
+  - eyes stay the same distance apart in every frame
+  - fern cluster stays on the same side unless a story beat changes it
+  - base width does not change without a squash/stretch reason
+  - outline hue and thickness do not drift
+  - do not bake a ground shadow into the character
+
+approved_variations:
+  - name: autumn_variant
+    change: palette only
+    notes: same silhouette and animation timing

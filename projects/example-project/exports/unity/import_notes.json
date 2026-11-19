@@ -1,0 +1,8 @@
+{
+  "engine": "Unity 2022.3+",
+  "texture_type": "Sprite (2D and UI)",
+  "sprite_mode": "Multiple",
+  "filter_mode": "Point (for pixel art) or Bilinear (for painted art)",
+  "pixels_per_unit": 100,
+  "note": "Unity does not consume a portable sprite-sheet metadata format. Apply the JSON rects in the Sprite Editor or through an editor script."
+}

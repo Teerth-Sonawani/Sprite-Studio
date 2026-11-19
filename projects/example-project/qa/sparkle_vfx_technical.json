@@ -1,0 +1,717 @@
+{
+  "asset": "sparkle_vfx",
+  "generated_at": "2026-11-13T05:12:22+00:00",
+  "technical_status": "TECHNICAL_PASS",
+  "visual_status": "NOT_REVIEWED",
+  "qa_status": "TECHNICAL_PASS",
+  "checks": [
+    {
+      "name": "frame_technical_checks",
+      "ok": true,
+      "severity": "critical",
+      "detail": "6 frame report(s); 0 critical failure(s)"
+    },
+    {
+      "name": "animation_checks",
+      "ok": true,
+      "severity": "critical",
+      "detail": "1 animation report(s); failures: []"
+    }
+  ],
+  "critical_failures": [],
+  "warnings": [
+    "sparkle_vfx_burst:scale_variation"
+  ],
+  "frame_reports": [
+    {
+      "path": "projects/example-project/assets/approved/sparkle_vfx/frames/sparkle_vfx__burst__frame_000.png",
+      "technical_status": "TECHNICAL_PASS",
+      "critical_failures": [],
+      "warnings": [],
+      "checks": [
+        {
+          "name": "file_integrity",
+          "ok": true,
+          "severity": "critical",
+          "detail": "image decoded successfully",
+          "value": "PNG"
+        },
+        {
+          "name": "dimensions",
+          "ok": true,
+          "severity": "critical",
+          "detail": "64x64; expected 64x64",
+          "value": [
+            64,
+            64
+          ]
+        },
+        {
+          "name": "colour_mode",
+          "ok": true,
+          "severity": "critical",
+          "detail": "mode=RGBA, expected=RGBA",
+          "value": "RGBA"
+        },
+        {
+          "name": "not_empty",
+          "ok": true,
+          "severity": "critical",
+          "detail": "visible content present",
+          "value": 0.019775
+        },
+        {
+          "name": "transparency",
+          "ok": true,
+          "severity": "critical",
+          "detail": "transparent pixels=4015",
+          "value": 4015
+        },
+        {
+          "name": "padding",
+          "ok": true,
+          "severity": "warning",
+          "detail": "min transparent padding 17px; required 2px",
+          "value": {
+            "left": 23,
+            "top": 23,
+            "right": 17,
+            "bottom": 18
+          }
+        },
+        {
+          "name": "cropping",
+          "ok": true,
+          "severity": "critical",
+          "detail": "content is inside the canvas",
+          "value": 17
+        },
+        {
+          "name": "pivot",
+          "ok": true,
+          "severity": "critical",
+          "detail": "pivot (32.0, 32.0) within 64x64",
+          "value": [
+            32.0,
+            32.0
+          ]
+        }
+      ],
+      "stats": {
+        "width": 64,
+        "height": 64,
+        "total_pixels": 4096,
+        "opaque_pixels": 81,
+        "transparent_pixels": 4015,
+        "partial_pixels": 0,
+        "coverage": 0.019775,
+        "bbox": [
+          23,
+          23,
+          46,
+          45
+        ]
+      },
+      "sha256": "b9a35a3a2e2ea18b4afab89e8b3ce406243f7446cc884b690b3cdf5baeb68adf"
+    },
+    {
+      "path": "projects/example-project/assets/approved/sparkle_vfx/frames/sparkle_vfx__burst__frame_001.png",
+      "technical_status": "TECHNICAL_PASS",
+      "critical_failures": [],
+      "warnings": [],
+      "checks": [
+        {
+          "name": "file_integrity",
+          "ok": true,
+          "severity": "critical",
+          "detail": "image decoded successfully",
+          "value": "PNG"
+        },
+        {
+          "name": "dimensions",
+          "ok": true,
+          "severity": "critical",
+          "detail": "64x64; expected 64x64",
+          "value": [
+            64,
+            64
+          ]
+        },
+        {
+          "name": "colour_mode",
+          "ok": true,
+          "severity": "critical",
+          "detail": "mode=RGBA, expected=RGBA",
+          "value": "RGBA"
+        },
+        {
+          "name": "not_empty",
+          "ok": true,
+          "severity": "critical",
+          "detail": "visible content present",
+          "value": 0.068604
+        },
+        {
+          "name": "transparency",
+          "ok": true,
+          "severity": "critical",
+          "detail": "transparent pixels=3815",
+          "value": 3815
+        },
+        {
+          "name": "padding",
+          "ok": true,
+          "severity": "warning",
+          "detail": "min transparent padding 13px; required 2px",
+          "value": {
+            "left": 15,
+            "top": 15,
+            "right": 13,
+            "bottom": 14
+          }
+        },
+        {
+          "name": "cropping",
+          "ok": true,
+          "severity": "critical",
+          "detail": "content is inside the canvas",
+          "value": 13
+        },
+        {
+          "name": "pivot",
+          "ok": true,
+          "severity": "critical",
+          "detail": "pivot (32.0, 32.0) within 64x64",
+          "value": [
+            32.0,
+            32.0
+          ]
+        }
+      ],
+      "stats": {
+        "width": 64,
+        "height": 64,
+        "total_pixels": 4096,
+        "opaque_pixels": 281,
+        "transparent_pixels": 3815,
+        "partial_pixels": 0,
+        "coverage": 0.068604,
+        "bbox": [
+          15,
+          15,
+          50,
+          49
+        ]
+      },
+      "sha256": "b40e3cf8faa267ee376c53106f1964eec33c00c3120ce89d056d2403a1083ba9"
+    },
+    {
+      "path": "projects/example-project/assets/approved/sparkle_vfx/frames/sparkle_vfx__burst__frame_002.png",
+      "technical_status": "TECHNICAL_PASS",
+      "critical_failures": [],
+      "warnings": [],
+      "checks": [
+        {
+          "name": "file_integrity",
+          "ok": true,
+          "severity": "critical",
+          "detail": "image decoded successfully",
+          "value": "PNG"
+        },
+        {
+          "name": "dimensions",
+          "ok": true,
+          "severity": "critical",
+          "detail": "64x64; expected 64x64",
+          "value": [
+            64,
+            64
+          ]
+        },
+        {
+          "name": "colour_mode",
+          "ok": true,
+          "severity": "critical",
+          "detail": "mode=RGBA, expected=RGBA",
+          "value": "RGBA"
+        },
+        {
+          "name": "not_empty",
+          "ok": true,
+          "severity": "critical",
+          "detail": "visible content present",
+          "value": 0.154297
+        },
+        {
+          "name": "transparency",
+          "ok": true,
+          "severity": "critical",
+          "detail": "transparent pixels=3464",
+          "value": 3464
+        },
+        {
+          "name": "padding",
+          "ok": true,
+          "severity": "warning",
+          "detail": "min transparent padding 4px; required 2px",
+          "value": {
+            "left": 7,
+            "top": 6,
+            "right": 4,
+            "bottom": 6
+          }
+        },
+        {
+          "name": "cropping",
+          "ok": true,
+          "severity": "critical",
+          "detail": "content is inside the canvas",
+          "value": 4
+        },
+        {
+          "name": "pivot",
+          "ok": true,
+          "severity": "critical",
+          "detail": "pivot (32.0, 32.0) within 64x64",
+          "value": [
+            32.0,
+            32.0
+          ]
+        }
+      ],
+      "stats": {
+        "width": 64,
+        "height": 64,
+        "total_pixels": 4096,
+        "opaque_pixels": 632,
+        "transparent_pixels": 3464,
+        "partial_pixels": 0,
+        "coverage": 0.154297,
+        "bbox": [
+          7,
+          6,
+          59,
+          57
+        ]
+      },
+      "sha256": "efe85422ffcb960e6c09ad36067dc09bc22886e929fedf84fbb4dcad58dced03"
+    },
+    {
+      "path": "projects/example-project/assets/approved/sparkle_vfx/frames/sparkle_vfx__burst__frame_003.png",
+      "technical_status": "TECHNICAL_PASS",
+      "critical_failures": [],
+      "warnings": [],
+      "checks": [
+        {
+          "name": "file_integrity",
+          "ok": true,
+          "severity": "critical",
+          "detail": "image decoded successfully",
+          "value": "PNG"
+        },
+        {
+          "name": "dimensions",
+          "ok": true,
+          "severity": "critical",
+          "detail": "64x64; expected 64x64",
+          "value": [
+            64,
+            64
+          ]
+        },
+        {
+          "name": "colour_mode",
+          "ok": true,
+          "severity": "critical",
+          "detail": "mode=RGBA, expected=RGBA",
+          "value": "RGBA"
+        },
+        {
+          "name": "not_empty",
+          "ok": true,
+          "severity": "critical",
+          "detail": "visible content present",
+          "value": 0.179688
+        },
+        {
+          "name": "transparency",
+          "ok": true,
+          "severity": "critical",
+          "detail": "transparent pixels=3360",
+          "value": 3360
+        },
+        {
+          "name": "padding",
+          "ok": true,
+          "severity": "warning",
+          "detail": "min transparent padding 2px; required 2px",
+          "value": {
+            "left": 3,
+            "top": 3,
+            "right": 2,
+            "bottom": 2
+          }
+        },
+        {
+          "name": "cropping",
+          "ok": true,
+          "severity": "critical",
+          "detail": "content is inside the canvas",
+          "value": 2
+        },
+        {
+          "name": "pivot",
+          "ok": true,
+          "severity": "critical",
+          "detail": "pivot (32.0, 32.0) within 64x64",
+          "value": [
+            32.0,
+            32.0
+          ]
+        }
+      ],
+      "stats": {
+        "width": 64,
+        "height": 64,
+        "total_pixels": 4096,
+        "opaque_pixels": 736,
+        "transparent_pixels": 3360,
+        "partial_pixels": 0,
+        "coverage": 0.179688,
+        "bbox": [
+          3,
+          3,
+          61,
+          61
+        ]
+      },
+      "sha256": "69e0de5e478b013ab22aa711e464dffa47bfdce91b2cca9a1f45b95096edb453"
+    },
+    {
+      "path": "projects/example-project/assets/approved/sparkle_vfx/frames/sparkle_vfx__burst__frame_004.png",
+      "technical_status": "TECHNICAL_PASS",
+      "critical_failures": [],
+      "warnings": [],
+      "checks": [
+        {
+          "name": "file_integrity",
+          "ok": true,
+          "severity": "critical",
+          "detail": "image decoded successfully",
+          "value": "PNG"
+        },
+        {
+          "name": "dimensions",
+          "ok": true,
+          "severity": "critical",
+          "detail": "64x64; expected 64x64",
+          "value": [
+            64,
+            64
+          ]
+        },
+        {
+          "name": "colour_mode",
+          "ok": true,
+          "severity": "critical",
+          "detail": "mode=RGBA, expected=RGBA",
+          "value": "RGBA"
+        },
+        {
+          "name": "not_empty",
+          "ok": true,
+          "severity": "critical",
+          "detail": "visible content present",
+          "value": 0.086426
+        },
+        {
+          "name": "transparency",
+          "ok": true,
+          "severity": "critical",
+          "detail": "transparent pixels=3742",
+          "value": 3742
+        },
+        {
+          "name": "padding",
+          "ok": true,
+          "severity": "warning",
+          "detail": "min transparent padding 5px; required 2px",
+          "value": {
+            "left": 6,
+            "top": 7,
+            "right": 7,
+            "bottom": 5
+          }
+        },
+        {
+          "name": "cropping",
+          "ok": true,
+          "severity": "critical",
+          "detail": "content is inside the canvas",
+          "value": 5
+        },
+        {
+          "name": "pivot",
+          "ok": true,
+          "severity": "critical",
+          "detail": "pivot (32.0, 32.0) within 64x64",
+          "value": [
+            32.0,
+            32.0
+          ]
+        }
+      ],
+      "stats": {
+        "width": 64,
+        "height": 64,
+        "total_pixels": 4096,
+        "opaque_pixels": 354,
+        "transparent_pixels": 3742,
+        "partial_pixels": 0,
+        "coverage": 0.086426,
+        "bbox": [
+          6,
+          7,
+          56,
+          58
+        ]
+      },
+      "sha256": "3d7ba6959a0595b76ea058512b31f8ce6d3b7e5c140ecd261df69ca599e17207"
+    },
+    {
+      "path": "projects/example-project/assets/approved/sparkle_vfx/frames/sparkle_vfx__burst__frame_005.png",
+      "technical_status": "TECHNICAL_PASS",
+      "critical_failures": [],
+      "warnings": [],
+      "checks": [
+        {
+          "name": "file_integrity",
+          "ok": true,
+          "severity": "critical",
+          "detail": "image decoded successfully",
+          "value": "PNG"
+        },
+        {
+          "name": "dimensions",
+          "ok": true,
+          "severity": "critical",
+          "detail": "64x64; expected 64x64",
+          "value": [
+            64,
+            64
+          ]
+        },
+        {
+          "name": "colour_mode",
+          "ok": true,
+          "severity": "critical",
+          "detail": "mode=RGBA, expected=RGBA",
+          "value": "RGBA"
+        },
+        {
+          "name": "not_empty",
+          "ok": true,
+          "severity": "critical",
+          "detail": "visible content present",
+          "value": 0.034424
+        },
+        {
+          "name": "transparency",
+          "ok": true,
+          "severity": "critical",
+          "detail": "transparent pixels=3955",
+          "value": 3955
+        },
+        {
+          "name": "padding",
+          "ok": true,
+          "severity": "warning",
+          "detail": "min transparent padding 15px; required 2px",
+          "value": {
+            "left": 16,
+            "top": 21,
+            "right": 20,
+            "bottom": 15
+          }
+        },
+        {
+          "name": "cropping",
+          "ok": true,
+          "severity": "critical",
+          "detail": "content is inside the canvas",
+          "value": 15
+        },
+        {
+          "name": "pivot",
+          "ok": true,
+          "severity": "critical",
+          "detail": "pivot (32.0, 32.0) within 64x64",
+          "value": [
+            32.0,
+            32.0
+          ]
+        }
+      ],
+      "stats": {
+        "width": 64,
+        "height": 64,
+        "total_pixels": 4096,
+        "opaque_pixels": 141,
+        "transparent_pixels": 3955,
+        "partial_pixels": 0,
+        "coverage": 0.034424,
+        "bbox": [
+          16,
+          21,
+          43,
+          48
+        ]
+      },
+      "sha256": "98233443ce4cbe11a1cf6cf285cdecf9ff992f559fcafda9edeffff6550ed948"
+    }
+  ],
+  "animation_reports": {
+    "sparkle_vfx_burst": {
+      "status": "WARN",
+      "frames": 6,
+      "checks": [
+        {
+          "name": "frame_count",
+          "ok": true,
+          "severity": "critical",
+          "detail": "expected 6, got 6",
+          "value": 6
+        },
+        {
+          "name": "canvas_dimensions",
+          "ok": true,
+          "severity": "critical",
+          "detail": "sizes=[(64, 64)], expected=(64, 64)",
+          "value": [
+            [
+              64,
+              64
+            ]
+          ]
+        },
+        {
+          "name": "empty_frames",
+          "ok": true,
+          "severity": "critical",
+          "detail": "no empty frames",
+          "value": []
+        },
+        {
+          "name": "duplicate_frames",
+          "ok": true,
+          "severity": "warning",
+          "detail": "no identical adjacent frames",
+          "value": []
+        },
+        {
+          "name": "displacement",
+          "ok": true,
+          "severity": "warning",
+          "detail": "max centre displacement 2.83px (limit 12.0px)",
+          "value": {
+            "max": 2.83,
+            "per_transition": [
+              2.83,
+              0.71,
+              1.12,
+              1.12,
+              2.5
+            ]
+          }
+        },
+        {
+          "name": "scale_variation",
+          "ok": false,
+          "severity": "warning",
+          "detail": "height variation 0.828 (limit 0.800)",
+          "value": {
+            "variation": 0.8276,
+            "heights": [
+              23,
+              35,
+              52,
+              59,
+              52,
+              28
+            ],
+            "median": 43.5
+          }
+        },
+        {
+          "name": "palette_drift",
+          "ok": true,
+          "severity": "warning",
+          "detail": "max mean-colour drift 14.09 (limit 45.0)",
+          "value": {
+            "max": 14.09,
+            "per_transition": [
+              9.6,
+              8.16,
+              14.09,
+              12.35,
+              8.88
+            ]
+          }
+        },
+        {
+          "name": "loop_transition",
+          "ok": true,
+          "severity": "info",
+          "detail": "not a looping animation",
+          "value": null
+        },
+        {
+          "name": "canvas_edge_artifacts",
+          "ok": true,
+          "severity": "warning",
+          "detail": "clear edge padding",
+          "value": []
+        },
+        {
+          "name": "durations",
+          "ok": true,
+          "severity": "critical",
+          "detail": "6 durations for 6 frames",
+          "value": [
+            80,
+            80,
+            70,
+            70,
+            90,
+            110
+          ]
+        },
+        {
+          "name": "pivot",
+          "ok": true,
+          "severity": "critical",
+          "detail": "pivot (32, 32) within (64, 64)",
+          "value": [
+            32,
+            32
+          ]
+        }
+      ],
+      "critical_failures": [],
+      "warnings": [
+        "scale_variation"
+      ],
+      "metrics": {
+        "max_displacement": 2.83,
+        "scale_variation": 0.8276,
+        "max_palette_drift": 14.09,
+        "duplicate_indices": [],
+        "near_duplicate_indices": [],
+        "edge_artifacts": []
+      }
+    }
+  },
+  "human_approved": false,
+  "human_approved_at": null,
+  "note": "Technical checks only. APPROVED requires a separate evidence-backed visual review. AI review is scoped to demo/internal use."
+}

@@ -1,0 +1,7 @@
+{
+  "asset_id": "grass_tile",
+  "generated_at": "2026-11-13T05:12:21+00:00",
+  "method": "periodic analytic pattern plus wrapped blade copies",
+  "source": "projects/example-project/assets/source/procedural/grass_tile/grass_tile__source.png",
+  "output": "projects/example-project/assets/approved/grass_tile/frames/grass_tile.png"
+}

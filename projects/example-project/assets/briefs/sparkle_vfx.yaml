@@ -1,0 +1,71 @@
+asset_id: sparkle_vfx
+asset_name: Firefly Sparkle Burst
+asset_category: vfx
+asset_subcategory: sparkle
+description: >-
+  A six-frame, 64x64 sparkle burst for pickups and firefly accents. A bright
+  core expands into an amber four-point star, then contracts and fades.
+intended_game: Mosslight
+intended_use: One-shot pickup/impact effect, screen-aligned, drawn above gameplay.
+
+theme: cozy woodland fantasy
+art_style: mosslight_pixel_16
+style_reference: projects/example-project/style_guide.yaml
+
+camera: screen-aligned
+perspective: straight-on
+view_direction: not applicable
+
+canvas_width: 64
+canvas_height: 64
+target_width: 64
+target_height: 64
+
+background: transparent
+transparency_required: true
+
+colour_palette: ["#f2e8c9", "#e7a05a", "#ffffff", "#a8c66c", "#355c4a"]
+outline_style: no hard outline; emissive edge
+lighting_direction: screen-space, core-lit
+shading_style: hard emissive core with amber falloff
+
+pivot:
+  x: 32
+  y: 32
+anchor_point: center
+
+animation_required: true
+animation_type: sparkle burst
+frame_count: 6
+frame_rate: 12
+looping: false
+animation_direction: screen-aligned
+
+target_engine: godot
+export_format: png + sprite sheet + manifest
+
+quality_requirements:
+  - motion reads at 12 fps
+  - first and last frames are small and visually similar
+  - no frame touches the canvas edge
+  - brightness does not flicker unintentionally
+  - effect does not obscure the player silhouette
+special_constraints:
+  - one-shot animation; do not loop in the engine
+  - pure white is allowed only in the core of the burst
+  - keep the effect under 56 px wide
+
+negative_constraints:
+  - full-screen bloom
+  - lens flare
+  - text or labels
+  - existing copyrighted effect design
+  - motion blur
+
+license: MIT (original procedural demo art for this workspace)
+
+custom:
+  palette_exception: "#ffffff emissive core, 1-2 px only"
+  playback: Play once, then free the instance
+  provenance_note: >-
+    Generated procedurally by scripts/build_demo_assets.py; not AI-generated.

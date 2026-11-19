@@ -1,0 +1,47 @@
+{
+  "generated_at": "2026-11-13T05:12:22+00:00",
+  "stage": "assets",
+  "prompts": {
+    "moss_slime": "projects/example-project/assets/source/prompts/moss_slime.prompt.txt",
+    "grass_tile": "projects/example-project/assets/source/prompts/grass_tile.prompt.txt",
+    "ui_sparkle": "projects/example-project/assets/source/prompts/ui_sparkle.prompt.txt",
+    "sparkle_vfx": "projects/example-project/assets/source/prompts/sparkle_vfx.prompt.txt"
+  },
+  "sheets": {
+    "moss_slime_idle": "projects/example-project/assets/approved/moss_slime/spritesheets/moss_slime__idle__sheet.png",
+    "moss_slime_walk": "projects/example-project/assets/approved/moss_slime/spritesheets/moss_slime__walk__sheet.png",
+    "sparkle_vfx_burst": "projects/example-project/assets/approved/sparkle_vfx/spritesheets/sparkle_vfx__burst__sheet.png"
+  },
+  "previews": {
+    "moss_slime_idle": [
+      "projects/example-project/assets/approved/moss_slime/previews/moss_slime__idle__preview.gif",
+      "projects/example-project/assets/approved/moss_slime/previews/moss_slime__idle__preview.png",
+      "projects/example-project/assets/approved/moss_slime/previews/moss_slime__idle__contact.png"
+    ],
+    "moss_slime_walk": [
+      "projects/example-project/assets/approved/moss_slime/previews/moss_slime__walk__preview.gif",
+      "projects/example-project/assets/approved/moss_slime/previews/moss_slime__walk__preview.webp",
+      "projects/example-project/assets/approved/moss_slime/previews/moss_slime__walk__contact.png",
+      "projects/example-project/assets/approved/moss_slime/previews/moss_slime__walk__preview.mp4"
+    ],
+    "sparkle_vfx_burst": [
+      "projects/example-project/assets/approved/sparkle_vfx/previews/sparkle_vfx__burst__preview.webp",
+      "projects/example-project/assets/approved/sparkle_vfx/previews/sparkle_vfx__burst__preview.gif",
+      "projects/example-project/assets/approved/sparkle_vfx/previews/sparkle_vfx__burst__contact.png"
+    ],
+    "grass_tile": [
+      "projects/example-project/assets/approved/grass_tile/previews/grass_tile__assembled.png",
+      "projects/example-project/assets/approved/grass_tile/previews/grass_tile__wrap_2x2.png"
+    ],
+    "ui_sparkle": [
+      "projects/example-project/assets/approved/ui_sparkle/previews/ui_sparkle__contact.png"
+    ]
+  },
+  "technical_status": {
+    "moss_slime": "TECHNICAL_PASS",
+    "sparkle_vfx": "TECHNICAL_PASS",
+    "grass_tile": "TECHNICAL_PASS",
+    "ui_sparkle": "TECHNICAL_PASS"
+  },
+  "note": "Procedural demo art; not AI-generated."
+}

@@ -1,0 +1,71 @@
+# Export profiles document exactly what is written. The pipeline stays engine-independent.
+profiles:
+  generic_png:
+    display_name: Generic PNG Frame Set
+    targets: [custom engine, LÖVE, Phaser, Godot, Unity, GameMaker]
+    writes:
+      - individual transparent PNG frames
+      - manifest.json
+      - animations.json
+      - copied previews/contact sheets if present in the manifest
+    conventions:
+      pivot: manifest pivot in pixels, origin top-left
+      frame_order: natural filename order
+      alpha: straight RGBA
+    notes: The safest interchange format. Engine import is project-specific.
+
+  generic_sheet:
+    display_name: Generic Sprite Sheet + JSON
+    targets: [custom engine, Phaser, PixiJS, LÖVE]
+    writes:
+      - PNG sprite sheet
+      - sheet sidecar JSON with cell rects and durations
+      - manifest.json
+      - animations.json
+    conventions:
+      origin: top-left
+      frame_rect: [x, y, w, h]
+      duration: milliseconds
+    notes: Does not assume a fixed columns/rows count; the sidecar is authoritative.
+
+  godot_4:
+    display_name: Godot 4.x
+    targets: [Godot 4.x]
+    writes:
+      - PNG sprite sheet(s)
+      - SpriteFrames .tres using AtlasTexture regions
+      - import_notes.json
+    conventions:
+      resource_path: res:// relative to the exported folder
+      animation_speed: frames per second
+      loop: per animation
+    limitations:
+      - Assumes the exported folder is copied together into the Godot project.
+      - Custom import presets are not generated; set texture filtering to Nearest for pixel art.
+    tested: true
+
+  unity_2022:
+    display_name: Unity 2022.3+
+    targets: [Unity 2022.3 LTS and newer]
+    writes:
+      - PNG sprite sheet(s)
+      - .slices.json with per-frame rects and animation groups
+      - a TextureImporter .meta template
+      - import_notes.json
+    conventions:
+      sprite_mode: Multiple
+      pixels_per_unit: 100
+      origin: top-left in JSON; Unity pivots are normalized
+    limitations:
+      - Unity's sprite rects are normally authored in the Sprite Editor; the JSON is an import recipe, not a native .asset.
+      - The .meta template must be reviewed; Unity may regenerate IDs on import.
+
+  aseprite:
+    display_name: Aseprite / LibreSprite (conditional)
+    targets: [Aseprite, LibreSprite]
+    writes:
+      - nothing unless the CLI is installed; native .aseprite writing is not implemented
+    limitations:
+      - This workspace does not pretend to create an editable native project without the application.
+      - Export PNG frames/sheets and open them in Aseprite if an editable project is required.
+    tested: false

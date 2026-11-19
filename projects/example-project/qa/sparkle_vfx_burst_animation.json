@@ -1,0 +1,139 @@
+{
+  "status": "WARN",
+  "frames": 6,
+  "checks": [
+    {
+      "name": "frame_count",
+      "ok": true,
+      "severity": "critical",
+      "detail": "expected 6, got 6",
+      "value": 6
+    },
+    {
+      "name": "canvas_dimensions",
+      "ok": true,
+      "severity": "critical",
+      "detail": "sizes=[(64, 64)], expected=(64, 64)",
+      "value": [
+        [
+          64,
+          64
+        ]
+      ]
+    },
+    {
+      "name": "empty_frames",
+      "ok": true,
+      "severity": "critical",
+      "detail": "no empty frames",
+      "value": []
+    },
+    {
+      "name": "duplicate_frames",
+      "ok": true,
+      "severity": "warning",
+      "detail": "no identical adjacent frames",
+      "value": []
+    },
+    {
+      "name": "displacement",
+      "ok": true,
+      "severity": "warning",
+      "detail": "max centre displacement 2.83px (limit 12.0px)",
+      "value": {
+        "max": 2.83,
+        "per_transition": [
+          2.83,
+          0.71,
+          1.12,
+          1.12,
+          2.5
+        ]
+      }
+    },
+    {
+      "name": "scale_variation",
+      "ok": false,
+      "severity": "warning",
+      "detail": "height variation 0.828 (limit 0.800)",
+      "value": {
+        "variation": 0.8276,
+        "heights": [
+          23,
+          35,
+          52,
+          59,
+          52,
+          28
+        ],
+        "median": 43.5
+      }
+    },
+    {
+      "name": "palette_drift",
+      "ok": true,
+      "severity": "warning",
+      "detail": "max mean-colour drift 14.09 (limit 45.0)",
+      "value": {
+        "max": 14.09,
+        "per_transition": [
+          9.6,
+          8.16,
+          14.09,
+          12.35,
+          8.88
+        ]
+      }
+    },
+    {
+      "name": "loop_transition",
+      "ok": true,
+      "severity": "info",
+      "detail": "not a looping animation",
+      "value": null
+    },
+    {
+      "name": "canvas_edge_artifacts",
+      "ok": true,
+      "severity": "warning",
+      "detail": "clear edge padding",
+      "value": []
+    },
+    {
+      "name": "durations",
+      "ok": true,
+      "severity": "critical",
+      "detail": "6 durations for 6 frames",
+      "value": [
+        80,
+        80,
+        70,
+        70,
+        90,
+        110
+      ]
+    },
+    {
+      "name": "pivot",
+      "ok": true,
+      "severity": "critical",
+      "detail": "pivot (32, 32) within (64, 64)",
+      "value": [
+        32,
+        32
+      ]
+    }
+  ],
+  "critical_failures": [],
+  "warnings": [
+    "scale_variation"
+  ],
+  "metrics": {
+    "max_displacement": 2.83,
+    "scale_variation": 0.8276,
+    "max_palette_drift": 14.09,
+    "duplicate_indices": [],
+    "near_duplicate_indices": [],
+    "edge_artifacts": []
+  }
+}

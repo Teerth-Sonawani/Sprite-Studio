@@ -1,0 +1,144 @@
+# QA profiles combine deterministic checks with a visual-review checklist.
+profiles:
+  default:
+    technical:
+      mode: RGBA
+      transparency_required: true
+      padding: 2
+      allow_edge_contact: false
+      min_coverage: 0.02
+      max_coverage: 0.98
+    visual:
+      - silhouette readability
+      - subject recognition
+      - edge quality
+      - palette consistency
+      - style-guide compliance
+      - no unwanted artefacts
+      - readability at intended game size
+    in_game_sizes: [32, 64, 128]
+
+  character:
+    technical:
+      mode: RGBA
+      transparency_required: true
+      padding: 2
+      allow_edge_contact: false
+      min_coverage: 0.03
+      max_coverage: 0.9
+      pivot_required: true
+    visual:
+      - silhouette readable at 32-64px
+      - head/body proportions consistent with character bible
+      - feet/ground contact consistent
+      - face readable at target size
+      - outline thickness consistent
+      - palette matches approved reference
+    animation:
+      max_displacement: 10
+      max_scale_variation: 0.18
+      max_palette_drift: 24
+      max_loop_diff: 38
+    in_game_sizes: [32, 64, 96]
+
+  environment:
+    technical:
+      mode: RGBA
+      transparency_required: false
+      max_file_mb: 20
+    visual:
+      - perspective matches project camera
+      - tile seams continuous
+      - value structure supports gameplay readability
+      - scale matches character
+      - no accidental horizon mismatch
+    in_game_sizes: [128, 256, 512, 1920]
+
+  tile:
+    technical:
+      mode: RGBA
+      transparency_required: false
+      width: 32
+      height: 32
+    visual:
+      - edges connect when wrapped
+      - material reads at 1x and 2x
+      - no accidental single-pixel noise
+      - assembled 3x3 preview checked
+    seam:
+      threshold_ratio: 2.0
+      max_edge_diff: 48
+
+  ui:
+    technical:
+      mode: RGBA
+      transparency_required: true
+      padding: 1
+      allow_edge_contact: false
+    visual:
+      - readable at 24px and 32px
+      - icon silhouette distinct from neighbouring icons
+      - consistent padding and optical weight
+      - state variants align pixel-for-pixel
+    in_game_sizes: [24, 32, 48, 64]
+
+  vfx:
+    technical:
+      mode: RGBA
+      transparency_required: true
+      padding: 1
+      allow_edge_contact: false
+    visual:
+      - motion reads in a 6-12 fps preview
+      - loop seam is clean
+      - brightness does not flicker unintentionally
+      - alpha falloff is natural
+      - effect does not obscure gameplay
+    animation:
+      max_displacement: 24
+      max_scale_variation: 0.4
+      max_palette_drift: 40
+      max_loop_diff: 50
+
+  background:
+    technical:
+      mode: RGB or RGBA
+      transparency_required: false
+      max_file_mb: 30
+    visual:
+      - perspective and horizon consistent
+      - parallax layers separate cleanly
+      - subject area remains readable
+      - value contrast supports foreground assets
+    in_game_sizes: [320, 640, 1280, 1920]
+
+  animation:
+    technical:
+      frames_same_size: true
+      frames_non_empty: true
+      pivot_consistent: true
+      durations_positive: true
+    visual:
+      - identity consistent across frames
+      - motion arc readable
+      - loop transition inspected
+      - contact sheet reviewed frame by frame
+      - preview at intended fps
+    animation:
+      max_displacement: 12
+      max_scale_variation: 0.22
+      max_palette_drift: 28
+      max_loop_diff: 42
+      border_tolerance: 0.01
+
+  sprite_sheet:
+    technical:
+      grid_declared: true
+      cell_size_positive: true
+      frames_inside_sheet: true
+      metadata_matches_sheet: true
+    visual:
+      - each cell individually inspected
+      - no accidental crop between cells
+      - no bleed from neighbouring frames
+      - sheet layout matches engine import expectation

@@ -1,0 +1,117 @@
+# Extensible asset taxonomy. Categories own defaults; projects may add fields.
+# `qa_profile` refers to config/quality_profiles.yaml.
+registry:
+  version: 1.0
+  extensible: true
+  instructions: >
+    Add a category by appending a block. Do not force a new asset into an existing
+    category just because the pipeline knows it. Preserve unknown project fields.
+
+categories:
+  character:
+    display_name: Characters and Living Assets
+    qa_profile: character
+    defaults:
+      transparency_required: true
+      anchor_point: bottom-center
+      perspective: side view
+      animation_required: true
+    subcategories:
+      main_character: { description: Player-controlled or story lead; highest consistency requirement. }
+      npc: { description: Non-player character with dialogue or ambient role. }
+      creature: { description: Non-human living creature; may be friendly or hostile. }
+      animal: { description: Naturalistic or stylised animal. }
+      enemy: { description: Combat opponent; readable silhouette and telegraphs. }
+      character_variation: { description: Palette swap, costume, age or damage variant sharing a base. }
+      portrait: { description: Dialogue/UI portrait, usually larger and more detailed. }
+      expression: { description: Facial expression or emote layer. }
+
+  environment:
+    display_name: Environment Art
+    qa_profile: environment
+    defaults:
+      transparency_required: false
+      perspective: side view
+      lighting_direction: project-defined
+    subcategories:
+      terrain: { description: Ground, soil, rock and elevation. }
+      ground_tile: { description: Repeating ground tile; seam check required. }
+      wall: { description: Wall or cliff face; must connect vertically. }
+      platform: { description: One-way or solid platform; edge tiles must connect. }
+      building: { description: Exterior or interior structure. }
+      background: { description: Parallax or static backdrop; perspective and value structure critical. }
+      plant: { description: Foliage, flowers, grass, vines. }
+      tree: { description: Tree or large plant; canopy and trunk layers. }
+      rock: { description: Rock, boulder, cliff detail. }
+      water_surface: { description: Water, shore, ripple or animated surface. }
+      interior: { description: Room, cave or indoor set. }
+      exterior: { description: Outdoor scene or set piece. }
+      autotile: { description: Connected tile set; adjacency validation required. }
+      isometric_tile: { description: Isometric ground/wall tile; footprint validation required. }
+
+  prop:
+    display_name: Objects and Props
+    qa_profile: prop
+    defaults:
+      transparency_required: true
+      anchor_point: bottom-center
+    subcategories:
+      furniture: { description: Table, chair, bed, shelf. }
+      food: { description: Meal, ingredient, drink. }
+      collectible: { description: Coin, gem, pickup, key. }
+      container: { description: Chest, crate, barrel, pot. }
+      decorative: { description: Rug, painting, banner, clutter. }
+      interactive: { description: Lever, switch, door, button. }
+      transportation: { description: Cart, boat, vehicle, mount. }
+      weapon: { description: Sword, bow, tool; held-asset alignment matters. }
+      held_item: { description: Item designed for a character's hand pivot. }
+
+  ui:
+    display_name: User Interface
+    qa_profile: ui
+    defaults:
+      transparency_required: true
+      perspective: straight-on
+    subcategories:
+      button: { description: Normal/hover/pressed/disabled states. }
+      icon: { description: Inventory, status, ability or menu icon. }
+      panel: { description: Nine-slice or fixed panel. }
+      hud_component: { description: Health bar, minimap frame, ammo counter. }
+      menu: { description: Title, pause, settings or inventory layout. }
+      inventory_slot: { description: Slot frame and selection state. }
+      cursor: { description: Pointer or controller focus. }
+      indicator: { description: Arrow, alert, status pip. }
+      loading_animation: { description: Spinner or progress animation. }
+
+  vfx:
+    display_name: Visual Effects
+    qa_profile: vfx
+    defaults:
+      transparency_required: true
+      perspective: screen-aligned
+      animation_required: true
+    subcategories:
+      dust: { description: Footstep or impact dust. }
+      cloud: { description: Ambient or stylised cloud. }
+      rain: { description: Rain streaks or splash. }
+      snow: { description: Snowfall or ground snow. }
+      water_ripple: { description: Ripple, splash, wake. }
+      bubble: { description: Underwater bubble. }
+      sparkle: { description: Pickup, magic or UI sparkle. }
+      light_effect: { description: Glow, beam, flash. }
+      smoke: { description: Smoke plume or puff. }
+      particle: { description: Generic particle or burst. }
+      ambient: { description: Fireflies, leaves, heat haze. }
+
+  animation:
+    display_name: Animation Metadata
+    qa_profile: animation
+    defaults:
+      transparency_required: true
+    subcategories:
+      character_animation: { description: Idle/walk/run/jump and related. }
+      creature_animation: { description: Fly/swim/eat and related. }
+      object_animation: { description: Spin/open/close/blink. }
+      environment_animation: { description: Water/foliage/weather. }
+      ui_animation: { description: Hover/press/loading. }
+      effect_animation: { description: Particle and effect sequences. }

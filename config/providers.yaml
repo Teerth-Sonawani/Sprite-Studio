@@ -1,0 +1,46 @@
+# Provider registry. No credentials belong in this file.
+providers:
+  mock:
+    enabled: true
+    type: offline
+    description: Deterministic local provider for tests and pipeline dry runs.
+    default_mode: offline
+    chargeable: false
+    requires_credentials: false
+
+  perchance:
+    enabled: true
+    type: image_generation
+    description: Perchance integration. Manual handoff is always available; developer API is credential-gated.
+    default_mode: manual
+    chargeable: true
+    requires_credentials_for: [developer_api]
+    modes:
+      manual:
+        description: Prepare prompt and browser handoff; user imports the result.
+        automated: false
+        requires_credentials: false
+      developer_api:
+        description: Documented PerchanceAI developer API.
+        automated: true
+        requires_credentials: true
+        base_url_env: PERCHANCEAI_API_BASE_URL
+        api_key_env: PERCHANCEAI_API_KEY
+        default_base_url: https://api.perchanceai.art/api/v1/developer
+        docs: https://docs.perchanceai.art
+        supports: [list_models, estimate, generate, poll, download, reference_uploads]
+      documented_tutorial:
+        description: Interface described by https://perchance.org/api-tutorial.
+        automated: false
+        supported: false
+        evidence: "Endpoint /api/generateList.php returned HTTP 404 on 2026-11-12; see docs/PERCHANCE_INTEGRATION.md."
+    limits:
+      max_credits_per_request: 50
+      require_approval: true
+      poll_interval_seconds: 2
+      max_polls: 150
+      request_timeout_seconds: 60
+    safety:
+      never_log_credentials: true
+      never_send_bearer_to_signed_output_urls: true
+      uncertain_submission_policy: save_idempotency_key_and_require_human_retry

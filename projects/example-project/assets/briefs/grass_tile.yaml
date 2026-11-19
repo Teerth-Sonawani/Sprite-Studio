@@ -1,0 +1,61 @@
+asset_id: grass_tile
+asset_name: Mosslight Grass Tile
+asset_category: environment
+asset_subcategory: ground_tile
+description: >-
+  A 32x32 seamless mossy grass ground tile for the Mosslight platformer. The
+  pattern is periodic on both axes so the wrap transition matches interior
+  pixel transitions.
+intended_game: Mosslight
+intended_use: Repeating ground tile, layer behind characters.
+
+theme: cozy woodland fantasy
+art_style: mosslight_pixel_16
+style_reference: projects/example-project/style_guide.yaml
+
+camera: side view
+perspective: orthographic side view
+view_direction: not applicable
+
+canvas_width: 32
+canvas_height: 32
+target_width: 32
+target_height: 32
+
+background: opaque
+transparency_required: false
+
+colour_palette: ["#355c4a", "#5f8f5a", "#a8c66c", "#f2e8c9"]
+outline_style: no outline; value separation only
+lighting_direction: upper-left
+shading_style: flat pixel clusters with sparse highlights
+
+anchor_point: top-left
+
+animation_required: false
+target_engine: godot
+export_format: png + manifest
+
+quality_requirements:
+  - wraps cleanly on both axes
+  - reads as mossy ground at 1x and 2x
+  - no single-pixel noise
+  - uses only project palette anchors
+special_constraints:
+  - tile must remain fully opaque
+  - no directional lighting gradient that breaks tiling
+
+negative_constraints:
+  - visible seam
+  - text or labels
+  - photorealistic texture
+  - neon green
+
+license: MIT (original procedural demo art for this workspace)
+
+custom:
+  tileable: true
+  tile_size: 32
+  seam_threshold_ratio: 2.0
+  provenance_note: >-
+    Generated procedurally by scripts/build_demo_assets.py; not AI-generated.

@@ -1,0 +1,50 @@
+{
+  "asset_id": "sparkle_vfx",
+  "name": "Firefly Sparkle Burst",
+  "width": 64,
+  "height": 64,
+  "pivot": {
+    "x": 32,
+    "y": 32
+  },
+  "animations": {
+    "burst": {
+      "spec": "sparkle_vfx_burst.yaml",
+      "frame_count": 6,
+      "frame_rate": 12.0,
+      "loop": false,
+      "loop_type": "once",
+      "direction": "screen_aligned",
+      "durations_ms": [
+        80,
+        80,
+        70,
+        70,
+        90,
+        110
+      ],
+      "frames": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "frame_start": 0,
+      "sheet": "sparkle_vfx__burst__sheet.png",
+      "notes": "One-shot sparkle burst. A small bright core appears, expands into a four-point amber star, peaks, then contracts back to a small core. The first and last frames are intentionally similar so a retrigger is visually clean."
+    }
+  },
+  "sprite_sheets": [
+    "sheet/sparkle_vfx__burst__sheet.png"
+  ],
+  "frames": [
+    "frame/sparkle_vfx__burst__frame_000.png",
+    "frame/sparkle_vfx__burst__frame_001.png",
+    "frame/sparkle_vfx__burst__frame_002.png",
+    "frame/sparkle_vfx__burst__frame_003.png",
+    "frame/sparkle_vfx__burst__frame_004.png",
+    "frame/sparkle_vfx__burst__frame_005.png"
+  ]
+}

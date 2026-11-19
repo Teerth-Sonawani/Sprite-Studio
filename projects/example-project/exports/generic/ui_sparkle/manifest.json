@@ -1,0 +1,118 @@
+{
+  "manifest_version": "1.0",
+  "asset_id": "ui_sparkle",
+  "asset_root": ".",
+  "name": "Mosslight Sparkle Icon",
+  "category": "ui",
+  "subcategory": "icon",
+  "description": "A 32x32 transparent four-point sparkle icon for pickups and UI feedback. Warm cream core, amber mid-tone, thin moss-green rim. Original geometric design.",
+  "project": "Mosslight",
+  "intended_use": "Pickup indicator and menu/status icon at 16-32 px.",
+  "style_id": "mosslight_pixel_16",
+  "intended_engine": "godot",
+  "export_format": "png + manifest",
+  "file_format": "png",
+  "width": 32,
+  "height": 32,
+  "colour_mode": "RGBA",
+  "transparent": true,
+  "pivot": {
+    "x": 16,
+    "y": 16
+  },
+  "anchor_point": "center",
+  "ground_contact": null,
+  "files": {
+    "frame": [
+      {
+        "role": "frame",
+        "path": "frame/ui_sparkle.png",
+        "filename": "ui_sparkle.png",
+        "format": "png",
+        "width": 32,
+        "height": 32,
+        "mode": "RGBA",
+        "transparent": true,
+        "alpha_coverage": 0.162109,
+        "sha256": "35797e4b907f51ef89c9b0d688cea5226863eab04b5a7b66fab00e13239e9308",
+        "bytes": 366,
+        "bbox": [
+          3,
+          3,
+          29,
+          29
+        ]
+      }
+    ],
+    "preview": [
+      {
+        "role": "preview",
+        "path": "preview/ui_sparkle__contact.png",
+        "filename": "ui_sparkle__contact.png",
+        "format": "png",
+        "width": 144,
+        "height": 198,
+        "mode": "RGBA",
+        "transparent": false,
+        "alpha_coverage": 1.0,
+        "sha256": "d709ab0bfa096781dff3bd41fea4b4389cf36034fd0730a51dfdf75aa8fe102a",
+        "bytes": 4221
+      }
+    ]
+  },
+  "animations": {},
+  "qa": {
+    "technical_status": "TECHNICAL_PASS",
+    "visual_status": "APPROVED",
+    "qa_status": "APPROVED",
+    "human_approved": false,
+    "report": "../qa/ui_sparkle_review.json",
+    "review": {
+      "decision": "approve",
+      "reviewer": "OpenCode visual review agent",
+      "reviewer_type": "ai_agent",
+      "reviewed_at": "2026-11-13T05:12:22+00:00",
+      "notes": "The 32x32 star icon has a distinct silhouette, consistent optical padding and a clean transparent edge. The amber/paper/white core reads at 1x and the secondary sparkles stay inside the safe margin. Palette matches the Mosslight style guide, including the deliberate emissive white core. Demo/internal approval only.",
+      "scores": {
+        "silhouette": 5,
+        "identity": 5,
+        "style": 5,
+        "cleanliness": 5,
+        "in_game": 4
+      },
+      "evidence": [
+        "projects/example-project/assets/approved/ui_sparkle/previews/ui_sparkle__contact.png",
+        "projects/example-project/assets/approved/ui_sparkle/frames/ui_sparkle.png",
+        "projects/example-project/qa/ui_sparkle_technical.json"
+      ],
+      "human_approved": false,
+      "approval_scope": "demo_or_internal"
+    }
+  },
+  "provenance": {
+    "provider": "scripted_pillow",
+    "mode": "procedural_demo",
+    "model_key": null,
+    "generation_id": null,
+    "prompt": null,
+    "prompt_file": "assets/source/prompts/ui_sparkle.prompt.txt",
+    "source_files": [
+      "projects/example-project/assets/source/procedural/ui_sparkle/ui_sparkle__source.png"
+    ],
+    "license": "MIT (original procedural demo art for this workspace)",
+    "notes": "Original procedural demo art drawn by scripts/build_demo_assets.py. Not AI-generated and not a provider quality showcase.",
+    "created_at": "2026-11-13T05:12:23+00:00"
+  },
+  "created_at": "2026-11-13T05:12:23+00:00",
+  "updated_at": "2026-11-13T05:12:23+00:00",
+  "validation": {
+    "schema": "schemas/asset_manifest.schema.json",
+    "ok": true,
+    "errors": []
+  },
+  "export": {
+    "profile": "generic_png",
+    "exported_at": "2026-11-13T05:12:23+00:00",
+    "note": "File paths in this copy are relative to this export folder."
+  }
+}

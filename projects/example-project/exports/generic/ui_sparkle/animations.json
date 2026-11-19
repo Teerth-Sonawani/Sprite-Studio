@@ -1,0 +1,15 @@
+{
+  "asset_id": "ui_sparkle",
+  "name": "Mosslight Sparkle Icon",
+  "width": 32,
+  "height": 32,
+  "pivot": {
+    "x": 16,
+    "y": 16
+  },
+  "animations": {},
+  "sprite_sheets": [],
+  "frames": [
+    "frame/ui_sparkle.png"
+  ]
+}

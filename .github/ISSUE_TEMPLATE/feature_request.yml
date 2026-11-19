@@ -1,0 +1,63 @@
+name: Feature request
+description: Propose a focused improvement to the pipeline, tooling, docs or workflow.
+title: "[Feature]: "
+labels: ["enhancement", "needs triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Please keep proposals scoped. This project values honest limitations over
+        broad claims, and it treats QA/provenance rules as part of the design.
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem
+      description: What is difficult or impossible today?
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed change
+      description: What should happen, and which files or commands would change?
+    validations:
+      required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered
+      description: Existing tools, configuration changes or workarounds.
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      options:
+        - Asset planning or art direction
+        - Image processing
+        - Animation
+        - Sprite sheets or atlas packing
+        - Tiling
+        - QA or review lifecycle
+        - Manifest or schema
+        - Provider or generation
+        - Export (generic, Godot, Unity, Aseprite)
+        - CLI or packaging
+        - Documentation
+        - CI or repository tooling
+        - Other
+    validations:
+      required: true
+  - type: textarea
+    id: impact
+    attributes:
+      label: Impact and scope
+      description: Who benefits, and is this a data/config change or a code change?
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Checklist
+      options:
+        - label: I checked the README, docs and existing issues first.
+          required: true
+        - label: This proposal does not require bypassing a provider's protections or licensing terms.
+          required: true

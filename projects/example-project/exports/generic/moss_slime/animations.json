@@ -1,0 +1,78 @@
+{
+  "asset_id": "moss_slime",
+  "name": "Moss Slime",
+  "width": 64,
+  "height": 64,
+  "pivot": {
+    "x": 32,
+    "y": 60
+  },
+  "animations": {
+    "idle": {
+      "spec": "moss_slime_idle.yaml",
+      "frame_count": 4,
+      "frame_rate": 6.0,
+      "loop": true,
+      "loop_type": "loop",
+      "direction": "side_right",
+      "durations_ms": [
+        160,
+        160,
+        160,
+        160
+      ],
+      "frames": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "frame_start": 0,
+      "sheet": "moss_slime__idle__sheet.png",
+      "notes": "Four-frame breathing cycle. The body settles, compresses by one pixel, rises by one pixel, then returns. The fern sways by one pixel. The base stays on the ground line and the eyes keep their identity."
+    },
+    "walk": {
+      "spec": "moss_slime_walk.yaml",
+      "frame_count": 6,
+      "frame_rate": 10.0,
+      "loop": true,
+      "loop_type": "loop",
+      "direction": "side_right",
+      "durations_ms": [
+        100,
+        100,
+        100,
+        100,
+        100,
+        100
+      ],
+      "frames": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "frame_start": 0,
+      "sheet": "moss_slime__walk__sheet.png",
+      "notes": "Six-frame slime walk. Two small feet alternate; the body bobs and squashes rhythmically. Contact, down, passing, opposite contact, down, passing. The base stays near the ground line and the fern lags one pixel behind the body."
+    }
+  },
+  "sprite_sheets": [
+    "sheet/moss_slime__idle__sheet.png",
+    "sheet/moss_slime__walk__sheet.png"
+  ],
+  "frames": [
+    "frame/moss_slime__idle__frame_000.png",
+    "frame/moss_slime__idle__frame_001.png",
+    "frame/moss_slime__idle__frame_002.png",
+    "frame/moss_slime__idle__frame_003.png",
+    "frame/moss_slime__walk__frame_000.png",
+    "frame/moss_slime__walk__frame_001.png",
+    "frame/moss_slime__walk__frame_002.png",
+    "frame/moss_slime__walk__frame_003.png",
+    "frame/moss_slime__walk__frame_004.png",
+    "frame/moss_slime__walk__frame_005.png"
+  ]
+}

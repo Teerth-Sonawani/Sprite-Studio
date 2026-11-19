@@ -1,0 +1,69 @@
+{
+  "asset_id": "ui_sparkle",
+  "generated_at": "2026-11-13T05:12:21+00:00",
+  "source_mode": "procedural chroma or native alpha",
+  "sources": [
+    "projects/example-project/assets/source/procedural/ui_sparkle/ui_sparkle__source.png"
+  ],
+  "working_outputs": [
+    "projects/example-project/assets/working/ui_sparkle/ui_sparkle.png"
+  ],
+  "background_removal": [
+    {
+      "method": "edge",
+      "tolerance": 28,
+      "border_sample": 2,
+      "suggested_background_colours": [
+        {
+          "rgb": [
+            194,
+            24,
+            91
+          ],
+          "hex": "#c2185b",
+          "border_pixels": 256,
+          "border_percent": 100.0
+        }
+      ],
+      "colours_used": [
+        {
+          "rgb": [
+            194,
+            24,
+            91
+          ],
+          "hex": "#c2185b"
+        }
+      ],
+      "removed_pixels": 858,
+      "remaining_visible_pixels": 166,
+      "border_opaque_pixels": 0,
+      "border_residual_percent": 0.0,
+      "alpha_bbox": [
+        3,
+        3,
+        29,
+        29
+      ],
+      "warning": null
+    }
+  ],
+  "transparency_cleanup": [
+    {
+      "min_island": 2,
+      "alpha_floor": 0,
+      "fill_holes": false,
+      "removed_components": [],
+      "removed_component_count": 0,
+      "removed_pixels": 0,
+      "filled_hole_pixels": 0,
+      "remaining_visible_pixels": 166,
+      "alpha_bbox": [
+        3,
+        3,
+        29,
+        29
+      ]
+    }
+  ]
+}

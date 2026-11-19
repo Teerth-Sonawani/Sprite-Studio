@@ -1,0 +1,54 @@
+animation_id: moss_slime_idle
+asset_id: moss_slime
+animation_name: idle
+
+frame_count: 4
+frame_rate: 6
+loop: true
+loop_type: loop
+
+canvas_width: 64
+canvas_height: 64
+pivot_x: 32
+pivot_y: 60
+
+direction: side_right
+movement_description: >-
+  Four-frame breathing cycle. The body settles, compresses by one pixel, rises
+  by one pixel, then returns. The fern sways by one pixel. The base stays on the
+  ground line and the eyes keep their identity.
+
+frame_start: 0
+sheet: moss_slime__idle__sheet.png
+
+frame_sequence:
+  - frame: 0
+    pose: neutral, base settled
+    duration_ms: 160
+    notes: Ground contact at pivot y=60; fern upright
+  - frame: 1
+    pose: inhale, body compresses 1px
+    duration_ms: 160
+    notes: Squash vertically; keep the base planted
+  - frame: 2
+    pose: rise, body lifts 1px
+    duration_ms: 160
+    notes: Fern sways left by 1px
+  - frame: 3
+    pose: settle, near-neutral
+    duration_ms: 160
+    notes: Last frame must lead cleanly into frame 0
+
+transition_requirements:
+  - frame 3 -> frame 0 reads as a continuous breath
+  - no horizontal drift of the base pivot
+visual_constraints:
+  - keep eyes and fern cluster identical in shape
+  - palette limited to the style guide
+  - no motion blur
+sprite_sheet:
+  layout: horizontal
+  cell_width: 64
+  cell_height: 64
+  spacing: 0
+  margin: 0

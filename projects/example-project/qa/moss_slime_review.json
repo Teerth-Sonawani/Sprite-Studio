@@ -1,0 +1,1234 @@
+{
+  "asset": "moss_slime",
+  "generated_at": "2026-11-13T05:12:22+00:00",
+  "technical_status": "TECHNICAL_PASS",
+  "visual_status": "APPROVED",
+  "qa_status": "APPROVED",
+  "checks": [
+    {
+      "name": "frame_technical_checks",
+      "ok": true,
+      "severity": "critical",
+      "detail": "10 frame report(s); 0 critical failure(s)"
+    },
+    {
+      "name": "animation_checks",
+      "ok": true,
+      "severity": "critical",
+      "detail": "2 animation report(s); failures: []"
+    }
+  ],
+  "critical_failures": [],
+  "warnings": [],
+  "frame_reports": [
+    {
+      "path": "projects/example-project/assets/approved/moss_slime/frames/idle/moss_slime__idle__frame_000.png",
+      "technical_status": "TECHNICAL_PASS",
+      "critical_failures": [],
+      "warnings": [],
+      "checks": [
+        {
+          "name": "file_integrity",
+          "ok": true,
+          "severity": "critical",
+          "detail": "image decoded successfully",
+          "value": "PNG"
+        },
+        {
+          "name": "dimensions",
+          "ok": true,
+          "severity": "critical",
+          "detail": "64x64; expected 64x64",
+          "value": [
+            64,
+            64
+          ]
+        },
+        {
+          "name": "colour_mode",
+          "ok": true,
+          "severity": "critical",
+          "detail": "mode=RGBA, expected=RGBA",
+          "value": "RGBA"
+        },
+        {
+          "name": "not_empty",
+          "ok": true,
+          "severity": "critical",
+          "detail": "visible content present",
+          "value": 0.342285
+        },
+        {
+          "name": "transparency",
+          "ok": true,
+          "severity": "critical",
+          "detail": "transparent pixels=2694",
+          "value": 2694
+        },
+        {
+          "name": "padding",
+          "ok": true,
+          "severity": "warning",
+          "detail": "min transparent padding 4px; required 2px",
+          "value": {
+            "left": 12,
+            "top": 7,
+            "right": 12,
+            "bottom": 4
+          }
+        },
+        {
+          "name": "cropping",
+          "ok": true,
+          "severity": "critical",
+          "detail": "content is inside the canvas",
+          "value": 4
+        },
+        {
+          "name": "pivot",
+          "ok": true,
+          "severity": "critical",
+          "detail": "pivot (32.0, 60.0) within 64x64",
+          "value": [
+            32.0,
+            60.0
+          ]
+        }
+      ],
+      "stats": {
+        "width": 64,
+        "height": 64,
+        "total_pixels": 4096,
+        "opaque_pixels": 1402,
+        "transparent_pixels": 2694,
+        "partial_pixels": 0,
+        "coverage": 0.342285,
+        "bbox": [
+          12,
+          7,
+          51,
+          59
+        ]
+      },
+      "sha256": "da520311c49eee8a365ad0540bbec6659fccd7e763bcd15185ec6e9cff730830"
+    },
+    {
+      "path": "projects/example-project/assets/approved/moss_slime/frames/idle/moss_slime__idle__frame_001.png",
+      "technical_status": "TECHNICAL_PASS",
+      "critical_failures": [],
+      "warnings": [],
+      "checks": [
+        {
+          "name": "file_integrity",
+          "ok": true,
+          "severity": "critical",
+          "detail": "image decoded successfully",
+          "value": "PNG"
+        },
+        {
+          "name": "dimensions",
+          "ok": true,
+          "severity": "critical",
+          "detail": "64x64; expected 64x64",
+          "value": [
+            64,
+            64
+          ]
+        },
+        {
+          "name": "colour_mode",
+          "ok": true,
+          "severity": "critical",
+          "detail": "mode=RGBA, expected=RGBA",
+          "value": "RGBA"
+        },
+        {
+          "name": "not_empty",
+          "ok": true,
+          "severity": "critical",
+          "detail": "visible content present",
+          "value": 0.318604
+        },
+        {
+          "name": "transparency",
+          "ok": true,
+          "severity": "critical",
+          "detail": "transparent pixels=2791",
+          "value": 2791
+        },
+        {
+          "name": "padding",
+          "ok": true,
+          "severity": "warning",
+          "detail": "min transparent padding 4px; required 2px",
+          "value": {
+            "left": 13,
+            "top": 9,
+            "right": 12,
+            "bottom": 4
+          }
+        },
+        {
+          "name": "cropping",
+          "ok": true,
+          "severity": "critical",
+          "detail": "content is inside the canvas",
+          "value": 4
+        },
+        {
+          "name": "pivot",
+          "ok": true,
+          "severity": "critical",
+          "detail": "pivot (32.0, 60.0) within 64x64",
+          "value": [
+            32.0,
+            60.0
+          ]
+        }
+      ],
+      "stats": {
+        "width": 64,
+        "height": 64,
+        "total_pixels": 4096,
+        "opaque_pixels": 1305,
+        "transparent_pixels": 2791,
+        "partial_pixels": 0,
+        "coverage": 0.318604,
+        "bbox": [
+          13,
+          9,
+          51,
+          59
+        ]
+      },
+      "sha256": "ac028c1d7ed20b67030bc6631ab15a00ce760cefe765938d6c8b7f1e6dc8c393"
+    },
+    {
+      "path": "projects/example-project/assets/approved/moss_slime/frames/idle/moss_slime__idle__frame_002.png",
+      "technical_status": "TECHNICAL_PASS",
+      "critical_failures": [],
+      "warnings": [],
+      "checks": [
+        {
+          "name": "file_integrity",
+          "ok": true,
+          "severity": "critical",
+          "detail": "image decoded successfully",
+          "value": "PNG"
+        },
+        {
+          "name": "dimensions",
+          "ok": true,
+          "severity": "critical",
+          "detail": "64x64; expected 64x64",
+          "value": [
+            64,
+            64
+          ]
+        },
+        {
+          "name": "colour_mode",
+          "ok": true,
+          "severity": "critical",
+          "detail": "mode=RGBA, expected=RGBA",
+          "value": "RGBA"
+        },
+        {
+          "name": "not_empty",
+          "ok": true,
+          "severity": "critical",
+          "detail": "visible content present",
+          "value": 0.356201
+        },
+        {
+          "name": "transparency",
+          "ok": true,
+          "severity": "critical",
+          "detail": "transparent pixels=2637",
+          "value": 2637
+        },
+        {
+          "name": "padding",
+          "ok": true,
+          "severity": "warning",
+          "detail": "min transparent padding 4px; required 2px",
+          "value": {
+            "left": 12,
+            "top": 6,
+            "right": 11,
+            "bottom": 4
+          }
+        },
+        {
+          "name": "cropping",
+          "ok": true,
+          "severity": "critical",
+          "detail": "content is inside the canvas",
+          "value": 4
+        },
+        {
+          "name": "pivot",
+          "ok": true,
+          "severity": "critical",
+          "detail": "pivot (32.0, 60.0) within 64x64",
+          "value": [
+            32.0,
+            60.0
+          ]
+        }
+      ],
+      "stats": {
+        "width": 64,
+        "height": 64,
+        "total_pixels": 4096,
+        "opaque_pixels": 1459,
+        "transparent_pixels": 2637,
+        "partial_pixels": 0,
+        "coverage": 0.356201,
+        "bbox": [
+          12,
+          6,
+          52,
+          59
+        ]
+      },
+      "sha256": "50ab1f350707933e4f884b94fdb95b5194fa467b94427d71935876abb69c631c"
+    },
+    {
+      "path": "projects/example-project/assets/approved/moss_slime/frames/idle/moss_slime__idle__frame_003.png",
+      "technical_status": "TECHNICAL_PASS",
+      "critical_failures": [],
+      "warnings": [],
+      "checks": [
+        {
+          "name": "file_integrity",
+          "ok": true,
+          "severity": "critical",
+          "detail": "image decoded successfully",
+          "value": "PNG"
+        },
+        {
+          "name": "dimensions",
+          "ok": true,
+          "severity": "critical",
+          "detail": "64x64; expected 64x64",
+          "value": [
+            64,
+            64
+          ]
+        },
+        {
+          "name": "colour_mode",
+          "ok": true,
+          "severity": "critical",
+          "detail": "mode=RGBA, expected=RGBA",
+          "value": "RGBA"
+        },
+        {
+          "name": "not_empty",
+          "ok": true,
+          "severity": "critical",
+          "detail": "visible content present",
+          "value": 0.334229
+        },
+        {
+          "name": "transparency",
+          "ok": true,
+          "severity": "critical",
+          "detail": "transparent pixels=2727",
+          "value": 2727
+        },
+        {
+          "name": "padding",
+          "ok": true,
+          "severity": "warning",
+          "detail": "min transparent padding 4px; required 2px",
+          "value": {
+            "left": 12,
+            "top": 8,
+            "right": 12,
+            "bottom": 4
+          }
+        },
+        {
+          "name": "cropping",
+          "ok": true,
+          "severity": "critical",
+          "detail": "content is inside the canvas",
+          "value": 4
+        },
+        {
+          "name": "pivot",
+          "ok": true,
+          "severity": "critical",
+          "detail": "pivot (32.0, 60.0) within 64x64",
+          "value": [
+            32.0,
+            60.0
+          ]
+        }
+      ],
+      "stats": {
+        "width": 64,
+        "height": 64,
+        "total_pixels": 4096,
+        "opaque_pixels": 1369,
+        "transparent_pixels": 2727,
+        "partial_pixels": 0,
+        "coverage": 0.334229,
+        "bbox": [
+          12,
+          8,
+          51,
+          59
+        ]
+      },
+      "sha256": "c82cfd07193ccb2ab56b71bd703b4761841bf30ce91da7e29037d7cff4ade240"
+    },
+    {
+      "path": "projects/example-project/assets/approved/moss_slime/frames/walk/moss_slime__walk__frame_000.png",
+      "technical_status": "TECHNICAL_PASS",
+      "critical_failures": [],
+      "warnings": [],
+      "checks": [
+        {
+          "name": "file_integrity",
+          "ok": true,
+          "severity": "critical",
+          "detail": "image decoded successfully",
+          "value": "PNG"
+        },
+        {
+          "name": "dimensions",
+          "ok": true,
+          "severity": "critical",
+          "detail": "64x64; expected 64x64",
+          "value": [
+            64,
+            64
+          ]
+        },
+        {
+          "name": "colour_mode",
+          "ok": true,
+          "severity": "critical",
+          "detail": "mode=RGBA, expected=RGBA",
+          "value": "RGBA"
+        },
+        {
+          "name": "not_empty",
+          "ok": true,
+          "severity": "critical",
+          "detail": "visible content present",
+          "value": 0.33667
+        },
+        {
+          "name": "transparency",
+          "ok": true,
+          "severity": "critical",
+          "detail": "transparent pixels=2717",
+          "value": 2717
+        },
+        {
+          "name": "padding",
+          "ok": true,
+          "severity": "warning",
+          "detail": "min transparent padding 4px; required 2px",
+          "value": {
+            "left": 12,
+            "top": 8,
+            "right": 12,
+            "bottom": 4
+          }
+        },
+        {
+          "name": "cropping",
+          "ok": true,
+          "severity": "critical",
+          "detail": "content is inside the canvas",
+          "value": 4
+        },
+        {
+          "name": "pivot",
+          "ok": true,
+          "severity": "critical",
+          "detail": "pivot (32.0, 60.0) within 64x64",
+          "value": [
+            32.0,
+            60.0
+          ]
+        }
+      ],
+      "stats": {
+        "width": 64,
+        "height": 64,
+        "total_pixels": 4096,
+        "opaque_pixels": 1379,
+        "transparent_pixels": 2717,
+        "partial_pixels": 0,
+        "coverage": 0.33667,
+        "bbox": [
+          12,
+          8,
+          51,
+          59
+        ]
+      },
+      "sha256": "7b2d2fb06f3de6a9def8f33d9e67e4c9040cf34086cc15baf9f0da9fb73c8f04"
+    },
+    {
+      "path": "projects/example-project/assets/approved/moss_slime/frames/walk/moss_slime__walk__frame_001.png",
+      "technical_status": "TECHNICAL_PASS",
+      "critical_failures": [],
+      "warnings": [],
+      "checks": [
+        {
+          "name": "file_integrity",
+          "ok": true,
+          "severity": "critical",
+          "detail": "image decoded successfully",
+          "value": "PNG"
+        },
+        {
+          "name": "dimensions",
+          "ok": true,
+          "severity": "critical",
+          "detail": "64x64; expected 64x64",
+          "value": [
+            64,
+            64
+          ]
+        },
+        {
+          "name": "colour_mode",
+          "ok": true,
+          "severity": "critical",
+          "detail": "mode=RGBA, expected=RGBA",
+          "value": "RGBA"
+        },
+        {
+          "name": "not_empty",
+          "ok": true,
+          "severity": "critical",
+          "detail": "visible content present",
+          "value": 0.313965
+        },
+        {
+          "name": "transparency",
+          "ok": true,
+          "severity": "critical",
+          "detail": "transparent pixels=2810",
+          "value": 2810
+        },
+        {
+          "name": "padding",
+          "ok": true,
+          "severity": "warning",
+          "detail": "min transparent padding 4px; required 2px",
+          "value": {
+            "left": 13,
+            "top": 10,
+            "right": 12,
+            "bottom": 4
+          }
+        },
+        {
+          "name": "cropping",
+          "ok": true,
+          "severity": "critical",
+          "detail": "content is inside the canvas",
+          "value": 4
+        },
+        {
+          "name": "pivot",
+          "ok": true,
+          "severity": "critical",
+          "detail": "pivot (32.0, 60.0) within 64x64",
+          "value": [
+            32.0,
+            60.0
+          ]
+        }
+      ],
+      "stats": {
+        "width": 64,
+        "height": 64,
+        "total_pixels": 4096,
+        "opaque_pixels": 1286,
+        "transparent_pixels": 2810,
+        "partial_pixels": 0,
+        "coverage": 0.313965,
+        "bbox": [
+          13,
+          10,
+          51,
+          59
+        ]
+      },
+      "sha256": "d524d4df585e48be4622914cb339300787c6c01e6d08f03acdafbcc4f9aa4b77"
+    },
+    {
+      "path": "projects/example-project/assets/approved/moss_slime/frames/walk/moss_slime__walk__frame_002.png",
+      "technical_status": "TECHNICAL_PASS",
+      "critical_failures": [],
+      "warnings": [],
+      "checks": [
+        {
+          "name": "file_integrity",
+          "ok": true,
+          "severity": "critical",
+          "detail": "image decoded successfully",
+          "value": "PNG"
+        },
+        {
+          "name": "dimensions",
+          "ok": true,
+          "severity": "critical",
+          "detail": "64x64; expected 64x64",
+          "value": [
+            64,
+            64
+          ]
+        },
+        {
+          "name": "colour_mode",
+          "ok": true,
+          "severity": "critical",
+          "detail": "mode=RGBA, expected=RGBA",
+          "value": "RGBA"
+        },
+        {
+          "name": "not_empty",
+          "ok": true,
+          "severity": "critical",
+          "detail": "visible content present",
+          "value": 0.347168
+        },
+        {
+          "name": "transparency",
+          "ok": true,
+          "severity": "critical",
+          "detail": "transparent pixels=2674",
+          "value": 2674
+        },
+        {
+          "name": "padding",
+          "ok": true,
+          "severity": "warning",
+          "detail": "min transparent padding 4px; required 2px",
+          "value": {
+            "left": 12,
+            "top": 7,
+            "right": 11,
+            "bottom": 4
+          }
+        },
+        {
+          "name": "cropping",
+          "ok": true,
+          "severity": "critical",
+          "detail": "content is inside the canvas",
+          "value": 4
+        },
+        {
+          "name": "pivot",
+          "ok": true,
+          "severity": "critical",
+          "detail": "pivot (32.0, 60.0) within 64x64",
+          "value": [
+            32.0,
+            60.0
+          ]
+        }
+      ],
+      "stats": {
+        "width": 64,
+        "height": 64,
+        "total_pixels": 4096,
+        "opaque_pixels": 1422,
+        "transparent_pixels": 2674,
+        "partial_pixels": 0,
+        "coverage": 0.347168,
+        "bbox": [
+          12,
+          7,
+          52,
+          59
+        ]
+      },
+      "sha256": "b10ecfb18c8030de744fa10b47bbd03a5982aaacf4953b1bc72fdd255a80e23f"
+    },
+    {
+      "path": "projects/example-project/assets/approved/moss_slime/frames/walk/moss_slime__walk__frame_003.png",
+      "technical_status": "TECHNICAL_PASS",
+      "critical_failures": [],
+      "warnings": [],
+      "checks": [
+        {
+          "name": "file_integrity",
+          "ok": true,
+          "severity": "critical",
+          "detail": "image decoded successfully",
+          "value": "PNG"
+        },
+        {
+          "name": "dimensions",
+          "ok": true,
+          "severity": "critical",
+          "detail": "64x64; expected 64x64",
+          "value": [
+            64,
+            64
+          ]
+        },
+        {
+          "name": "colour_mode",
+          "ok": true,
+          "severity": "critical",
+          "detail": "mode=RGBA, expected=RGBA",
+          "value": "RGBA"
+        },
+        {
+          "name": "not_empty",
+          "ok": true,
+          "severity": "critical",
+          "detail": "visible content present",
+          "value": 0.335693
+        },
+        {
+          "name": "transparency",
+          "ok": true,
+          "severity": "critical",
+          "detail": "transparent pixels=2721",
+          "value": 2721
+        },
+        {
+          "name": "padding",
+          "ok": true,
+          "severity": "warning",
+          "detail": "min transparent padding 4px; required 2px",
+          "value": {
+            "left": 12,
+            "top": 8,
+            "right": 12,
+            "bottom": 4
+          }
+        },
+        {
+          "name": "cropping",
+          "ok": true,
+          "severity": "critical",
+          "detail": "content is inside the canvas",
+          "value": 4
+        },
+        {
+          "name": "pivot",
+          "ok": true,
+          "severity": "critical",
+          "detail": "pivot (32.0, 60.0) within 64x64",
+          "value": [
+            32.0,
+            60.0
+          ]
+        }
+      ],
+      "stats": {
+        "width": 64,
+        "height": 64,
+        "total_pixels": 4096,
+        "opaque_pixels": 1375,
+        "transparent_pixels": 2721,
+        "partial_pixels": 0,
+        "coverage": 0.335693,
+        "bbox": [
+          12,
+          8,
+          51,
+          59
+        ]
+      },
+      "sha256": "f9bd74fc49e34b9db5599219b7efc52e6d85636b7c35e26fc342499b5b7a0252"
+    },
+    {
+      "path": "projects/example-project/assets/approved/moss_slime/frames/walk/moss_slime__walk__frame_004.png",
+      "technical_status": "TECHNICAL_PASS",
+      "critical_failures": [],
+      "warnings": [],
+      "checks": [
+        {
+          "name": "file_integrity",
+          "ok": true,
+          "severity": "critical",
+          "detail": "image decoded successfully",
+          "value": "PNG"
+        },
+        {
+          "name": "dimensions",
+          "ok": true,
+          "severity": "critical",
+          "detail": "64x64; expected 64x64",
+          "value": [
+            64,
+            64
+          ]
+        },
+        {
+          "name": "colour_mode",
+          "ok": true,
+          "severity": "critical",
+          "detail": "mode=RGBA, expected=RGBA",
+          "value": "RGBA"
+        },
+        {
+          "name": "not_empty",
+          "ok": true,
+          "severity": "critical",
+          "detail": "visible content present",
+          "value": 0.313965
+        },
+        {
+          "name": "transparency",
+          "ok": true,
+          "severity": "critical",
+          "detail": "transparent pixels=2810",
+          "value": 2810
+        },
+        {
+          "name": "padding",
+          "ok": true,
+          "severity": "warning",
+          "detail": "min transparent padding 4px; required 2px",
+          "value": {
+            "left": 13,
+            "top": 10,
+            "right": 12,
+            "bottom": 4
+          }
+        },
+        {
+          "name": "cropping",
+          "ok": true,
+          "severity": "critical",
+          "detail": "content is inside the canvas",
+          "value": 4
+        },
+        {
+          "name": "pivot",
+          "ok": true,
+          "severity": "critical",
+          "detail": "pivot (32.0, 60.0) within 64x64",
+          "value": [
+            32.0,
+            60.0
+          ]
+        }
+      ],
+      "stats": {
+        "width": 64,
+        "height": 64,
+        "total_pixels": 4096,
+        "opaque_pixels": 1286,
+        "transparent_pixels": 2810,
+        "partial_pixels": 0,
+        "coverage": 0.313965,
+        "bbox": [
+          13,
+          10,
+          51,
+          59
+        ]
+      },
+      "sha256": "2446cc1298a8e59672b12b95ee6a58fb2a7f8d926856c965b399e06279aa949c"
+    },
+    {
+      "path": "projects/example-project/assets/approved/moss_slime/frames/walk/moss_slime__walk__frame_005.png",
+      "technical_status": "TECHNICAL_PASS",
+      "critical_failures": [],
+      "warnings": [],
+      "checks": [
+        {
+          "name": "file_integrity",
+          "ok": true,
+          "severity": "critical",
+          "detail": "image decoded successfully",
+          "value": "PNG"
+        },
+        {
+          "name": "dimensions",
+          "ok": true,
+          "severity": "critical",
+          "detail": "64x64; expected 64x64",
+          "value": [
+            64,
+            64
+          ]
+        },
+        {
+          "name": "colour_mode",
+          "ok": true,
+          "severity": "critical",
+          "detail": "mode=RGBA, expected=RGBA",
+          "value": "RGBA"
+        },
+        {
+          "name": "not_empty",
+          "ok": true,
+          "severity": "critical",
+          "detail": "visible content present",
+          "value": 0.347412
+        },
+        {
+          "name": "transparency",
+          "ok": true,
+          "severity": "critical",
+          "detail": "transparent pixels=2673",
+          "value": 2673
+        },
+        {
+          "name": "padding",
+          "ok": true,
+          "severity": "warning",
+          "detail": "min transparent padding 4px; required 2px",
+          "value": {
+            "left": 12,
+            "top": 7,
+            "right": 11,
+            "bottom": 4
+          }
+        },
+        {
+          "name": "cropping",
+          "ok": true,
+          "severity": "critical",
+          "detail": "content is inside the canvas",
+          "value": 4
+        },
+        {
+          "name": "pivot",
+          "ok": true,
+          "severity": "critical",
+          "detail": "pivot (32.0, 60.0) within 64x64",
+          "value": [
+            32.0,
+            60.0
+          ]
+        }
+      ],
+      "stats": {
+        "width": 64,
+        "height": 64,
+        "total_pixels": 4096,
+        "opaque_pixels": 1423,
+        "transparent_pixels": 2673,
+        "partial_pixels": 0,
+        "coverage": 0.347412,
+        "bbox": [
+          12,
+          7,
+          52,
+          59
+        ]
+      },
+      "sha256": "ede23e02986089a75f73bd3754868bd6dfa7ecd0d33cf4e8d6a4cfb6353a576f"
+    }
+  ],
+  "animation_reports": {
+    "moss_slime_idle": {
+      "status": "PASS",
+      "frames": 4,
+      "checks": [
+        {
+          "name": "frame_count",
+          "ok": true,
+          "severity": "critical",
+          "detail": "expected 4, got 4",
+          "value": 4
+        },
+        {
+          "name": "canvas_dimensions",
+          "ok": true,
+          "severity": "critical",
+          "detail": "sizes=[(64, 64)], expected=(64, 64)",
+          "value": [
+            [
+              64,
+              64
+            ]
+          ]
+        },
+        {
+          "name": "empty_frames",
+          "ok": true,
+          "severity": "critical",
+          "detail": "no empty frames",
+          "value": []
+        },
+        {
+          "name": "duplicate_frames",
+          "ok": true,
+          "severity": "warning",
+          "detail": "no identical adjacent frames",
+          "value": []
+        },
+        {
+          "name": "displacement",
+          "ok": true,
+          "severity": "warning",
+          "detail": "max centre displacement 1.5px (limit 12.0px)",
+          "value": {
+            "max": 1.5,
+            "per_transition": [
+              1.12,
+              1.5,
+              1.12
+            ]
+          }
+        },
+        {
+          "name": "scale_variation",
+          "ok": true,
+          "severity": "warning",
+          "detail": "height variation 0.057 (limit 0.220)",
+          "value": {
+            "variation": 0.0571,
+            "heights": [
+              53,
+              51,
+              54,
+              52
+            ],
+            "median": 52.5
+          }
+        },
+        {
+          "name": "palette_drift",
+          "ok": true,
+          "severity": "warning",
+          "detail": "max mean-colour drift 1.23 (limit 28.0)",
+          "value": {
+            "max": 1.23,
+            "per_transition": [
+              0.36,
+              1.23,
+              1.16
+            ]
+          }
+        },
+        {
+          "name": "loop_transition",
+          "ok": true,
+          "severity": "warning",
+          "detail": "last->first difference 12.01 (limit 42.0)",
+          "value": 12.01
+        },
+        {
+          "name": "canvas_edge_artifacts",
+          "ok": true,
+          "severity": "warning",
+          "detail": "clear edge padding",
+          "value": []
+        },
+        {
+          "name": "durations",
+          "ok": true,
+          "severity": "critical",
+          "detail": "4 durations for 4 frames",
+          "value": [
+            160,
+            160,
+            160,
+            160
+          ]
+        },
+        {
+          "name": "pivot",
+          "ok": true,
+          "severity": "critical",
+          "detail": "pivot (32, 60) within (64, 64)",
+          "value": [
+            32,
+            60
+          ]
+        }
+      ],
+      "critical_failures": [],
+      "warnings": [],
+      "metrics": {
+        "max_displacement": 1.5,
+        "scale_variation": 0.0571,
+        "max_palette_drift": 1.23,
+        "duplicate_indices": [],
+        "near_duplicate_indices": [],
+        "edge_artifacts": []
+      }
+    },
+    "moss_slime_walk": {
+      "status": "PASS",
+      "frames": 6,
+      "checks": [
+        {
+          "name": "frame_count",
+          "ok": true,
+          "severity": "critical",
+          "detail": "expected 6, got 6",
+          "value": 6
+        },
+        {
+          "name": "canvas_dimensions",
+          "ok": true,
+          "severity": "critical",
+          "detail": "sizes=[(64, 64)], expected=(64, 64)",
+          "value": [
+            [
+              64,
+              64
+            ]
+          ]
+        },
+        {
+          "name": "empty_frames",
+          "ok": true,
+          "severity": "critical",
+          "detail": "no empty frames",
+          "value": []
+        },
+        {
+          "name": "duplicate_frames",
+          "ok": true,
+          "severity": "warning",
+          "detail": "no identical adjacent frames",
+          "value": []
+        },
+        {
+          "name": "displacement",
+          "ok": true,
+          "severity": "warning",
+          "detail": "max centre displacement 1.5px (limit 12.0px)",
+          "value": {
+            "max": 1.5,
+            "per_transition": [
+              1.12,
+              1.5,
+              0.71,
+              1.12,
+              1.5
+            ]
+          }
+        },
+        {
+          "name": "scale_variation",
+          "ok": true,
+          "severity": "warning",
+          "detail": "height variation 0.058 (limit 0.220)",
+          "value": {
+            "variation": 0.0577,
+            "heights": [
+              52,
+              50,
+              53,
+              52,
+              50,
+              53
+            ],
+            "median": 52.0
+          }
+        },
+        {
+          "name": "palette_drift",
+          "ok": true,
+          "severity": "warning",
+          "detail": "max mean-colour drift 2.79 (limit 28.0)",
+          "value": {
+            "max": 2.79,
+            "per_transition": [
+              1.23,
+              2.79,
+              1.4,
+              0.93,
+              2.38
+            ]
+          }
+        },
+        {
+          "name": "loop_transition",
+          "ok": true,
+          "severity": "warning",
+          "detail": "last->first difference 23.74 (limit 42.0)",
+          "value": 23.74
+        },
+        {
+          "name": "canvas_edge_artifacts",
+          "ok": true,
+          "severity": "warning",
+          "detail": "clear edge padding",
+          "value": []
+        },
+        {
+          "name": "durations",
+          "ok": true,
+          "severity": "critical",
+          "detail": "6 durations for 6 frames",
+          "value": [
+            100,
+            100,
+            100,
+            100,
+            100,
+            100
+          ]
+        },
+        {
+          "name": "pivot",
+          "ok": true,
+          "severity": "critical",
+          "detail": "pivot (32, 60) within (64, 64)",
+          "value": [
+            32,
+            60
+          ]
+        }
+      ],
+      "critical_failures": [],
+      "warnings": [],
+      "metrics": {
+        "max_displacement": 1.5,
+        "scale_variation": 0.0577,
+        "max_palette_drift": 2.79,
+        "duplicate_indices": [],
+        "near_duplicate_indices": [],
+        "edge_artifacts": []
+      }
+    }
+  },
+  "human_approved": false,
+  "human_approved_at": null,
+  "note": "Technical checks only. APPROVED requires a separate evidence-backed visual review. AI review is scoped to demo/internal use.",
+  "review": {
+    "decision": "approve",
+    "reviewer": "OpenCode visual review agent",
+    "reviewer_type": "ai_agent",
+    "reviewed_at": "2026-11-13T05:12:22+00:00",
+    "notes": "Idle and walk read clearly at 1x and 2x. Feet stay on the ground line and the pivot is stable; the body bob and fern sway are intentional. Eyes, face and fern cluster stay consistent across all 10 frames. No background fringe, stray chroma pixels, clipping or unwanted edge contact observed. Sprite sheets match the metadata cell size (4x1 idle, 6x1 walk). Demo/internal approval only; no human sign-off was performed.",
+    "scores": {
+      "silhouette": 4,
+      "identity": 4,
+      "style": 5,
+      "cleanliness": 5,
+      "animation": 4,
+      "in_game": 4
+    },
+    "evidence": [
+      "projects/example-project/assets/approved/moss_slime/previews/moss_slime__idle__contact.png",
+      "projects/example-project/assets/approved/moss_slime/previews/moss_slime__walk__contact.png",
+      "projects/example-project/assets/approved/moss_slime/previews/moss_slime__idle__preview.gif",
+      "projects/example-project/assets/approved/moss_slime/previews/moss_slime__walk__preview.gif",
+      "projects/example-project/assets/approved/moss_slime/spritesheets/moss_slime__idle__sheet.png",
+      "projects/example-project/assets/approved/moss_slime/spritesheets/moss_slime__walk__sheet.png",
+      "projects/example-project/qa/moss_slime_idle_animation.json",
+      "projects/example-project/qa/moss_slime_walk_animation.json",
+      "projects/example-project/qa/moss_slime_technical.json"
+    ],
+    "human_approved": false,
+    "approval_scope": "demo_or_internal"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "asset_id": "grass_tile",
+  "name": "Mosslight Grass Tile",
+  "width": 32,
+  "height": 32,
+  "pivot": {
+    "x": 16,
+    "y": 32
+  },
+  "animations": {},
+  "sprite_sheets": [],
+  "frames": [
+    "frame/grass_tile.png"
+  ]
+}

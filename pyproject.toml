@@ -1,0 +1,54 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "2d-sprite-studio"
+version = "1.0.0"
+description = "Agent-oriented workspace for 2D game sprite generation, processing, animation, QA and export."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "2D Sprite Studio contributors" }]
+keywords = ["gamedev", "sprites", "pixel-art", "animation", "sprite-sheet", "qa"]
+classifiers = [
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Topic :: Games/Entertainment",
+  "Topic :: Multimedia :: Graphics",
+]
+dependencies = [
+  "Pillow>=10.0",
+  "numpy>=1.24",
+  "PyYAML>=6.0",
+  "jsonschema>=4.0",
+]
+
+[project.optional-dependencies]
+video = ["imageio>=2.30", "imageio-ffmpeg>=0.4"]
+fast = ["scipy>=1.10"]
+dev = ["pytest>=8.0"]
+all = [
+  "imageio>=2.30",
+  "imageio-ffmpeg>=0.4",
+  "scipy>=1.10",
+  "pytest>=8.0",
+]
+
+[tool.setuptools]
+include-package-data = true
+license-files = ["LICENSE", "LICENSES.md"]
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["sprite_studio*", "providers*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests", "providers/perchance/tests"]
+norecursedirs = [".git", ".venv", "venv", "__pycache__", "projects", "exports", "build", "dist"]
+addopts = "-ra"
+filterwarnings = [
+  "ignore:.*is deprecated.*:DeprecationWarning",
+]

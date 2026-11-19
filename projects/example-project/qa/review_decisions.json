@@ -1,0 +1,91 @@
+{
+  "schema_version": "1.0",
+  "note": "Authored after visually inspecting the generated contact sheets, animated previews and sprite sheets listed below. Reviewer is an AI agent, so every approval is scoped to demo_or_internal and human_approved remains false. The art itself is original procedural Pillow demo art, not AI-generated.",
+  "reviewed_at": "2026-11-12",
+  "assets": {
+    "moss_slime": {
+      "decision": "approve",
+      "reviewer": "OpenCode visual review agent",
+      "reviewer_type": "ai_agent",
+      "notes": "Idle and walk read clearly at 1x and 2x. Feet stay on the ground line and the pivot is stable; the body bob and fern sway are intentional. Eyes, face and fern cluster stay consistent across all 10 frames. No background fringe, stray chroma pixels, clipping or unwanted edge contact observed. Sprite sheets match the metadata cell size (4x1 idle, 6x1 walk). Demo/internal approval only; no human sign-off was performed.",
+      "scores": {
+        "silhouette": 4,
+        "identity": 4,
+        "style": 5,
+        "cleanliness": 5,
+        "animation": 4,
+        "in_game": 4
+      },
+      "evidence": [
+        "projects/example-project/assets/approved/moss_slime/previews/moss_slime__idle__contact.png",
+        "projects/example-project/assets/approved/moss_slime/previews/moss_slime__walk__contact.png",
+        "projects/example-project/assets/approved/moss_slime/previews/moss_slime__idle__preview.gif",
+        "projects/example-project/assets/approved/moss_slime/previews/moss_slime__walk__preview.gif",
+        "projects/example-project/assets/approved/moss_slime/spritesheets/moss_slime__idle__sheet.png",
+        "projects/example-project/assets/approved/moss_slime/spritesheets/moss_slime__walk__sheet.png",
+        "projects/example-project/qa/moss_slime_idle_animation.json",
+        "projects/example-project/qa/moss_slime_walk_animation.json",
+        "projects/example-project/qa/moss_slime_technical.json"
+      ]
+    },
+    "grass_tile": {
+      "decision": "approve",
+      "reviewer": "OpenCode visual review agent",
+      "reviewer_type": "ai_agent",
+      "notes": "The 3x3 assembled preview and the 2x2 wrap preview show continuous value structure with no visible grid or seam. The seam report passes both axes (x ratio 0.444, y ratio 0.821) and the tile is fully opaque with no accidental single-pixel noise at 1x. Flowers and blades remain interior or wrap-safe. Demo/internal approval only.",
+      "scores": {
+        "silhouette": 4,
+        "identity": 4,
+        "style": 5,
+        "cleanliness": 4,
+        "in_game": 4
+      },
+      "evidence": [
+        "projects/example-project/assets/approved/grass_tile/previews/grass_tile__assembled.png",
+        "projects/example-project/assets/approved/grass_tile/previews/grass_tile__wrap_2x2.png",
+        "projects/example-project/assets/approved/grass_tile/frames/grass_tile.png",
+        "projects/example-project/qa/grass_tile_technical.json"
+      ]
+    },
+    "ui_sparkle": {
+      "decision": "approve",
+      "reviewer": "OpenCode visual review agent",
+      "reviewer_type": "ai_agent",
+      "notes": "The 32x32 star icon has a distinct silhouette, consistent optical padding and a clean transparent edge. The amber/paper/white core reads at 1x and the secondary sparkles stay inside the safe margin. Palette matches the Mosslight style guide, including the deliberate emissive white core. Demo/internal approval only.",
+      "scores": {
+        "silhouette": 5,
+        "identity": 5,
+        "style": 5,
+        "cleanliness": 5,
+        "in_game": 4
+      },
+      "evidence": [
+        "projects/example-project/assets/approved/ui_sparkle/previews/ui_sparkle__contact.png",
+        "projects/example-project/assets/approved/ui_sparkle/frames/ui_sparkle.png",
+        "projects/example-project/qa/ui_sparkle_technical.json"
+      ]
+    },
+    "sparkle_vfx": {
+      "decision": "approve",
+      "reviewer": "OpenCode visual review agent",
+      "reviewer_type": "ai_agent",
+      "notes": "The burst expands from frame 0 to frame 3 and contracts through frame 5; the increasing scale is the intended effect, not drift. The animation report's only warning is scale_variation (0.828 vs the default 0.800 limit), which is expected for an expanding VFX burst and is not a technical failure. Alpha falloff is clean, the 64x64 canvas is not clipped at maximum expansion and the preview reads at gameplay scale without obscuring a full 64px character. Sequenced as a non-looping one-shot. Demo/internal approval only.",
+      "scores": {
+        "silhouette": 4,
+        "identity": 4,
+        "style": 5,
+        "cleanliness": 5,
+        "animation": 4,
+        "in_game": 4
+      },
+      "evidence": [
+        "projects/example-project/assets/approved/sparkle_vfx/previews/sparkle_vfx__burst__contact.png",
+        "projects/example-project/assets/approved/sparkle_vfx/previews/sparkle_vfx__burst__preview.gif",
+        "projects/example-project/assets/approved/sparkle_vfx/previews/sparkle_vfx__burst__preview.webp",
+        "projects/example-project/assets/approved/sparkle_vfx/spritesheets/sparkle_vfx__burst__sheet.png",
+        "projects/example-project/qa/sparkle_vfx_burst_animation.json",
+        "projects/example-project/qa/sparkle_vfx_technical.json"
+      ]
+    }
+  }
+}

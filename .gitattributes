@@ -1,0 +1,36 @@
+# Normalise text files and keep binary game assets untouched.
+* text=auto
+
+*.py text
+*.md text
+*.yaml text
+*.yml text
+*.json text
+*.toml text
+*.txt text
+*.tres text
+*.meta text
+*.sh text eol=lf
+*.ps1 text eol=crlf
+*.bat text eol=crlf
+
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.webp binary
+*.ico binary
+*.mp4 binary
+*.webm binary
+*.psd binary
+*.aseprite binary
+*.ase binary
+*.zip binary
+
+# Keep example art and documentation out of GitHub's language statistics.
+docs/** linguist-documentation
+projects/example-project/assets/** linguist-documentation
+projects/example-project/exports/** linguist-documentation
+references/** linguist-documentation
+skills/** linguist-documentation
+templates/** linguist-documentation

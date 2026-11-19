@@ -1,0 +1,67 @@
+# Project style guide template. Freeze this before producing a set of assets.
+style_id: mosslight_pixel_16
+display_name: Mosslight 16-bit Pixel Style
+description: A cozy, readable 16-bit-inspired woodland style with a restrained green/amber palette and crisp pixel clusters.
+style_family: pixel_16
+
+line_art:
+  outline_width: 1px
+  outline_colour: "#1b2a2a"
+  interior_lines: selective, only where form needs separation
+
+palette:
+  maximum_colours: 24
+  colour_temperature: cool greens with warm amber accents
+  swatches:
+    - "#10181c"
+    - "#1b2a2a"
+    - "#355c4a"
+    - "#5f8f5a"
+    - "#a8c66c"
+    - "#f2e8c9"
+    - "#e7a05a"
+    - "#7a4f3a"
+
+shading:
+  highlight_style: one hard highlight cluster
+  shadow_style: one or two hard shadow clusters, hue-shifted toward blue-green
+  texture: sparse dithering only where it survives at 1x
+
+lighting:
+  direction: upper-left key, cool ambient fill
+  contrast: medium-high; silhouettes must separate from the background
+
+perspective: side-on orthographic; no vanishing point
+proportions: characters 32-48px tall; slimes wider than tall; props grounded
+detail_density: low-medium; cluster detail, never single-pixel noise
+pixel_grid: true
+anti_aliasing: false
+edge_quality: crisp, intentional pixel clusters
+
+recommended_canvas_sizes: [32x32, 48x48, 64x64, 96x96, 128x128]
+recommended_export_settings:
+  format: png
+  mode: RGBA
+  resample: nearest
+  integer_scale: true
+
+generation_prompt_modifiers:
+  - "true 16-bit pixel art with hard edges and a limited mossy palette"
+  - "cozy woodland fantasy, warm firefly accents"
+  - "readable silhouette at 32 pixels tall"
+negative_prompt_modifiers:
+  - "anti-aliasing"
+  - "photorealistic texture"
+  - "neon colours"
+  - "existing copyrighted character"
+processing_rules:
+  - "nearest-neighbour resize only"
+  - "do not blur or apply Lanczos to pixel art"
+  - "remove backgrounds edge-aware; preserve intentional highlights"
+
+approved_references:
+  - projects/example-project/assets/approved/moss_slime/frames/moss_slime__idle__frame_000.png
+
+notes: >
+  This guide is the single source of truth for Mosslight asset production.
+  Any deviation must be recorded in the project changelog and approved.

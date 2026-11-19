@@ -1,0 +1,249 @@
+# Animation presets are starting points, not laws. Override per project/asset.
+registry:
+  version: 1.0
+  extensible: true
+  instructions: >
+    Frame counts and rates are project decisions. A 4-frame idle and a 12-frame
+    run can coexist. Record the chosen values in the animation spec and manifest.
+
+presets:
+  idle:
+    frame_count: 4
+    frame_rate: 6
+    loop: true
+    loop_type: loop
+    direction: side
+    alignment: bottom-center
+    movement_description: subtle breathing/squash cycle; silhouette stays anchored
+    notes: Last frame must transition cleanly to first. Avoid idle drift.
+  walk:
+    frame_count: 6
+    frame_rate: 10
+    loop: true
+    loop_type: loop
+    direction: side
+    alignment: bottom-center
+    movement_description: contact, down, passing, up, contact opposite, passing
+    notes: Feet alternate; body bob is rhythmic, not random.
+  run:
+    frame_count: 8
+    frame_rate: 14
+    loop: true
+    loop_type: loop
+    direction: side
+    alignment: bottom-center
+    movement_description: exaggerated contact and airborne phases
+    notes: Keep head and torso identity stable; lean is a project choice.
+  jump:
+    frame_count: 4
+    frame_rate: 10
+    loop: false
+    loop_type: once
+    direction: side
+    alignment: bottom-center
+    movement_description: crouch, launch, rise, apex
+    notes: Do not force feet to the same baseline; vertical motion is intentional.
+  fall:
+    frame_count: 2
+    frame_rate: 8
+    loop: true
+    loop_type: loop
+    direction: side
+    alignment: bottom-center
+    movement_description: airborne loop with cloth/hair motion
+    notes: Vertical position comes from gameplay, not the frame set.
+  land:
+    frame_count: 3
+    frame_rate: 12
+    loop: false
+    loop_type: once
+    direction: side
+    alignment: bottom-center
+    movement_description: impact squash, recover, settle
+  attack:
+    frame_count: 5
+    frame_rate: 12
+    loop: false
+    loop_type: once
+    direction: side
+    alignment: bottom-center
+    movement_description: anticipation, strike, follow-through, recover
+  hurt:
+    frame_count: 2
+    frame_rate: 10
+    loop: false
+    loop_type: once
+    direction: side
+    alignment: bottom-center
+  death:
+    frame_count: 6
+    frame_rate: 8
+    loop: false
+    loop_type: once
+    direction: side
+    alignment: bottom-center
+    movement_description: stagger, collapse, settle
+  fly:
+    frame_count: 4
+    frame_rate: 12
+    loop: true
+    loop_type: loop
+    direction: side
+    alignment: center
+    movement_description: wing cycle with body bob
+  swim:
+    frame_count: 6
+    frame_rate: 8
+    loop: true
+    loop_type: loop
+    direction: side
+    alignment: center
+  spin:
+    frame_count: 8
+    frame_rate: 12
+    loop: true
+    loop_type: loop
+    direction: side
+    alignment: center
+    movement_description: even rotation; silhouette should stay centred
+  open:
+    frame_count: 4
+    frame_rate: 8
+    loop: false
+    loop_type: once
+    direction: front
+    alignment: bottom-center
+  close:
+    frame_count: 4
+    frame_rate: 8
+    loop: false
+    loop_type: once
+    direction: front
+    alignment: bottom-center
+  blink:
+    frame_count: 3
+    frame_rate: 8
+    loop: false
+    loop_type: once
+    direction: front
+    alignment: center
+  float:
+    frame_count: 4
+    frame_rate: 6
+    loop: true
+    loop_type: loop
+    direction: side
+    alignment: center
+  pulse:
+    frame_count: 4
+    frame_rate: 8
+    loop: true
+    loop_type: loop
+    direction: side
+    alignment: center
+  water_flow:
+    frame_count: 6
+    frame_rate: 8
+    loop: true
+    loop_type: loop
+    direction: side
+    alignment: tile
+    notes: Seam must work horizontally and vertically when tiled.
+  foliage_sway:
+    frame_count: 6
+    frame_rate: 6
+    loop: true
+    loop_type: loop
+    direction: side
+    alignment: bottom-center
+  rain:
+    frame_count: 4
+    frame_rate: 14
+    loop: true
+    loop_type: loop
+    direction: screen
+    alignment: tile
+  snow:
+    frame_count: 6
+    frame_rate: 8
+    loop: true
+    loop_type: loop
+    direction: screen
+    alignment: tile
+  button_hover:
+    frame_count: 1
+    frame_rate: 1
+    loop: false
+    loop_type: once
+    direction: front
+    alignment: center
+  button_pressed:
+    frame_count: 1
+    frame_rate: 1
+    loop: false
+    loop_type: once
+    direction: front
+    alignment: center
+  loading:
+    frame_count: 8
+    frame_rate: 12
+    loop: true
+    loop_type: loop
+    direction: screen
+    alignment: center
+  notification:
+    frame_count: 4
+    frame_rate: 10
+    loop: false
+    loop_type: once
+    direction: screen
+    alignment: center
+  particle_burst:
+    frame_count: 6
+    frame_rate: 16
+    loop: false
+    loop_type: once
+    direction: screen
+    alignment: center
+  sparkle:
+    frame_count: 6
+    frame_rate: 12
+    loop: true
+    loop_type: loop
+    direction: screen
+    alignment: center
+  dust:
+    frame_count: 5
+    frame_rate: 12
+    loop: false
+    loop_type: once
+    direction: side
+    alignment: bottom-center
+  smoke:
+    frame_count: 6
+    frame_rate: 8
+    loop: true
+    loop_type: loop
+    direction: side
+    alignment: bottom-center
+  ripple:
+    frame_count: 5
+    frame_rate: 10
+    loop: false
+    loop_type: once
+    direction: top-down
+    alignment: center
+  bubble:
+    frame_count: 4
+    frame_rate: 8
+    loop: true
+    loop_type: loop
+    direction: side
+    alignment: center
+  light_pulse:
+    frame_count: 4
+    frame_rate: 8
+    loop: true
+    loop_type: loop
+    direction: screen
+    alignment: center

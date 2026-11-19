@@ -1,0 +1,57 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.local/schemas/style_guide.schema.json",
+  "title": "2D Sprite Studio Style Guide",
+  "type": "object",
+  "required": ["style_id", "display_name"],
+  "additionalProperties": true,
+  "properties": {
+    "style_id": { "type": "string", "pattern": "^[A-Za-z0-9_.-]+$" },
+    "display_name": { "type": "string", "minLength": 1 },
+    "description": { "type": "string" },
+    "line_art": {
+      "type": "object",
+      "additionalProperties": true,
+      "properties": {
+        "outline_width": { "type": ["string", "number"] },
+        "outline_colour": { "type": "string" }
+      }
+    },
+    "palette": {
+      "type": "object",
+      "additionalProperties": true,
+      "properties": {
+        "maximum_colours": { "type": "integer", "minimum": 1 },
+        "colour_temperature": { "type": "string" },
+        "swatches": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "shading": {
+      "type": "object",
+      "additionalProperties": true,
+      "properties": {
+        "highlight_style": { "type": "string" },
+        "shadow_style": { "type": "string" },
+        "texture": { "type": "string" }
+      }
+    },
+    "lighting": {
+      "type": "object",
+      "additionalProperties": true,
+      "properties": { "direction": { "type": "string" } }
+    },
+    "perspective": { "type": "string" },
+    "proportions": { "type": "string" },
+    "detail_density": { "type": "string" },
+    "pixel_grid": { "type": "boolean" },
+    "anti_aliasing": { "type": "boolean" },
+    "edge_quality": { "type": "string" },
+    "recommended_canvas_sizes": { "type": "array", "items": { "type": "string" } },
+    "recommended_export_settings": { "type": "object", "additionalProperties": true },
+    "generation_prompt_modifiers": { "type": "array", "items": { "type": "string" } },
+    "negative_prompt_modifiers": { "type": "array", "items": { "type": "string" } },
+    "processing_rules": { "type": "array", "items": { "type": "string" } },
+    "approved_references": { "type": "array", "items": { "type": "string" } },
+    "notes": { "type": "string" }
+  }
+}

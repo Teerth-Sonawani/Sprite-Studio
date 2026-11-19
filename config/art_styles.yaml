@@ -1,0 +1,462 @@
+# Extensible style registry. Add a style by copying a block and changing its id.
+# `generation_prompt_modifiers` are appended to prompts; processing rules tell the
+# pipeline what not to do (for example, never blur pixel art with Lanczos).
+registry:
+  version: 1.0
+  extensible: true
+  instructions: >
+    A style id is a project decision, not a menu choice made per asset. Projects
+    should copy the chosen style into their own style guide and freeze it before
+    producing a set. Custom fields are allowed; unknown fields must be preserved.
+
+styles:
+  - style_id: pixel_16
+    display_name: 16-bit Pixel Art
+    description: Crisp low-resolution sprites with a restricted palette, hard edges and deliberate dithering.
+    line_art:
+      outline_width: 1px
+      outline_colour: dark palette tone, not pure black
+    palette:
+      maximum_colours: 24
+      colour_temperature: project-defined
+    shading:
+      highlight_style: 1-2 step clusters
+      shadow_style: hard-edged, limited hues
+      texture: selective dithering only where it reads at 1x
+    lighting:
+      direction: consistent upper-left key light
+    perspective: side-on orthographic; no vanishing point
+    proportions: readable silhouette at 32-64px tall
+    detail_density: low; cluster detail rather than single-pixel noise
+    pixel_grid: true
+    anti_aliasing: false
+    edge_quality: hard, intentional clusters
+    recommended_canvas_sizes: [32x32, 48x48, 64x64, 96x96, 128x128]
+    recommended_export_settings:
+      format: png
+      mode: RGBA
+      resample: nearest
+      integer_scale: true
+    generation_prompt_modifiers:
+      - "true 16-bit pixel art, hard pixel edges, no anti-aliasing"
+      - "limited palette, deliberate cluster shading"
+    negative_prompt_modifiers:
+      - "anti-aliased edges"
+      - "smooth vector gradients"
+      - "photographic texture"
+    processing_rules:
+      - "nearest-neighbour resize only"
+      - "preserve palette; do not blur"
+      - "verify transparent background pixel by pixel"
+
+  - style_id: pixel_32
+    display_name: 32-bit Pixel Art
+    description: Higher-density pixel art with more colours and richer lighting while retaining hard edges.
+    line_art:
+      outline_width: 1-2px selective
+      outline_colour: hue-shifted dark tone
+    palette:
+      maximum_colours: 48
+      colour_temperature: project-defined
+    shading:
+      highlight_style: multi-step ramp
+      shadow_style: hue-shifted ramps
+      texture: sparse clusters
+    lighting:
+      direction: consistent key plus ambient occlusion
+    perspective: side-on or 3/4 orthographic
+    proportions: readable at 64-128px
+    detail_density: medium
+    pixel_grid: true
+    anti_aliasing: false
+    edge_quality: crisp
+    recommended_canvas_sizes: [64x64, 96x96, 128x128, 192x192]
+    recommended_export_settings:
+      format: png
+      mode: RGBA
+      resample: nearest
+    generation_prompt_modifiers:
+      - "high-density pixel art, crisp pixels, controlled palette"
+    negative_prompt_modifiers:
+      - "blurry edges"
+      - "vector smoothness"
+    processing_rules:
+      - "nearest-neighbour resize only"
+
+  - style_id: one_bit
+    display_name: 1-Bit Monochrome
+    description: Two-tone silhouette-driven art where shape and negative space carry readability.
+    line_art:
+      outline_width: not applicable; silhouette is the form
+    palette:
+      maximum_colours: 2
+      colour_temperature: neutral or single ink
+    shading:
+      highlight_style: negative space
+      shadow_style: solid ink
+      texture: ordered dither only if requested
+    lighting:
+      direction: implied by silhouette
+    perspective: project-defined
+    proportions: strong outline; no interior detail reliance
+    detail_density: minimal
+    pixel_grid: true
+    anti_aliasing: false
+    edge_quality: hard
+    recommended_canvas_sizes: [16x16, 32x32, 64x64]
+    recommended_export_settings:
+      format: png
+      mode: RGBA
+    generation_prompt_modifiers:
+      - "strict 1-bit black and white, bold silhouette, no greys"
+    negative_prompt_modifiers:
+      - "greyscale gradients"
+      - "colour"
+    processing_rules:
+      - "threshold to two tones; inspect silhouette first"
+
+  - style_id: hand_drawn_ink
+    display_name: Hand-Drawn Ink
+    description: Expressive ink linework with watercolour or flat fills and visible human touch.
+    line_art:
+      outline_width: variable 2-6px
+      outline_colour: warm near-black
+    palette:
+      maximum_colours: open
+      colour_temperature: warm
+    shading:
+      highlight_style: paper reserve
+      shadow_style: hatching or wash
+      texture: paper grain
+    lighting:
+      direction: consistent but softened
+    perspective: illustrated 2D with consistent eye level
+    proportions: expressive, slightly exaggerated
+    detail_density: medium-high
+    pixel_grid: false
+    anti_aliasing: true
+    edge_quality: organic
+    recommended_canvas_sizes: [256x256, 512x512, 1024x1024]
+    recommended_export_settings:
+      format: png
+      mode: RGBA
+      resample: lanczos
+    generation_prompt_modifiers:
+      - "original hand-drawn ink illustration, visible line variation, paper texture"
+    negative_prompt_modifiers:
+      - "corporate vector flatness"
+      - "plastic 3D render"
+    processing_rules:
+      - "preserve semi-transparent wash edges"
+      - "avoid global colour-key removal"
+
+  - style_id: vector_flat
+    display_name: Vector Flat Illustration
+    description: Clean geometric shapes, flat fills and restrained linework for UI and readable game art.
+    line_art:
+      outline_width: 0-3px consistent
+      outline_colour: deep neutral or none
+    palette:
+      maximum_colours: 16
+      colour_temperature: project-defined
+    shading:
+      highlight_style: flat
+      shadow_style: flat or one hard shadow
+      texture: none
+    lighting:
+      direction: graphic, consistent
+    perspective: orthographic or simple 3/4
+    proportions: iconic and simplified
+    detail_density: low-medium
+    pixel_grid: false
+    anti_aliasing: true
+    edge_quality: smooth
+    recommended_canvas_sizes: [64x64, 128x128, 256x256, 512x512]
+    recommended_export_settings:
+      format: png or svg
+      mode: RGBA
+      resample: lanczos
+    generation_prompt_modifiers:
+      - "clean vector illustration, flat colour, crisp geometric shapes"
+    negative_prompt_modifiers:
+      - "sketchy texture"
+      - "photorealistic"
+    processing_rules:
+      - "preserve smooth edges; alpha matte carefully"
+
+  - style_id: cel_shaded_anime
+    display_name: Cel-Shaded Anime-Inspired
+    description: Original anime-inspired character art with clean linework, cel shading and graphic highlights.
+    line_art:
+      outline_width: 2-4px tapering
+      outline_colour: hue-shifted dark
+    palette:
+      maximum_colours: 20-32
+      colour_temperature: project-defined
+    shading:
+      highlight_style: hard rim and specular shapes
+      shadow_style: 2-3 cel bands
+      texture: minimal
+    lighting:
+      direction: strong single key, consistent rim
+    perspective: side/3/4 with consistent eye level
+    proportions: project character bible
+    detail_density: medium
+    pixel_grid: false
+    anti_aliasing: true
+    edge_quality: clean
+    recommended_canvas_sizes: [256x256, 512x512, 1024x1024]
+    recommended_export_settings:
+      format: png
+      mode: RGBA
+      resample: lanczos
+    generation_prompt_modifiers:
+      - "original anime-inspired character design, cel shading, clean line art"
+    negative_prompt_modifiers:
+      - "existing copyrighted character"
+      - "artist signature"
+      - "busy background"
+    processing_rules:
+      - "keep soft edge antialiasing; do not hard-threshold"
+      - "verify silhouette at 64px"
+
+  - style_id: watercolour
+    display_name: Watercolour
+    description: Layered translucent washes, soft edges and paper texture; risky for tight game readability.
+    line_art:
+      outline_width: optional fine ink
+      outline_colour: sepia or neutral
+    palette:
+      maximum_colours: open
+      colour_temperature: cool/warm washes
+    shading:
+      highlight_style: paper reserve
+      shadow_style: layered transparent wash
+      texture: cold-press paper
+    lighting:
+      direction: soft, atmospheric
+    perspective: illustrated
+    proportions: naturalistic or stylised
+    detail_density: medium
+    pixel_grid: false
+    anti_aliasing: true
+    edge_quality: soft
+    recommended_canvas_sizes: [512x512, 1024x1024]
+    recommended_export_settings:
+      format: png
+      mode: RGBA
+      resample: lanczos
+    generation_prompt_modifiers:
+      - "original watercolour illustration, translucent washes, paper texture"
+    negative_prompt_modifiers:
+      - "hard vector edges"
+      - "neon colours"
+    processing_rules:
+      - "preserve semi-transparent edges"
+      - "background removal must be edge-aware"
+
+  - style_id: painted_fantasy
+    display_name: Painted Fantasy
+    description: Rich painted illustration with readable value structure for backgrounds and key art.
+    line_art:
+      outline_width: none; form defined by value
+      outline_colour: not applicable
+    palette:
+      maximum_colours: open
+      colour_temperature: project-defined
+    shading:
+      highlight_style: painterly highlights
+      shadow_style: layered value and colour temperature
+      texture: brush texture
+    lighting:
+      direction: strong environmental key
+    perspective: one/two-point depending on scene
+    proportions: heroic or naturalistic per project
+    detail_density: high
+    pixel_grid: false
+    anti_aliasing: true
+    edge_quality: painterly
+    recommended_canvas_sizes: [512x512, 1024x1024, 1920x1080]
+    recommended_export_settings:
+      format: png or webp
+      mode: RGBA or RGB
+      resample: lanczos
+    generation_prompt_modifiers:
+      - "original painted fantasy game art, strong value structure, controlled detail"
+    negative_prompt_modifiers:
+      - "muddy values"
+      - "unreadable clutter"
+    processing_rules:
+      - "do not over-sharpen"
+      - "check silhouette and value at game resolution"
+
+  - style_id: isometric
+    display_name: Isometric Illustration
+    description: Consistent 2:1 or true-isometric projection with readable height and footprint.
+    line_art:
+      outline_width: style-dependent
+      outline_colour: style-dependent
+    palette:
+      maximum_colours: style-dependent
+      colour_temperature: project-defined
+    shading:
+      highlight_style: consistent top-face light
+      shadow_style: consistent side-face shade
+      texture: material-specific
+    lighting:
+      direction: fixed relative to grid
+    perspective: isometric (state 2:1 or true 30 degrees)
+    proportions: grid-locked footprint
+    detail_density: medium
+    pixel_grid: true for pixel isometric
+    anti_aliasing: false for pixel; true for painted
+    edge_quality: consistent
+    recommended_canvas_sizes: [64x32, 128x64, 256x128]
+    recommended_export_settings:
+      format: png
+      mode: RGBA
+      resample: nearest for pixel art
+    generation_prompt_modifiers:
+      - "isometric game asset, consistent 2:1 projection, orthographic"
+    negative_prompt_modifiers:
+      - "inconsistent perspective"
+      - "perspective vanishing point"
+    processing_rules:
+      - "verify footprint and height against the tile grid"
+      - "never rotate a tile arbitrarily"
+
+  - style_id: paper_cut
+    display_name: Paper-Cut Illustration
+    description: Layered paper shapes with soft drop shadows and tactile edges.
+    line_art:
+      outline_width: none; cut edges
+      outline_colour: shadow
+    palette:
+      maximum_colours: 8-16
+      colour_temperature: warm/cool paper
+    shading:
+      highlight_style: layer edges
+      shadow_style: soft drop shadow
+      texture: paper fibre
+    lighting:
+      direction: top-left
+    perspective: flat layered
+    proportions: simplified
+    detail_density: low-medium
+    pixel_grid: false
+    anti_aliasing: true
+    edge_quality: cut-paper
+    recommended_canvas_sizes: [256x256, 512x512]
+    recommended_export_settings:
+      format: png
+      mode: RGBA
+      resample: lanczos
+    generation_prompt_modifiers:
+      - "layered paper-cut illustration, tactile edges, soft shadows"
+    negative_prompt_modifiers:
+      - "glossy plastic"
+    processing_rules:
+      - "preserve soft shadows"
+
+  - style_id: lowpoly_2d
+    display_name: Low-Poly-Inspired 2D
+    description: Faceted 2D rendering that evokes low-polygon 3D while remaining an illustration.
+    line_art:
+      outline_width: none or selective
+      outline_colour: darker facet tone
+    palette:
+      maximum_colours: 12-24
+      colour_temperature: project-defined
+    shading:
+      highlight_style: flat facet highlights
+      shadow_style: polygonal facet shadows
+      texture: none
+    lighting:
+      direction: fixed 3D key
+    perspective: 3/4 or isometric
+    proportions: simplified volumes
+    detail_density: low
+    pixel_grid: false
+    anti_aliasing: true
+    edge_quality: faceted
+    recommended_canvas_sizes: [128x128, 256x256, 512x512]
+    recommended_export_settings:
+      format: png
+      mode: RGBA
+      resample: lanczos
+    generation_prompt_modifiers:
+      - "low-poly-inspired 2D illustration, faceted planes, flat shading"
+    negative_prompt_modifiers:
+      - "smooth organic gradients"
+    processing_rules:
+      - "do not smooth away facet edges"
+
+  - style_id: ui_icon
+    display_name: Game UI Icon
+    description: High-contrast, silhouette-first icon system for HUD, inventory and buttons.
+    line_art:
+      outline_width: 1-2px at final size
+      outline_colour: dark neutral or light rim
+    palette:
+      maximum_colours: 8-16 per icon
+      colour_temperature: project UI palette
+    shading:
+      highlight_style: single graphic highlight
+      shadow_style: single contact shadow
+      texture: none at small sizes
+    lighting:
+      direction: top-left
+    perspective: straight-on
+    proportions: icon grid with 8-12% padding
+    detail_density: low
+    pixel_grid: depends on target
+    anti_aliasing: false for pixel UI; true for painted UI
+    edge_quality: crisp
+    recommended_canvas_sizes: [24x24, 32x32, 48x48, 64x64, 128x128]
+    recommended_export_settings:
+      format: png
+      mode: RGBA
+      resample: nearest or lanczos per style
+    generation_prompt_modifiers:
+      - "game UI icon, strong silhouette, readable at 32px, centred"
+    negative_prompt_modifiers:
+      - "text labels"
+      - "tiny unreadable detail"
+    processing_rules:
+      - "test at 24px and 32px"
+      - "verify consistent icon padding"
+
+  - style_id: vfx_sprite
+    display_name: VFX Sprite
+    description: Additive/alpha effects that read in motion, with controlled colour and no hard rectangular background.
+    line_art:
+      outline_width: none
+      outline_colour: not applicable
+    palette:
+      maximum_colours: 6-16
+      colour_temperature: effect-specific
+    shading:
+      highlight_style: additive core
+      shadow_style: alpha falloff
+      texture: noise only where it reads
+    lighting:
+      direction: effect-internal
+    perspective: screen-aligned
+    proportions: frame-filling but with transparent padding
+    detail_density: low-medium
+    pixel_grid: depends on style
+    anti_aliasing: true for painted FX
+    edge_quality: soft alpha
+    recommended_canvas_sizes: [32x32, 64x64, 128x128, 256x256]
+    recommended_export_settings:
+      format: png sequence or sheet
+      mode: RGBA
+      resample: nearest for pixel FX
+    generation_prompt_modifiers:
+      - "seamless visual effect sprite, transparent background, readable motion phases"
+    negative_prompt_modifiers:
+      - "scene background"
+      - "hard rectangle border"
+    processing_rules:
+      - "preserve alpha falloff"
+      - "check loop seam and frame brightness"

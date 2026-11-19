@@ -1,0 +1,63 @@
+animation_id: moss_slime_walk
+asset_id: moss_slime
+animation_name: walk
+
+frame_count: 6
+frame_rate: 10
+loop: true
+loop_type: loop
+
+canvas_width: 64
+canvas_height: 64
+pivot_x: 32
+pivot_y: 60
+
+direction: side_right
+movement_description: >-
+  Six-frame slime walk. Two small feet alternate; the body bobs and squashes
+  rhythmically. Contact, down, passing, opposite contact, down, passing. The
+  base stays near the ground line and the fern lags one pixel behind the body.
+
+frame_start: 0
+sheet: moss_slime__walk__sheet.png
+
+frame_sequence:
+  - frame: 0
+    pose: right foot forward contact
+    duration_ms: 100
+    notes: Body at baseline; fern upright
+  - frame: 1
+    pose: down, weight compressed
+    duration_ms: 100
+    notes: Squash 1px; feet spread
+  - frame: 2
+    pose: passing, left foot lifts
+    duration_ms: 100
+    notes: Body rises 1px; fern lags right
+  - frame: 3
+    pose: left foot forward contact
+    duration_ms: 100
+    notes: Mirror the feet, preserve fern side
+  - frame: 4
+    pose: down, weight compressed
+    duration_ms: 100
+    notes: Squash 1px; feet spread
+  - frame: 5
+    pose: passing, right foot lifts
+    duration_ms: 100
+    notes: Last frame must lead cleanly into frame 0
+
+transition_requirements:
+  - frame 5 -> frame 0 reads as a continuous step
+  - no horizontal drift of the base pivot
+  - feet do not cross or duplicate
+visual_constraints:
+  - keep eyes and fern cluster identical in shape
+  - palette limited to the style guide
+  - no motion blur
+sprite_sheet:
+  layout: horizontal
+  cell_width: 64
+  cell_height: 64
+  spacing: 0
+  margin: 0

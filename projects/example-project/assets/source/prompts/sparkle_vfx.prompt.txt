@@ -1,0 +1,74 @@
+SUBJECT:
+Firefly Sparkle Burst — A six-frame, 64x64 sparkle burst for pickups and firefly accents. A bright core expands into an amber four-point star, then contracts and fades.
+Asset category: vfx.
+Intended game/use: Mosslight; One-shot pickup/impact effect, screen-aligned, drawn above gameplay..
+
+ART DIRECTION:
+Theme: cozy woodland fantasy.
+Art style: mosslight_pixel_16.
+- Description: A cozy, readable 16-bit-inspired woodland style with a restrained green/amber palette, hard pixel edges, selective 1 px outlines and two-band cel shading.
+- Line Art: {'outline_width': '1px at 32px display; 2px at 64px authoring scale', 'outline_colour': '#1b2a2a', 'interior_lines': 'selective, only where the form needs separation'}
+- Palette: {'maximum_colours': 24, 'colour_temperature': 'cool greens with warm amber accents', 'swatches': ['#10181c', '#1b2a2a', '#355c4a', '#5f8f5a', '#a8c66c', '#f2e8c9', '#e7a05a', '#7a4f3a'], 'exceptions': [{'colour': '#ffffff', 'scope': '1-2 px emissive core of sparkle assets only', 'reason': 'Keeps small effects legible against the warm paper highlight'}]}
+- Shading: {'highlight_style': 'one hard highlight cluster', 'shadow_style': 'one or two hard shadow clusters, hue-shifted toward blue-green', 'texture': 'sparse 1 px clusters only where they read at 1x'}
+- Lighting: {'direction': 'upper-left key, cool ambient fill', 'contrast': 'medium-high; silhouettes must separate from the background'}
+- Perspective: side-on orthographic; no vanishing point
+- Proportions: characters 32-48px tall; slimes wider than tall; props grounded
+- Detail Density: low-medium; cluster detail, never single-pixel noise
+- Pixel Grid: True
+- Edge Quality: crisp, intentional pixel clusters
+- true 16-bit pixel art with hard edges and a limited mossy palette
+- cozy woodland fantasy, warm firefly accents
+- readable silhouette at 32 pixels tall
+
+COMPOSITION:
+Single isolated asset, centred with deliberate margins.
+Entire silhouette visible; no cropping at the canvas edge.
+Readable shape at final game size; avoid detail that disappears when scaled down.
+Consistent proportions with the project's existing assets.
+
+CAMERA:
+Camera: screen-aligned.
+Perspective: straight-on.
+Facing/view direction: not applicable.
+
+VISUAL CHARACTERISTICS:
+Palette: ['#f2e8c9', '#e7a05a', '#ffffff', '#a8c66c', '#355c4a'].
+Outline: no hard outline; emissive edge.
+Lighting: screen-space, core-lit.
+Shading: hard emissive core with amber falloff.
+
+BACKGROUND:
+transparent. If transparency is requested, use a clean solid chroma background and do not paint a scene behind the subject.
+
+GAME ASSET REQUIREMENTS:
+- One asset only; no contact sheet, grid, labels, border or UI chrome unless explicitly requested.
+- Clean silhouette and separated limbs/parts where the pose requires them.
+- Consistent lighting direction and material appearance.
+- No unnecessary props, text, logos, watermarks or signatures.
+- Appropriate for the specified game perspective and display size.
+- Intended canvas: 64 x 64 px. Generate at a multiple if exact size is unavailable; never distort the aspect ratio.
+- Planned post-processing: nearest-neighbour resize only; do not blur or apply Lanczos to pixel art; remove backgrounds edge-aware; preserve intentional highlights; keep at least 2 px transparent padding around characters and UI icons
+
+OUTPUT:
+64x64 PNG
+Preserve clean edges; no fake transparency baked as a checkerboard.
+
+NEGATIVE CONSTRAINTS:
+- multiple characters
+- sprite sheet grid unless requested
+- text, captions, labels, watermark, signature
+- cropped head, hands, feet or silhouette
+- busy background
+- inconsistent lighting
+- blurry edges
+- extra limbs or duplicated body parts
+- anti-aliasing
+- photorealistic texture
+- neon colours
+- existing copyrighted character
+- pure black outline
+- full-screen bloom
+- lens flare
+- text or labels
+- existing copyrighted effect design
+- motion blur

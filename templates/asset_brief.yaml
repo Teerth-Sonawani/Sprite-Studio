@@ -1,0 +1,68 @@
+# Copy this file and replace every value. Unknown fields are allowed and preserved.
+asset_id: character_moss_slime_01
+asset_name: Moss Slime
+asset_category: character
+asset_subcategory: creature
+description: >
+  A small moss-covered slime with a rounded body, two bright eyes and a cluster
+  of tiny ferns on its head. Original design; no existing franchise character.
+intended_game: Mosslight
+intended_use: Player-controlled platformer character, side view, 32px tall in game.
+
+theme: cozy woodland fantasy
+art_style: pixel_16
+style_reference: projects/example-project/style_guide.yaml
+visual_reference: projects/example-project/assets/source/moss_slime_concept.png
+
+camera: side view
+perspective: orthographic side view
+view_direction: facing right
+
+canvas_width: 64
+canvas_height: 64
+target_width: 32
+target_height: 32
+
+background: transparent
+transparency_required: true
+
+colour_palette: ["#1b2a2a", "#355c4a", "#5f8f5a", "#a8c66c", "#f2e8c9", "#e7a05a"]
+outline_style: 1px dark green outline, selective interior lines
+lighting_direction: upper-left
+shading_style: two-band cel shading with hard edges
+
+pivot:
+  x: 32
+  y: 60
+anchor_point: bottom-center
+ground_contact: feet/base at pivot y
+
+animation_required: true
+animation_type: idle
+frame_count: 4
+frame_rate: 6
+looping: true
+animation_direction: side
+
+target_engine: godot
+export_format: png + sprite sheet + manifest
+
+quality_requirements:
+  - silhouette readable at 32x32
+  - transparent background with no coloured fringe
+  - consistent pivot and ground contact
+  - palette limited to the project palette
+special_constraints:
+  - keep the fern cluster inside the 64x64 canvas
+  - no shadow baked into the sprite; the engine draws it
+
+negative_constraints:
+  - multiple slimes
+  - text or labels
+  - photorealistic texture
+  - existing copyrighted character
+
+# Any additional custom fields are allowed.
+custom:
+  gameplay_role: agile ground character
+  hitbox_notes: 24x18 px body, pivot at bottom-centre

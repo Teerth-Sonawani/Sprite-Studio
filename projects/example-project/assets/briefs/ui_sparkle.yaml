@@ -1,0 +1,62 @@
+asset_id: ui_sparkle
+asset_name: Mosslight Sparkle Icon
+asset_category: ui
+asset_subcategory: icon
+description: >-
+  A 32x32 transparent four-point sparkle icon for pickups and UI feedback. Warm
+  cream core, amber mid-tone, thin moss-green rim. Original geometric design.
+intended_game: Mosslight
+intended_use: Pickup indicator and menu/status icon at 16-32 px.
+
+theme: cozy woodland fantasy
+art_style: mosslight_pixel_16
+style_reference: projects/example-project/style_guide.yaml
+
+camera: screen-aligned
+perspective: straight-on
+view_direction: not applicable
+
+canvas_width: 32
+canvas_height: 32
+target_width: 24
+target_height: 24
+
+background: transparent
+transparency_required: true
+
+colour_palette: ["#f2e8c9", "#e7a05a", "#ffffff", "#a8c66c", "#355c4a"]
+outline_style: 1px moss-green rim; no pure black
+lighting_direction: upper-left
+shading_style: flat emissive core with amber falloff
+
+pivot:
+  x: 16
+  y: 16
+anchor_point: center
+
+animation_required: false
+target_engine: godot
+export_format: png + manifest
+
+quality_requirements:
+  - readable at 24px and 32px
+  - distinct silhouette against a dark HUD
+  - transparent background with no fringe
+  - at least 2 px padding at 32x32
+special_constraints:
+  - pure white is allowed only in the 1-2 px emissive core
+  - no text, numbers or drop shadow
+
+negative_constraints:
+  - photorealistic lens flare
+  - large bloom
+  - existing copyrighted icon design
+  - pure black outline
+
+license: MIT (original procedural demo art for this workspace)
+
+custom:
+  palette_exception: "#ffffff emissive core, 1-2 px only"
+  icon_sizes: [16, 24, 32]
+  provenance_note: >-
+    Generated procedurally by scripts/build_demo_assets.py; not AI-generated.

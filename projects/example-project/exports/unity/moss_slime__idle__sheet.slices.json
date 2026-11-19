@@ -1,0 +1,44 @@
+{
+  "texture": "moss_slime__idle__sheet.png",
+  "spriteMode": "Multiple",
+  "pixelsPerUnit": 100,
+  "filterMode": "Point",
+  "alphaIsTransparency": true,
+  "animations": {
+    "idle": {
+      "loop": true,
+      "fps": 6.0,
+      "frames": [
+        {
+          "x": 0,
+          "y": 0,
+          "w": 64,
+          "h": 64,
+          "duration_ms": 160
+        },
+        {
+          "x": 64,
+          "y": 0,
+          "w": 64,
+          "h": 64,
+          "duration_ms": 160
+        },
+        {
+          "x": 128,
+          "y": 0,
+          "w": 64,
+          "h": 64,
+          "duration_ms": 160
+        },
+        {
+          "x": 192,
+          "y": 0,
+          "w": 64,
+          "h": 64,
+          "duration_ms": 160
+        }
+      ]
+    }
+  },
+  "note": "Import the PNG, set Sprite Mode to Multiple, then apply these rects in the Sprite Editor or via the provided JSON."
+}

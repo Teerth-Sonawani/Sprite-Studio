@@ -1,0 +1,465 @@
+{
+  "manifest_version": "1.0",
+  "asset_id": "moss_slime",
+  "asset_root": "../assets/approved/moss_slime",
+  "name": "Moss Slime",
+  "category": "character",
+  "subcategory": "creature",
+  "description": "A small moss-covered slime with a rounded body, two bright eyes and a cluster of tiny ferns on its head. Original design; no existing franchise character.",
+  "project": "Mosslight",
+  "intended_use": "Player-controlled platformer creature, side view, 32 px tall in game.",
+  "style_id": "mosslight_pixel_16",
+  "intended_engine": "godot",
+  "export_format": "png + sprite sheet + manifest",
+  "file_format": "png",
+  "width": 64,
+  "height": 64,
+  "colour_mode": "RGBA",
+  "transparent": true,
+  "pivot": {
+    "x": 32,
+    "y": 60
+  },
+  "anchor_point": "bottom-center",
+  "ground_contact": "base at pivot y",
+  "files": {
+    "source": [],
+    "frame": [
+      {
+        "role": "frame",
+        "path": "../assets/approved/moss_slime/frames/idle/moss_slime__idle__frame_000.png",
+        "filename": "moss_slime__idle__frame_000.png",
+        "format": "png",
+        "width": 64,
+        "height": 64,
+        "mode": "RGBA",
+        "transparent": true,
+        "alpha_coverage": 0.342285,
+        "sha256": "da520311c49eee8a365ad0540bbec6659fccd7e763bcd15185ec6e9cff730830",
+        "bytes": 810,
+        "bbox": [
+          12,
+          7,
+          51,
+          59
+        ]
+      },
+      {
+        "role": "frame",
+        "path": "../assets/approved/moss_slime/frames/idle/moss_slime__idle__frame_001.png",
+        "filename": "moss_slime__idle__frame_001.png",
+        "format": "png",
+        "width": 64,
+        "height": 64,
+        "mode": "RGBA",
+        "transparent": true,
+        "alpha_coverage": 0.318604,
+        "sha256": "ac028c1d7ed20b67030bc6631ab15a00ce760cefe765938d6c8b7f1e6dc8c393",
+        "bytes": 817,
+        "bbox": [
+          13,
+          9,
+          51,
+          59
+        ]
+      },
+      {
+        "role": "frame",
+        "path": "../assets/approved/moss_slime/frames/idle/moss_slime__idle__frame_002.png",
+        "filename": "moss_slime__idle__frame_002.png",
+        "format": "png",
+        "width": 64,
+        "height": 64,
+        "mode": "RGBA",
+        "transparent": true,
+        "alpha_coverage": 0.356201,
+        "sha256": "50ab1f350707933e4f884b94fdb95b5194fa467b94427d71935876abb69c631c",
+        "bytes": 827,
+        "bbox": [
+          12,
+          6,
+          52,
+          59
+        ]
+      },
+      {
+        "role": "frame",
+        "path": "../assets/approved/moss_slime/frames/idle/moss_slime__idle__frame_003.png",
+        "filename": "moss_slime__idle__frame_003.png",
+        "format": "png",
+        "width": 64,
+        "height": 64,
+        "mode": "RGBA",
+        "transparent": true,
+        "alpha_coverage": 0.334229,
+        "sha256": "c82cfd07193ccb2ab56b71bd703b4761841bf30ce91da7e29037d7cff4ade240",
+        "bytes": 821,
+        "bbox": [
+          12,
+          8,
+          51,
+          59
+        ]
+      },
+      {
+        "role": "frame",
+        "path": "../assets/approved/moss_slime/frames/walk/moss_slime__walk__frame_000.png",
+        "filename": "moss_slime__walk__frame_000.png",
+        "format": "png",
+        "width": 64,
+        "height": 64,
+        "mode": "RGBA",
+        "transparent": true,
+        "alpha_coverage": 0.33667,
+        "sha256": "7b2d2fb06f3de6a9def8f33d9e67e4c9040cf34086cc15baf9f0da9fb73c8f04",
+        "bytes": 821,
+        "bbox": [
+          12,
+          8,
+          51,
+          59
+        ]
+      },
+      {
+        "role": "frame",
+        "path": "../assets/approved/moss_slime/frames/walk/moss_slime__walk__frame_001.png",
+        "filename": "moss_slime__walk__frame_001.png",
+        "format": "png",
+        "width": 64,
+        "height": 64,
+        "mode": "RGBA",
+        "transparent": true,
+        "alpha_coverage": 0.313965,
+        "sha256": "d524d4df585e48be4622914cb339300787c6c01e6d08f03acdafbcc4f9aa4b77",
+        "bytes": 821,
+        "bbox": [
+          13,
+          10,
+          51,
+          59
+        ]
+      },
+      {
+        "role": "frame",
+        "path": "../assets/approved/moss_slime/frames/walk/moss_slime__walk__frame_002.png",
+        "filename": "moss_slime__walk__frame_002.png",
+        "format": "png",
+        "width": 64,
+        "height": 64,
+        "mode": "RGBA",
+        "transparent": true,
+        "alpha_coverage": 0.347168,
+        "sha256": "b10ecfb18c8030de744fa10b47bbd03a5982aaacf4953b1bc72fdd255a80e23f",
+        "bytes": 802,
+        "bbox": [
+          12,
+          7,
+          52,
+          59
+        ]
+      },
+      {
+        "role": "frame",
+        "path": "../assets/approved/moss_slime/frames/walk/moss_slime__walk__frame_003.png",
+        "filename": "moss_slime__walk__frame_003.png",
+        "format": "png",
+        "width": 64,
+        "height": 64,
+        "mode": "RGBA",
+        "transparent": true,
+        "alpha_coverage": 0.335693,
+        "sha256": "f9bd74fc49e34b9db5599219b7efc52e6d85636b7c35e26fc342499b5b7a0252",
+        "bytes": 822,
+        "bbox": [
+          12,
+          8,
+          51,
+          59
+        ]
+      },
+      {
+        "role": "frame",
+        "path": "../assets/approved/moss_slime/frames/walk/moss_slime__walk__frame_004.png",
+        "filename": "moss_slime__walk__frame_004.png",
+        "format": "png",
+        "width": 64,
+        "height": 64,
+        "mode": "RGBA",
+        "transparent": true,
+        "alpha_coverage": 0.313965,
+        "sha256": "2446cc1298a8e59672b12b95ee6a58fb2a7f8d926856c965b399e06279aa949c",
+        "bytes": 804,
+        "bbox": [
+          13,
+          10,
+          51,
+          59
+        ]
+      },
+      {
+        "role": "frame",
+        "path": "../assets/approved/moss_slime/frames/walk/moss_slime__walk__frame_005.png",
+        "filename": "moss_slime__walk__frame_005.png",
+        "format": "png",
+        "width": 64,
+        "height": 64,
+        "mode": "RGBA",
+        "transparent": true,
+        "alpha_coverage": 0.347412,
+        "sha256": "ede23e02986089a75f73bd3754868bd6dfa7ecd0d33cf4e8d6a4cfb6353a576f",
+        "bytes": 817,
+        "bbox": [
+          12,
+          7,
+          52,
+          59
+        ]
+      }
+    ],
+    "sheet": [
+      {
+        "role": "sheet",
+        "path": "../assets/approved/moss_slime/spritesheets/moss_slime__idle__sheet.png",
+        "filename": "moss_slime__idle__sheet.png",
+        "format": "png",
+        "width": 256,
+        "height": 64,
+        "mode": "RGBA",
+        "transparent": true,
+        "alpha_coverage": 0.33783,
+        "sha256": "8a7bf99ef6bf2b896cb833906136f50b6720fcec6506be195cb7cbaf023c6ef7",
+        "bytes": 1677
+      },
+      {
+        "role": "sheet",
+        "path": "../assets/approved/moss_slime/spritesheets/moss_slime__walk__sheet.png",
+        "filename": "moss_slime__walk__sheet.png",
+        "format": "png",
+        "width": 384,
+        "height": 64,
+        "mode": "RGBA",
+        "transparent": true,
+        "alpha_coverage": 0.332479,
+        "sha256": "e972082f20ff8c6e61803a893f328f39c2a424a84816ae779e0f651cbc1a1464",
+        "bytes": 1960
+      }
+    ],
+    "sheet_metadata": [
+      {
+        "role": "sheet_metadata",
+        "path": "../assets/approved/moss_slime/spritesheets/moss_slime__idle__sheet.json",
+        "filename": "moss_slime__idle__sheet.json",
+        "format": "json",
+        "sha256": "356c812413106bc03104835f0a8693cae37e788611f63a627cd54418b8452a16",
+        "bytes": 1240
+      },
+      {
+        "role": "sheet_metadata",
+        "path": "../assets/approved/moss_slime/spritesheets/moss_slime__walk__sheet.json",
+        "filename": "moss_slime__walk__sheet.json",
+        "format": "json",
+        "sha256": "f0a38b6e37c51c9888210e0a5389a80e7b477648b44f006e0e19f895e6d027cb",
+        "bytes": 1692
+      }
+    ],
+    "preview": [
+      {
+        "role": "preview",
+        "path": "../assets/approved/moss_slime/previews/moss_slime__idle__contact.png",
+        "filename": "moss_slime__idle__contact.png",
+        "format": "png",
+        "width": 552,
+        "height": 198,
+        "mode": "RGBA",
+        "transparent": false,
+        "alpha_coverage": 1.0,
+        "sha256": "12127bd2519aebfe00fb0b97ccdeb7e1e8f2745c45257d72e15351fb2f5d1ef2",
+        "bytes": 7570
+      },
+      {
+        "role": "preview",
+        "path": "../assets/approved/moss_slime/previews/moss_slime__idle__preview.gif",
+        "filename": "moss_slime__idle__preview.gif",
+        "format": "gif",
+        "width": 128,
+        "height": 152,
+        "mode": "P",
+        "transparent": false,
+        "alpha_coverage": 1.0,
+        "sha256": "e52b0080385819d8fa9c63dac90dd35fa50b9834f9107d6efe0e119d4ce452e4",
+        "bytes": 10506
+      },
+      {
+        "role": "preview",
+        "path": "../assets/approved/moss_slime/previews/moss_slime__idle__preview.png",
+        "filename": "moss_slime__idle__preview.png",
+        "format": "png",
+        "width": 128,
+        "height": 128,
+        "mode": "RGBA",
+        "transparent": true,
+        "alpha_coverage": 0.342285,
+        "sha256": "939e134697bc85e9ed4ebb47e0cc5698fe14df2476df6fffff96b5a81f0208f3",
+        "bytes": 3982
+      },
+      {
+        "role": "preview",
+        "path": "../assets/approved/moss_slime/previews/moss_slime__walk__contact.png",
+        "filename": "moss_slime__walk__contact.png",
+        "format": "png",
+        "width": 824,
+        "height": 198,
+        "mode": "RGBA",
+        "transparent": false,
+        "alpha_coverage": 1.0,
+        "sha256": "00c7a1d79d14ab5e35782b55ca9ea1d159569e1db5c0ec4d65baa8e40f9aa4af",
+        "bytes": 9592
+      },
+      {
+        "role": "preview",
+        "path": "../assets/approved/moss_slime/previews/moss_slime__walk__preview.gif",
+        "filename": "moss_slime__walk__preview.gif",
+        "format": "gif",
+        "width": 128,
+        "height": 152,
+        "mode": "P",
+        "transparent": false,
+        "alpha_coverage": 1.0,
+        "sha256": "10e2a27d98f6616ee8b0dc160dc8771f6aa743a63fd3ea343de780ad99b82df3",
+        "bytes": 16459
+      },
+      {
+        "role": "preview",
+        "path": "../assets/approved/moss_slime/previews/moss_slime__walk__preview.webp",
+        "filename": "moss_slime__walk__preview.webp",
+        "format": "webp",
+        "width": 128,
+        "height": 128,
+        "mode": "RGBA",
+        "transparent": true,
+        "alpha_coverage": 0.33667,
+        "sha256": "6c818604341646e03baf51c7f00154fb43e57a7a42f0af03bda60d867f4294b8",
+        "bytes": 2902
+      }
+    ],
+    "atlas": [],
+    "atlas_metadata": []
+  },
+  "animations": {
+    "idle": {
+      "spec": "moss_slime_idle.yaml",
+      "frame_count": 4,
+      "frame_rate": 6.0,
+      "loop": true,
+      "loop_type": "loop",
+      "direction": "side_right",
+      "durations_ms": [
+        160,
+        160,
+        160,
+        160
+      ],
+      "frames": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "frame_start": 0,
+      "sheet": "moss_slime__idle__sheet.png",
+      "notes": "Four-frame breathing cycle. The body settles, compresses by one pixel, rises by one pixel, then returns. The fern sways by one pixel. The base stays on the ground line and the eyes keep their identity."
+    },
+    "walk": {
+      "spec": "moss_slime_walk.yaml",
+      "frame_count": 6,
+      "frame_rate": 10.0,
+      "loop": true,
+      "loop_type": "loop",
+      "direction": "side_right",
+      "durations_ms": [
+        100,
+        100,
+        100,
+        100,
+        100,
+        100
+      ],
+      "frames": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "frame_start": 0,
+      "sheet": "moss_slime__walk__sheet.png",
+      "notes": "Six-frame slime walk. Two small feet alternate; the body bobs and squashes rhythmically. Contact, down, passing, opposite contact, down, passing. The base stays near the ground line and the fern lags one pixel behind the body."
+    }
+  },
+  "qa": {
+    "technical_status": "TECHNICAL_PASS",
+    "visual_status": "APPROVED",
+    "qa_status": "APPROVED",
+    "human_approved": false,
+    "report": "../qa/moss_slime_review.json",
+    "review": {
+      "decision": "approve",
+      "reviewer": "OpenCode visual review agent",
+      "reviewer_type": "ai_agent",
+      "reviewed_at": "2026-11-13T05:12:22+00:00",
+      "notes": "Idle and walk read clearly at 1x and 2x. Feet stay on the ground line and the pivot is stable; the body bob and fern sway are intentional. Eyes, face and fern cluster stay consistent across all 10 frames. No background fringe, stray chroma pixels, clipping or unwanted edge contact observed. Sprite sheets match the metadata cell size (4x1 idle, 6x1 walk). Demo/internal approval only; no human sign-off was performed.",
+      "scores": {
+        "silhouette": 4,
+        "identity": 4,
+        "style": 5,
+        "cleanliness": 5,
+        "animation": 4,
+        "in_game": 4
+      },
+      "evidence": [
+        "projects/example-project/assets/approved/moss_slime/previews/moss_slime__idle__contact.png",
+        "projects/example-project/assets/approved/moss_slime/previews/moss_slime__walk__contact.png",
+        "projects/example-project/assets/approved/moss_slime/previews/moss_slime__idle__preview.gif",
+        "projects/example-project/assets/approved/moss_slime/previews/moss_slime__walk__preview.gif",
+        "projects/example-project/assets/approved/moss_slime/spritesheets/moss_slime__idle__sheet.png",
+        "projects/example-project/assets/approved/moss_slime/spritesheets/moss_slime__walk__sheet.png",
+        "projects/example-project/qa/moss_slime_idle_animation.json",
+        "projects/example-project/qa/moss_slime_walk_animation.json",
+        "projects/example-project/qa/moss_slime_technical.json"
+      ],
+      "human_approved": false,
+      "approval_scope": "demo_or_internal"
+    }
+  },
+  "provenance": {
+    "provider": "scripted_pillow",
+    "mode": "procedural_demo",
+    "model_key": null,
+    "generation_id": null,
+    "prompt": null,
+    "prompt_file": "assets/source/prompts/moss_slime.prompt.txt",
+    "source_files": [
+      "projects/example-project/assets/source/procedural/moss_slime/idle/moss_slime__idle__source_000.png",
+      "projects/example-project/assets/source/procedural/moss_slime/idle/moss_slime__idle__source_001.png",
+      "projects/example-project/assets/source/procedural/moss_slime/idle/moss_slime__idle__source_002.png",
+      "projects/example-project/assets/source/procedural/moss_slime/idle/moss_slime__idle__source_003.png",
+      "projects/example-project/assets/source/procedural/moss_slime/walk/moss_slime__walk__source_000.png",
+      "projects/example-project/assets/source/procedural/moss_slime/walk/moss_slime__walk__source_001.png",
+      "projects/example-project/assets/source/procedural/moss_slime/walk/moss_slime__walk__source_002.png",
+      "projects/example-project/assets/source/procedural/moss_slime/walk/moss_slime__walk__source_003.png",
+      "projects/example-project/assets/source/procedural/moss_slime/walk/moss_slime__walk__source_004.png",
+      "projects/example-project/assets/source/procedural/moss_slime/walk/moss_slime__walk__source_005.png"
+    ],
+    "license": "MIT (original procedural demo art for this workspace)",
+    "notes": "Original procedural demo art drawn by scripts/build_demo_assets.py. Not AI-generated and not a provider quality showcase.",
+    "created_at": "2026-11-13T05:12:22+00:00"
+  },
+  "created_at": "2026-11-13T05:12:22+00:00",
+  "updated_at": "2026-11-13T05:12:22+00:00",
+  "validation": {
+    "schema": "schemas/asset_manifest.schema.json",
+    "ok": true,
+    "errors": []
+  }
+}

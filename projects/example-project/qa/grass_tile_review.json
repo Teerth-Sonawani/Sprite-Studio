@@ -1,0 +1,137 @@
+{
+  "asset": "C:\\Teerth Stuff\\Games Stuff\\projects\\2dsprites\\2d-sprite-studio\\projects\\example-project\\assets\\approved\\grass_tile\\frames\\grass_tile.png",
+  "generated_at": "2026-11-13T05:12:22+00:00",
+  "technical_status": "TECHNICAL_PASS",
+  "visual_status": "APPROVED",
+  "qa_status": "APPROVED",
+  "checks": [
+    {
+      "name": "file_integrity",
+      "ok": true,
+      "severity": "critical",
+      "detail": "image decoded successfully",
+      "value": "PNG"
+    },
+    {
+      "name": "dimensions",
+      "ok": true,
+      "severity": "critical",
+      "detail": "32x32; expected 32x32",
+      "value": [
+        32,
+        32
+      ]
+    },
+    {
+      "name": "colour_mode",
+      "ok": true,
+      "severity": "critical",
+      "detail": "mode=RGBA, expected=RGBA",
+      "value": "RGBA"
+    },
+    {
+      "name": "not_empty",
+      "ok": true,
+      "severity": "critical",
+      "detail": "visible content present",
+      "value": 1.0
+    },
+    {
+      "name": "transparency",
+      "ok": true,
+      "severity": "info",
+      "detail": "transparent pixels=0",
+      "value": 0
+    },
+    {
+      "name": "padding",
+      "ok": true,
+      "severity": "warning",
+      "detail": "min transparent padding 0px; required 0px",
+      "value": {
+        "left": 0,
+        "top": 0,
+        "right": 0,
+        "bottom": 0
+      }
+    },
+    {
+      "name": "tile_seam",
+      "ok": true,
+      "severity": "critical",
+      "detail": "seam report PASS"
+    }
+  ],
+  "critical_failures": [],
+  "warnings": [],
+  "stats": {
+    "width": 32,
+    "height": 32,
+    "total_pixels": 1024,
+    "opaque_pixels": 1024,
+    "transparent_pixels": 0,
+    "partial_pixels": 0,
+    "coverage": 1.0,
+    "bbox": [
+      0,
+      0,
+      31,
+      31
+    ]
+  },
+  "sha256": "2d2e7246400d37d9b1cc534e93126e913fc3df59696b42767d5b5c777bda492d",
+  "spec": {
+    "width": 32,
+    "height": 32,
+    "mode": "RGBA",
+    "transparency_required": false,
+    "padding": 0,
+    "allow_edge_contact": true
+  },
+  "human_approved": false,
+  "human_approved_at": null,
+  "seam": {
+    "status": "PASS",
+    "threshold_ratio": 2.0,
+    "max_edge_diff": 48.0,
+    "axes": {
+      "x": {
+        "edge_mean_abs_diff": 5.398,
+        "interior_mean_abs_diff": 12.146,
+        "seam_ratio": 0.444,
+        "passes_ratio": true,
+        "passes_absolute": true
+      },
+      "y": {
+        "edge_mean_abs_diff": 8.258,
+        "interior_mean_abs_diff": 10.052,
+        "seam_ratio": 0.821,
+        "passes_ratio": true,
+        "passes_absolute": true
+      }
+    },
+    "note": "A warning means the wrap transition is measurably harsher than the tile's interior. Inspect the 2x2 wrap preview before rejecting: stylised tiles can legitimately have a strong boundary."
+  },
+  "review": {
+    "decision": "approve",
+    "reviewer": "OpenCode visual review agent",
+    "reviewer_type": "ai_agent",
+    "reviewed_at": "2026-11-13T05:12:22+00:00",
+    "notes": "The 3x3 assembled preview and the 2x2 wrap preview show continuous value structure with no visible grid or seam. The seam report passes both axes (x ratio 0.444, y ratio 0.821) and the tile is fully opaque with no accidental single-pixel noise at 1x. Flowers and blades remain interior or wrap-safe. Demo/internal approval only.",
+    "scores": {
+      "silhouette": 4,
+      "identity": 4,
+      "style": 5,
+      "cleanliness": 4,
+      "in_game": 4
+    },
+    "evidence": [
+      "projects/example-project/assets/approved/grass_tile/previews/grass_tile__assembled.png",
+      "projects/example-project/assets/approved/grass_tile/previews/grass_tile__wrap_2x2.png",
+      "projects/example-project/assets/approved/grass_tile/frames/grass_tile.png",
+      "projects/example-project/qa/grass_tile_technical.json"
+    ],
+    "human_approved": false,
+    "approval_scope": "demo_or_internal"
+  }
+}

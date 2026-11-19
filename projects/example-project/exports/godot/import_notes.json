@@ -1,0 +1,10 @@
+{
+  "engine": "Godot 4.x",
+  "texture_filter": "Nearest for pixel art; Linear for painted art",
+  "sprite_frames": "moss_slime.tres",
+  "note": "Copy the folder into the Godot project and keep the .tres and PNGs together.",
+  "limitations": [
+    "Animation names come from the manifest; verify frame order and loop flags in the Godot inspector.",
+    "If a sheet is rebuilt, regenerate the .tres rather than hand-editing regions."
+  ]
+}
