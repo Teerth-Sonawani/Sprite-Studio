@@ -2,7 +2,7 @@
 
 ![Python](https://img.shields.io/badge/python-3.10%2B-blue)
 ![License](https://img.shields.io/badge/license-MIT-green)
-![Status](https://img.shields.io/badge/status-1.0.0-informational)
+[![CI](https://github.com/Teerth-Sonawani/Sprite-Studio/actions/workflows/ci.yml/badge.svg)](https://github.com/Teerth-Sonawani/Sprite-Studio/actions/workflows/ci.yml)
 
 A production-oriented, agent-friendly workspace for planning, generating,
 processing, animating, validating and exporting 2D game art. Every stage reads and
@@ -11,6 +11,32 @@ evidence.
 
 The workspace is deliberately split: image generation is one replaceable step;
 processing, animation, QA and export do not depend on a particular provider.
+
+## Built for the models you actually run
+
+This pipeline is designed to be driven by agentic coding models — and
+specifically by the lightweight, free-tier ones people use day to day, not just
+frontier models. All the hard thinking is done by deterministic Python:
+pixel math, edge tracing, hashing, schema validation and file bookkeeping are
+never delegated to a model, so a small model gets the same correct results as a
+large one. Model capability only matters at one step, and that step is vision.
+
+- **Vision-capable models** — DeepSeek V4.1 Flash, Qwen2.5-VL-class models,
+  or any cheap multimodal API — act as the reviewer of record: the pipeline
+  renders contact sheets, alpha overlays, animation previews and seam checks
+  as evidence files, and a vision model inspects them and writes scores and
+  notes through `tools/qa_review.py`.
+- **Text-only or local lightweight models** (the free models bundled with
+  agents like OpenCode, small instruct models, offline runners) can drive
+  every other stage end to end — prompting, processing, animation, manifests,
+  exports — because each stage is file-in/file-out with no hidden state.
+- **No model can fake an approval.** The manifest records reviewer, scope and
+  evidence paths, and validation fails if the evidence files are missing.
+
+In short: give any image-reading model a contact sheet and it can approve or
+reject real art; give a text-only model the CLI and it can build everything
+else. The expensive part of the loop — the part that usually costs credits —
+is a pair of eyeballs on an already-generated preview.
 
 <p align="center">
   <img src="projects/example-project/assets/approved/moss_slime/previews/moss_slime__idle__preview.gif" alt="Moss slime idle animation" width="180">

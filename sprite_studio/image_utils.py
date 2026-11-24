@@ -89,7 +89,7 @@ def alpha_bbox(image: Image.Image, threshold: int = 0) -> tuple[int, int, int, i
     if not mask.any():
         return None
     ys, xs = np.where(mask)
-    return int(xs.min()), int(ys.min()), int(xs.max()), int(ys.max())
+    return int(np.min(xs)), int(np.min(ys)), int(np.max(xs)), int(np.max(ys))
 
 
 def alpha_stats(image: Image.Image) -> dict:
@@ -286,11 +286,11 @@ def palette(image: Image.Image, max_colors: int = 32, alpha_threshold: int = 8) 
         pal = q.getpalette() or []
         q_counts = np.bincount(np.asarray(q).ravel(), minlength=max_colors)
         out: list[dict[str, Any]] = []
-        for i, count in enumerate(q_counts):
-            if count == 0 or i * 3 + 2 >= len(pal):
+        for i, bin_count in enumerate(q_counts):
+            if bin_count == 0 or i * 3 + 2 >= len(pal):
                 continue
             rgb = tuple(pal[i * 3 : i * 3 + 3])
-            out.append({"hex": color_hex(rgb), "rgb": list(rgb), "pixels": int(count)})
+            out.append({"hex": color_hex(rgb), "rgb": list(rgb), "pixels": int(bin_count)})
         out.sort(key=lambda item: item["pixels"], reverse=True)
         total = sum(item["pixels"] for item in out) or 1
         for item in out:
