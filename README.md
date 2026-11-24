@@ -257,23 +257,6 @@ browser challenge.
 
 See [`SECURITY.md`](SECURITY.md) for private reporting and the full model.
 
-## Honest limitations
-
-- No charged PerchanceAI generation was run while building this workspace; no
-  credentials were available. Model discovery and the missing-token error were
-  verified live on 2026-11-12.
-- Reference upload and conditioning are implemented from the documented API but
-  were not exercised against a live account.
-- Godot `.tres` and Unity `.meta` outputs are practical import artifacts, not a
-  substitute for opening the project in the engine and verifying it.
-- Aseprite/LibreSprite native project writing is not implemented; the exporter
-  refuses rather than emitting a fake file.
-- The example art is procedural. It proves the pipeline; it is not a showcase of
-  provider image quality.
-- AI visual review can mark demo/internal approval. It cannot grant production
-  human approval.
-- CI covers Ubuntu and Windows; macOS is not tested in CI.
-
 ## Development
 
 ```bash
