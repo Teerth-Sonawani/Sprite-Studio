@@ -21,7 +21,7 @@ Requires Python 3.10 or newer. The project is developed and tested on 3.12.
 
 ```bash
 git clone <your-fork-or-clone-url>
-cd 2d-sprite-studio
+cd Sprite-Studio
 
 python -m venv .venv
 # Windows: .venv\Scripts\activate

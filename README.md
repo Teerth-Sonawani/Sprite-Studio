@@ -14,29 +14,19 @@ processing, animation, QA and export do not depend on a particular provider.
 
 ## Built for the models you actually run
 
-This pipeline is designed to be driven by agentic coding models — and
-specifically by the lightweight, free-tier ones people use day to day, not just
-frontier models. All the hard thinking is done by deterministic Python:
-pixel math, edge tracing, hashing, schema validation and file bookkeeping are
-never delegated to a model, so a small model gets the same correct results as a
-large one. Model capability only matters at one step, and that step is vision.
+Deterministic Python does all the hard work — pixel math, edge tracing, hashing,
+schema validation — so a small model gets the same correct results as a large
+one. Model capability only matters at one step, and that step is vision.
 
-- **Vision-capable models** — DeepSeek V4.1 Flash, Qwen2.5-VL-class models,
-  or any cheap multimodal API — act as the reviewer of record: the pipeline
-  renders contact sheets, alpha overlays, animation previews and seam checks
-  as evidence files, and a vision model inspects them and writes scores and
-  notes through `tools/qa_review.py`.
-- **Text-only or local lightweight models** (the free models bundled with
-  agents like OpenCode, small instruct models, offline runners) can drive
-  every other stage end to end — prompting, processing, animation, manifests,
-  exports — because each stage is file-in/file-out with no hidden state.
-- **No model can fake an approval.** The manifest records reviewer, scope and
+- **Vision models** (DeepSeek V4.1 Flash, Qwen2.5-VL-class, any cheap
+  multimodal API) act as the reviewer of record: the pipeline renders contact
+  sheets, alpha overlays and previews as evidence files, and the model scores
+  them through `tools/qa_review.py`.
+- **Text-only and free-tier models** (the ones bundled with agents like
+  OpenCode) drive every other stage end to end — each stage is file-in/file-out
+  with no hidden state.
+- **No model can fake an approval**: the manifest records reviewer, scope and
   evidence paths, and validation fails if the evidence files are missing.
-
-In short: give any image-reading model a contact sheet and it can approve or
-reject real art; give a text-only model the CLI and it can build everything
-else. The expensive part of the loop — the part that usually costs credits —
-is a pair of eyeballs on an already-generated preview.
 
 <p align="center">
   <img src="projects/example-project/assets/approved/moss_slime/previews/moss_slime__idle__preview.gif" alt="Moss slime idle animation" width="180">
@@ -61,8 +51,7 @@ as a candidate, not a delivery. The useful part is everything after the prompt:
 - keep provider, prompt, model, hashes and file paths in a portable manifest;
 - export a package an engine can actually consume.
 
-The rules are written for agentic use, but they work for a human artist too. See
-[`AGENTS.md`](AGENTS.md) for the non-negotiable operating rules.
+See [`AGENTS.md`](AGENTS.md) for the non-negotiable operating rules.
 
 ## Preview
 
@@ -88,23 +77,17 @@ The rules are written for agentic use, but they work for a human artist too. See
 | `perchance.org/api-tutorial` integration | **Not usable**; documented endpoint returned HTTP 404 | `docs/PERCHANCE_INTEGRATION.md` |
 | Aseprite native `.aseprite` writer | **Not implemented**; the exporter refuses honestly | `sprite_studio/export.py` |
 
-The example project contains four original procedural assets with briefs,
-animation specs, processing reports, technical QA, contact sheets, manifests and
-export folders checked in. The four AI review records are scoped to
-`demo_or_internal` and keep `human_approved: false`.
-
 ## Requirements
 
 - Python 3.10 or newer (developed and tested with 3.12.4).
-- Windows, macOS or Linux. The test suite was originally run on Windows; CI is
-  configured for Ubuntu and Windows.
+- Windows, macOS or Linux; CI tests Ubuntu and Windows.
 - No system FFmpeg is required when `imageio-ffmpeg` is installed.
 
 ## Installation
 
 ```bash
-git clone <repository-url>
-cd 2d-sprite-studio
+git clone https://github.com/Teerth-Sonawani/Sprite-Studio.git
+cd Sprite-Studio
 
 python -m venv .venv
 # Windows: .venv\Scripts\activate
@@ -156,10 +139,9 @@ applied, six export jobs, and manifest hash verification passing for 36 files.
 plan -> reference -> generate -> process -> animate -> validate -> correct -> export
 ```
 
-Generation is never treated as delivery. A candidate must pass deterministic
-technical checks and an evidence-backed visual review before it can be marked
-`APPROVED`. An AI reviewer can approve for demo/internal use, but
-`human_approved` stays `false` until a human signs off.
+A candidate must pass deterministic technical checks and an evidence-backed
+visual review before it can be marked `APPROVED`. AI review never sets
+`human_approved`; that stays `false` until a human signs off.
 
 | Status | Meaning | May export? |
 | --- | --- | --- |
@@ -265,14 +247,13 @@ an arbitrary working directory. A plain wheel does not bundle `config/` or
 
 ## Security and secrets
 
-- `PERCHANCEAI_API_KEY` is read from the environment only.
-- `.env` is ignored by git; `.env.example` contains placeholders only.
-- The adapter never accepts a key as a CLI flag, never writes it to prompts or
-  logs, and never sends a bearer token to a signed output URL.
-- A chargeable request requires a prior estimate, a credit limit and `--confirm`.
-- An uncertain submission is not retried with a fresh idempotency key.
-- No bundled code bypasses Cloudflare, reverse-engineers private endpoints or
-  automates a browser challenge.
+`PERCHANCEAI_API_KEY` is read from the environment only, and `.env` is ignored
+by git. The adapter never accepts a key as a CLI flag, never writes it to
+prompts or logs, and never sends a bearer token to a signed output URL.
+Chargeable requests require an estimate, a credit limit and `--confirm`; an
+uncertain submission is not retried with a fresh idempotency key. No bundled
+code bypasses Cloudflare, reverse-engineers private endpoints or automates a
+browser challenge.
 
 See [`SECURITY.md`](SECURITY.md) for private reporting and the full model.
 
@@ -291,8 +272,7 @@ See [`SECURITY.md`](SECURITY.md) for private reporting and the full model.
   provider image quality.
 - AI visual review can mark demo/internal approval. It cannot grant production
   human approval.
-- The original test run was Windows-only; CI is configured for Ubuntu and
-  Windows.
+- CI covers Ubuntu and Windows; macOS is not tested in CI.
 
 ## Development
 
@@ -302,16 +282,10 @@ python scripts/build_demo_assets.py --stage all
 python -m compileall -q sprite_studio tools
 ```
 
-The test suite does not make network calls and does not require provider
-credentials. See [`CONTRIBUTING.md`](CONTRIBUTING.md) for setup, style and pull
-request rules. CI is configured to run the tests on Ubuntu and Windows with Python
-3.10, 3.11 and 3.12, then rebuild the example project on Ubuntu.
-
-## Contributing
-
-Bug reports, focused feature requests and documentation fixes are welcome. Read
-[`CONTRIBUTING.md`](CONTRIBUTING.md) and use the issue and pull-request
-templates. For support questions, see [`SUPPORT.md`](SUPPORT.md).
+The test suite makes no network calls and needs no provider credentials. See
+[`CONTRIBUTING.md`](CONTRIBUTING.md) for setup, style and pull-request rules,
+[`SUPPORT.md`](SUPPORT.md) for support questions, and the CI badge above for
+the current build state.
 
 ## License
 
