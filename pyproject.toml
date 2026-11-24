@@ -26,29 +26,88 @@ dependencies = [
   "jsonschema>=4.0",
 ]
 
+[project.urls]
+Homepage = "https://github.com/Teerth-Sonawani/Sprite-Studio"
+Repository = "https://github.com/Teerth-Sonawani/Sprite-Studio"
+Issues = "https://github.com/Teerth-Sonawani/Sprite-Studio/issues"
+Changelog = "https://github.com/Teerth-Sonawani/Sprite-Studio/blob/main/CHANGELOG.md"
+
+[project.scripts]
+sprite-align-frames = "sprite_studio.tools.align_frames:cli"
+sprite-build-prompt = "sprite_studio.tools.build_prompt:cli"
+sprite-build-spritesheet = "sprite_studio.tools.build_spritesheet:cli"
+sprite-clean-transparency = "sprite_studio.tools.clean_transparency:cli"
+sprite-export-asset = "sprite_studio.tools.export_asset:cli"
+sprite-generate-asset = "sprite_studio.tools.generate_asset:cli"
+sprite-generate-manifest = "sprite_studio.tools.generate_manifest:cli"
+sprite-import-generated = "sprite_studio.tools.import_generated:cli"
+sprite-inspect-image = "sprite_studio.tools.inspect_image:cli"
+sprite-make-contact-sheet = "sprite_studio.tools.make_contact_sheet:cli"
+sprite-pack-atlas = "sprite_studio.tools.pack_atlas:cli"
+sprite-palette-check = "sprite_studio.tools.palette_check:cli"
+sprite-preview-animation = "sprite_studio.tools.preview_animation:cli"
+sprite-qa-review = "sprite_studio.tools.qa_review:cli"
+sprite-remove-background = "sprite_studio.tools.remove_background:cli"
+sprite-resize-sprite = "sprite_studio.tools.resize_sprite:cli"
+sprite-slice-spritesheet = "sprite_studio.tools.slice_spritesheet:cli"
+sprite-tile-seam-check = "sprite_studio.tools.tile_seam_check:cli"
+sprite-validate-animation = "sprite_studio.tools.validate_animation:cli"
+sprite-validate-sprite = "sprite_studio.tools.validate_sprite:cli"
+
 [project.optional-dependencies]
 video = ["imageio>=2.30", "imageio-ffmpeg>=0.4"]
 fast = ["scipy>=1.10"]
-dev = ["pytest>=8.0"]
+dev = ["pytest>=8.0", "pytest-cov>=5.0", "ruff>=0.6", "mypy>=1.10"]
 all = [
   "imageio>=2.30",
   "imageio-ffmpeg>=0.4",
   "scipy>=1.10",
   "pytest>=8.0",
+  "pytest-cov>=5.0",
+  "ruff>=0.6",
+  "mypy>=1.10",
 ]
 
 [tool.setuptools]
 include-package-data = true
-license-files = ["LICENSE", "LICENSES.md"]
+license-files = ["LICENSE"]
 
 [tool.setuptools.packages.find]
 where = ["."]
-include = ["sprite_studio*", "providers*"]
+include = ["sprite_studio*"]
 
 [tool.pytest.ini_options]
-testpaths = ["tests", "providers/perchance/tests"]
+testpaths = ["tests"]
 norecursedirs = [".git", ".venv", "venv", "__pycache__", "projects", "exports", "build", "dist"]
 addopts = "-ra"
 filterwarnings = [
   "ignore:.*is deprecated.*:DeprecationWarning",
 ]
+
+[tool.coverage.run]
+source = ["sprite_studio"]
+omit = ["sprite_studio/tools/*", "*/__init__.py"]
+
+[tool.coverage.report]
+show_missing = true
+fail_under = 60
+
+[tool.ruff]
+line-length = 120
+target-version = "py310"
+exclude = ["projects", "exports", "build", "dist", ".venv"]
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I"]
+ignore = ["E501"]
+
+[tool.ruff.lint.per-file-ignores]
+"sprite_studio/tools/*" = ["E402", "F401"]
+"tools/*" = ["E402", "F401"]
+"sprite_studio/export.py" = ["W291"]  # trailing spaces are content of the Unity .meta template
+
+[tool.mypy]
+python_version = "3.10"
+ignore_missing_imports = true
+check_untyped_defs = true
+exclude = ["^tools/", "^scripts/", "^tests/"]

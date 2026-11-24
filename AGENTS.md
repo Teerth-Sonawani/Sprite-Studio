@@ -34,9 +34,8 @@ before touching assets, prompts, manifests or exports.
 3. `docs/WORKFLOW.md`
 4. `projects/<project>/project_brief.md`
 5. `projects/<project>/style_guide.md` and `style_guide.yaml`
-6. The relevant `skills/<name>/SKILL.md`
-7. `config/quality_profiles.yaml` and `config/export_profiles.yaml`
-8. Existing asset manifests and QA reports
+6. `config/quality_profiles.yaml` and `config/export_profiles.yaml`
+7. Existing asset manifests and QA reports
 
 If a request conflicts with these files, stop and surface the conflict.
 

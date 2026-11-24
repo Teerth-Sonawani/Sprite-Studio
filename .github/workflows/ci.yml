@@ -43,10 +43,16 @@ jobs:
           python -m pip install -e ".[all]"
 
       - name: Byte-compile package and tools
-        run: python -m compileall -q sprite_studio providers tools
+        run: python -m compileall -q sprite_studio tools
 
-      - name: Run tests
-        run: python -m pytest -q
+      - name: Lint
+        run: python -m ruff check sprite_studio tools scripts tests
+
+      - name: Type check
+        run: python -m mypy sprite_studio
+
+      - name: Run tests with coverage gate
+        run: python -m pytest -q --cov=sprite_studio --cov-report=term-missing
 
   demo-build:
     name: Demo build and manifest hash verification
@@ -71,9 +77,29 @@ jobs:
           python -m pip install --upgrade pip
           python -m pip install -e ".[all]"
 
-      - name: Rebuild the example project
+      - name: Rebuild the example project (first pass)
+        env:
+          SOURCE_DATE_EPOCH: "1700000000"
         run: python scripts/build_demo_assets.py --stage all
 
-      - name: Show what the rebuild changed
-        if: always()
+      - name: Snapshot every generated file
+        run: |
+          find projects/example-project -type f \
+            -not -path '*/__pycache__/*' -print0 \
+            | sort -z | xargs -0 sha256sum > "${RUNNER_TEMP}/build-1.sha256"
+
+      - name: Rebuild the example project (second pass)
+        env:
+          SOURCE_DATE_EPOCH: "1700000000"
+        run: python scripts/build_demo_assets.py --stage all
+
+      - name: Assert the rebuild is byte-for-byte reproducible
+        run: |
+          find projects/example-project -type f \
+            -not -path '*/__pycache__/*' -print0 \
+            | sort -z | xargs -0 sha256sum > "${RUNNER_TEMP}/build-2.sha256"
+          diff -u "${RUNNER_TEMP}/build-1.sha256" "${RUNNER_TEMP}/build-2.sha256"
+
+      - name: Show the working tree on failure
+        if: failure()
         run: git status --short

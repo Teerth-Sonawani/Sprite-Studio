@@ -5,11 +5,11 @@ from __future__ import annotations
 import pytest
 from PIL import Image
 
-from providers.base_provider import GenerationRequest
-from providers.mock.adapter import MockProvider
-from providers.perchance.adapter import PerchanceProvider
-from providers.provider_registry import available_providers, create_provider
 from sprite_studio.errors import UsageError
+from sprite_studio.providers.base_provider import GenerationRequest
+from sprite_studio.providers.mock.adapter import MockProvider
+from sprite_studio.providers.perchance.adapter import PerchanceProvider
+from sprite_studio.providers.provider_registry import available_providers, create_provider
 
 
 def test_registry_lists_known_providers():

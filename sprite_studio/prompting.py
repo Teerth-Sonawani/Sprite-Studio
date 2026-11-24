@@ -103,6 +103,9 @@ def build_prompt(brief: dict, style: dict | None = None, extra_notes: str = "") 
     ]
     lines.extend(style_lines)
     lines.extend([f"- {m}" for m in style_mods])
+    if constraints:
+        lines.extend(["", "SPECIAL CONSTRAINTS:"])
+        lines.extend(f"- {item}" for item in _list(constraints))
     lines.extend(
         [
             "",
@@ -158,9 +161,16 @@ def build_prompt(brief: dict, style: dict | None = None, extra_notes: str = "") 
         "blurry edges",
         "extra limbs or duplicated body parts",
     ]
+    emitted: set[str] = set()
     for item in defaults + negative_mods + _list(negative):
-        if item and item not in lines:
-            lines.append(f"- {item}")
+        text = str(item).strip().lstrip("- ").strip()
+        if not text:
+            continue
+        key = " ".join(text.lower().split())
+        if key in emitted:
+            continue
+        emitted.add(key)
+        lines.append(f"- {text}")
     if extra_notes:
         lines.extend(["", "ADDITIONAL PROJECT NOTES:", extra_notes.strip()])
     return "\n".join(lines).strip() + "\n"

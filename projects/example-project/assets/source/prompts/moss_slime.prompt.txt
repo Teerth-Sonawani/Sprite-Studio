@@ -20,6 +20,11 @@ Art style: mosslight_pixel_16.
 - cozy woodland fantasy, warm firefly accents
 - readable silhouette at 32 pixels tall
 
+SPECIAL CONSTRAINTS:
+- keep the fern cluster inside the 64x64 canvas
+- no shadow baked into the sprite; the engine draws it
+- at least 2 px transparent padding on every side
+
 COMPOSITION:
 Single isolated asset, centred with deliberate margins.
 Entire silhouette visible; no cropping at the canvas edge.
@@ -69,7 +74,4 @@ NEGATIVE CONSTRAINTS:
 - pure black outline
 - multiple slimes
 - text or labels
-- photorealistic texture
-- existing copyrighted character
-- pure black outline
 - baked ground shadow

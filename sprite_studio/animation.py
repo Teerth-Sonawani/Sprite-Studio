@@ -4,28 +4,21 @@ from __future__ import annotations
 
 import hashlib
 import math
-import shutil
-import tempfile
 from pathlib import Path
 from typing import Sequence
 
 import numpy as np
-from PIL import Image, ImageChops, ImageDraw, ImageSequence
+from PIL import Image, ImageDraw
 
 from .image_utils import (
     alpha_bbox,
-    alpha_stats,
     checkerboard,
     default_font,
     ensure_rgba,
     flatten_on,
     load_image,
-    natural_key,
     parse_color,
     resize_rgba,
-    save_image,
-    save_png,
-    write_json,
 )
 
 
@@ -140,6 +133,7 @@ def align_frames(
         paste_y = max(0, y)
         if right > left and bottom > top:
             canvas.alpha_composite(working.crop((left, top, right, bottom)), (paste_x, paste_y))
+        canvas_bbox = alpha_bbox(canvas)
         aligned.append(canvas)
         records.append(
             {
@@ -148,7 +142,7 @@ def align_frames(
                 "scale": round(scale, 4),
                 "offset_x": x,
                 "offset_y": y,
-                "aligned_bbox": list(alpha_bbox(canvas)) if alpha_bbox(canvas) else None,
+                "aligned_bbox": list(canvas_bbox) if canvas_bbox else None,
                 "clipped": clipped,
             }
         )
@@ -488,7 +482,7 @@ def validate_animation(
     if pivot is not None:
         add(
             "pivot",
-            all(0 <= pivot[0] <= frames[0].width and 0 <= pivot[1] <= frames[0].height for _ in [0]),
+            all(0 <= pivot[0] <= f.width and 0 <= pivot[1] <= f.height for f in frames),
             "critical",
             f"pivot {pivot} within {frames[0].size}",
             list(pivot),

@@ -43,6 +43,7 @@ desktop.ini
 *~
 
 # Local runtime artifacts
+generations/
 mock_output/
 output/
 projects/*/manifests/idempotency.jsonl
@@ -53,6 +54,10 @@ projects/*/assets/source/perchance/*
 tmp/
 temp/
 .cache/
+
+# Generated summaries and convenience copies (rebuilt by the demo script)
+projects/*/qa/pipeline_summary.json
+projects/*/exports/previews/
 
 # Large or regenerable outputs (keep the checked-in example exports)
 *.mp4

@@ -60,22 +60,45 @@ def test_visual_review_requires_evidence_and_technical_pass(tmp_path, frame):
     technical = validate_sprite(path, SPEC)
     with pytest.raises(ValueError):
         record_visual_review(technical, "approve", "reviewer", evidence=[])
+    with pytest.raises(FileNotFoundError):
+        record_visual_review(technical, "approve", "reviewer", evidence=["missing_preview.png"])
     rejected = {**technical, "technical_status": "REJECTED", "qa_status": "REJECTED"}
     with pytest.raises(ValueError):
         record_visual_review(rejected, "approve", "reviewer", evidence=["evidence.png"])
+
+
+def test_evidence_root_resolves_relative_paths(tmp_path, frame):
+    path = tmp_path / "frame.png"
+    save_png(frame, path)
+    technical = validate_sprite(path, SPEC)
+    evidence_dir = tmp_path / "qa"
+    evidence_dir.mkdir()
+    save_png(frame, evidence_dir / "contact.png")
+
+    review = record_visual_review(
+        technical,
+        "approve",
+        "reviewer",
+        evidence=["qa/contact.png"],
+        evidence_root=tmp_path,
+    )
+    assert review["qa_status"] == "APPROVED"
+    assert review["review"]["evidence"] == ["qa/contact.png"]
 
 
 def test_ai_review_is_demo_scoped_and_human_review_is_production(tmp_path, frame):
     path = tmp_path / "frame.png"
     save_png(frame, path)
     technical = validate_sprite(path, SPEC)
-    ai = record_visual_review(technical, "approve", "agent", reviewer_type="ai_agent", evidence=["contact.png"])
+    evidence = tmp_path / "contact.png"
+    save_png(frame, evidence)
+    ai = record_visual_review(technical, "approve", "agent", reviewer_type="ai_agent", evidence=[str(evidence)])
     assert ai["qa_status"] == "APPROVED"
     assert ai["human_approved"] is False
     assert ai["human_approved_at"] is None
     assert ai["review"]["approval_scope"] == "demo_or_internal"
 
-    human = record_visual_review(technical, "approve", "artist", reviewer_type="human", evidence=["contact.png"])
+    human = record_visual_review(technical, "approve", "artist", reviewer_type="human", evidence=[str(evidence)])
     assert human["qa_status"] == "APPROVED"
     assert human["human_approved"] is True
     assert human["review"]["approval_scope"] == "production"

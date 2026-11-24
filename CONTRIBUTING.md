@@ -8,8 +8,8 @@ design, not optional extras.
 ## Before you start
 
 1. Read [`AGENTS.md`](AGENTS.md) — it contains the non-negotiable operating rules.
-2. Read [`docs/WORKFLOW.md`](docs/WORKFLOW.md) and the relevant skill in
-   [`skills/`](skills/).
+2. Read [`docs/WORKFLOW.md`](docs/WORKFLOW.md) and the relevant guide in
+   [`docs/`](docs/).
 3. If you are changing an asset, read that project's brief and style guide first.
 
 If a change conflicts with a schema, a frozen style guide or an approval rule,
@@ -37,30 +37,36 @@ core pipeline, `pip install -e .` is enough.
 ## Running the checks
 
 ```bash
-# Full test suite
-python -m pytest -q
+# Full test suite with the coverage gate
+python -m pytest -q --cov=sprite_studio --cov-report=term-missing
+
+# Static checks
+python -m ruff check sprite_studio tools scripts tests
+python -m mypy sprite_studio
 
 # Rebuild the example project and verify every manifest hash
 python scripts/build_demo_assets.py --stage all
 
 # Byte-compile the package and command-line tools
-python -m compileall -q sprite_studio providers tools
+python -m compileall -q sprite_studio tools
 ```
 
-All three should succeed before you open a pull request. The test suite does not
-make network calls and does not require provider credentials.
+All four checks should succeed before you open a pull request. The test suite
+does not make network calls and does not require provider credentials. To verify
+the demo build is reproducible, run it twice with `SOURCE_DATE_EPOCH` set and
+compare the two file trees; CI does this for you.
 
 ## What to change
 
-- **Code:** put reusable logic in `sprite_studio/`; keep `tools/` as thin
-  argument-parsing entry points.
+- **Code:** put reusable logic and tool implementations in `sprite_studio/`;
+  keep `tools/` as thin shims that preserve the `python tools/<name>.py` form.
 - **Configuration:** prefer data edits in `config/` over new code paths.
 - **Schemas:** update `schemas/` and the matching docs when a structured format
   changes. Add a test that exercises the new field.
 - **Assets:** follow the naming rules in `AGENTS.md` §5. Keep sources under
   `assets/source/`, in-progress work under `assets/working/`, and reviewed work
   under `assets/approved/`.
-- **Docs:** update `README.md`, `BUILD_REPORT.md` or `CHANGELOG.md` when a claim
+- **Docs:** update `README.md`, `docs/` or `CHANGELOG.md` when a claim
   or limitation changes. Prefer honest limitations over optimistic marketing.
 
 ## Quality rules
@@ -126,9 +132,8 @@ No particular convention is enforced, but the history should stay readable.
 - Keep provider calls behind the `ImageProvider` interface.
 - Prefer standard library and declared dependencies; do not add a dependency for
   a small helper.
-- Run `python -m pytest -q` before pushing.
-- No formatter or linter is mandatory yet. If you add one, make it a separate,
-  clearly scoped change and wire it into CI.
+- Run `ruff`, `mypy` and `python -m pytest --cov=sprite_studio` before pushing.
+  They are enforced in CI; see the commands above.
 
 ## Reporting bugs
 

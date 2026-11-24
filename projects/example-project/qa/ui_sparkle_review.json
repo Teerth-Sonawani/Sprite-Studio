@@ -1,6 +1,6 @@
 {
   "asset": "C:\\Teerth Stuff\\Games Stuff\\projects\\2dsprites\\2d-sprite-studio\\projects\\example-project\\assets\\approved\\ui_sparkle\\frames\\ui_sparkle.png",
-  "generated_at": "2026-11-13T05:12:22+00:00",
+  "generated_at": "2023-11-14T22:13:20+00:00",
   "technical_status": "TECHNICAL_PASS",
   "visual_status": "APPROVED",
   "qa_status": "APPROVED",
@@ -109,7 +109,7 @@
     "decision": "approve",
     "reviewer": "OpenCode visual review agent",
     "reviewer_type": "ai_agent",
-    "reviewed_at": "2026-11-13T05:12:22+00:00",
+    "reviewed_at": "2023-11-14T22:13:20+00:00",
     "notes": "The 32x32 star icon has a distinct silhouette, consistent optical padding and a clean transparent edge. The amber/paper/white core reads at 1x and the secondary sparkles stay inside the safe margin. Palette matches the Mosslight style guide, including the deliberate emissive white core. Demo/internal approval only.",
     "scores": {
       "silhouette": 5,

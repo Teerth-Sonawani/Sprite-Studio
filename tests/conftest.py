@@ -44,7 +44,6 @@ def root() -> Path:
 def demo_asset(tmp_path):
     """A complete, approved miniature asset with sheet, sidecar and GIF preview."""
 
-    import json
 
     from sprite_studio.animation import make_preview
     from sprite_studio.image_utils import save_png, write_json

@@ -248,7 +248,7 @@
       "decision": "approve",
       "reviewer": "OpenCode visual review agent",
       "reviewer_type": "ai_agent",
-      "reviewed_at": "2026-11-13T05:12:22+00:00",
+      "reviewed_at": "2023-11-14T22:13:20+00:00",
       "notes": "The burst expands from frame 0 to frame 3 and contracts through frame 5; the increasing scale is the intended effect, not drift. The animation report's only warning is scale_variation (0.828 vs the default 0.800 limit), which is expected for an expanding VFX burst and is not a technical failure. Alpha falloff is clean, the 64x64 canvas is not clipped at maximum expansion and the preview reads at gameplay scale without obscuring a full 64px character. Sequenced as a non-looping one-shot. Demo/internal approval only.",
       "scores": {
         "silhouette": 4,
@@ -287,10 +287,10 @@
     ],
     "license": "MIT (original procedural demo art for this workspace)",
     "notes": "Original procedural demo art drawn by scripts/build_demo_assets.py. Not AI-generated and not a provider quality showcase.",
-    "created_at": "2026-11-13T05:12:23+00:00"
+    "created_at": "2023-11-14T22:13:20+00:00"
   },
-  "created_at": "2026-11-13T05:12:23+00:00",
-  "updated_at": "2026-11-13T05:12:23+00:00",
+  "created_at": "2023-11-14T22:13:20+00:00",
+  "updated_at": "2023-11-14T22:13:20+00:00",
   "validation": {
     "schema": "schemas/asset_manifest.schema.json",
     "ok": true,

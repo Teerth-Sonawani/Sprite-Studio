@@ -6,10 +6,9 @@ All notable changes to this workspace. Dates are ISO 8601.
 
 ### Added
 
-- GitHub repository preparation: `LICENSE`, `CONTRIBUTING.md`,
-  `CODE_OF_CONDUCT.md`, `SECURITY.md`, `SUPPORT.md`, issue and pull-request
-  templates, Dependabot configuration, a CI workflow, `.editorconfig` and
-  `.gitattributes`.
+- GitHub repository preparation: `LICENSE`, `CONTRIBUTING.md`, `SECURITY.md`,
+  `SUPPORT.md`, issue and pull-request templates, Dependabot configuration, a CI
+  workflow, `.editorconfig` and `.gitattributes`.
 - GitHub-oriented README with example previews, installation, usage,
   documentation links and honest limitations.
 - CI matrix for Ubuntu and Windows on Python 3.10-3.12, plus a demo-build and
@@ -20,10 +19,35 @@ All notable changes to this workspace. Dates are ISO 8601.
 - `.gitignore` now keeps the checked-in example MP4, ignores the local agent
   harness directory and covers additional coverage/cache artifacts.
 - `pyproject.toml` includes the project license files in built distributions.
+- Removed the pledge, code of conduct, duplicated licence notices, agent skill
+  scaffolding and regenerable duplicate previews/reports.
+- Providers now live under `sprite_studio/providers/`; tool implementations live
+  under `sprite_studio/tools/`, with `tools/*.py` kept as compatibility shims.
+- `config/` now distinguishes runtime configuration from reference registries.
+  `quality_profiles.yaml` is selectable with `validate_sprite.py --profile`, and
+  `export_profiles.yaml` is checked against the implemented exporters.
+- Manifest schemas reject typos in file records, QA state, animations and
+  provenance while still allowing custom top-level fields.
+- All generated timestamps honour `SOURCE_DATE_EPOCH` for reproducible builds.
 
-### Notes
+### Fixed
 
-- No git remote is configured and nothing has been pushed.
+- Visual approval now fails when an evidence file does not exist.
+- Exports fail on a missing manifest file instead of silently skipping it, and
+  reject absolute/cwd-relative paths that would break portability.
+- `generic_sheet` is now a distinct export profile rather than an alias.
+- `--stage assets` no longer deletes exports or manifests; source folders are
+  only cleared by the stage that regenerates them.
+- `merge_qa_report` stores a portable relative report path.
+- Generation records and Perchance defaults no longer point into the example
+  project.
+- Duplicate negative constraints were emitted; `special_constraints` were
+  silently dropped. Both are fixed.
+- `import_generated.py` no longer claims the user confirmed provider terms.
+- Added ruff, mypy and coverage gates, plus a CI assertion that rebuilding the
+  example project twice produces byte-identical output.
+- Added twenty `sprite-*` console entry points and a pytest suite for config,
+  entry points and schema strictness.
 
 ## [1.0.0] - 2026-11-12
 

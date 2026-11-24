@@ -4,19 +4,15 @@ from __future__ import annotations
 
 import json
 import os
-from datetime import datetime, timezone
 from pathlib import Path
 from typing import Iterable
 
 import yaml
 
 from .image_utils import alpha_stats, load_image, sha256_file, write_json
+from .timeutil import utcnow as _utcnow
 
 MANIFEST_VERSION = "1.0"
-
-
-def _utcnow() -> str:
-    return datetime.now(timezone.utc).isoformat(timespec="seconds")
 
 
 def _load_structured(path: str | Path | None) -> dict:
@@ -131,7 +127,7 @@ def _discover_files(
 
 
 def _animation_metadata(animations_dir: Path | None, asset_id: str | None = None) -> dict:
-    result = {}
+    result: dict[str, dict] = {}
     if not animations_dir or not animations_dir.is_dir():
         return result
     for path in sorted(animations_dir.glob("*.y*ml")):
@@ -253,9 +249,12 @@ def build_manifest(
             "qa_status": qa_status,
             "human_approved": human_approved,
             "report": (
-                _relative_path(Path(qa_report_path), path_base)
-                if qa_report_path and path_base
-                else (str(qa_report_path) if qa_report_path else None)
+                _relative_path(
+                    Path(qa_report_path),
+                    path_base or (Path(output_path).parent if output_path else None),
+                )
+                if qa_report_path
+                else None
             ),
             "review": qa_report.get("review"),
         },
@@ -301,16 +300,25 @@ def validate_manifest(manifest: dict, schema_path: str | Path | None = None) -> 
 
 
 def merge_qa_report(manifest_path: str | Path, qa_report_path: str | Path, output_path: str | Path | None = None) -> dict:
-    manifest = json.loads(Path(manifest_path).read_text(encoding="utf-8"))
-    qa = json.loads(Path(qa_report_path).read_text(encoding="utf-8"))
+    """Merge a QA report into an existing manifest.
+
+    The stored report path is relative to the manifest so the result stays
+    portable across machines and checkouts.
+    """
+
+    manifest_path = Path(manifest_path)
+    qa_report_path = Path(qa_report_path)
+    manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+    qa = json.loads(qa_report_path.read_text(encoding="utf-8"))
+    target = Path(output_path) if output_path else manifest_path
     manifest["qa"] = {
         "technical_status": qa.get("technical_status", "PENDING"),
         "visual_status": qa.get("visual_status", "NOT_REVIEWED"),
         "qa_status": qa.get("qa_status", "PENDING"),
         "human_approved": bool(qa.get("human_approved", False)),
-        "report": str(qa_report_path),
+        "report": _relative_path(qa_report_path, target.parent),
         "review": qa.get("review"),
     }
     manifest["updated_at"] = _utcnow()
-    write_json(output_path or manifest_path, manifest)
+    write_json(target, manifest)
     return manifest

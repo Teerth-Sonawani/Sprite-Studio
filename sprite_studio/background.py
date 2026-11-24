@@ -10,12 +10,19 @@ from __future__ import annotations
 
 from collections import deque
 from pathlib import Path
-from typing import Sequence
+from typing import Any, Sequence
 
 import numpy as np
 from PIL import Image, ImageFilter
 
-from .image_utils import alpha_array, alpha_bbox, color_distance, color_hex, ensure_rgba, parse_color, save_png, write_json
+from .image_utils import (
+    alpha_bbox,
+    color_distance,
+    color_hex,
+    ensure_rgba,
+    save_png,
+    write_json,
+)
 
 
 def _border_pixels(rgba: np.ndarray, border: int = 2) -> np.ndarray:
@@ -42,10 +49,10 @@ def suggest_background_colors(image: Image.Image, border: int = 2, tolerance: in
     # Coarse buckets (16 levels/channel) make the sample robust to JPEG noise.
     buckets: dict[tuple[int, int, int], list[np.ndarray]] = {}
     for px in opaque[:, :3]:
-        key = tuple(int(v) // 16 for v in px)
+        key = (int(px[0]) // 16, int(px[1]) // 16, int(px[2]) // 16)
         buckets.setdefault(key, []).append(px)
     clusters = sorted(buckets.values(), key=len, reverse=True)[:max_colors]
-    colors = []
+    colors: list[dict[str, Any]] = []
     for cluster in clusters:
         if len(cluster) < max(4, len(opaque) * 0.005):
             continue
@@ -190,6 +197,7 @@ def remove_background(
     )
     border_opaque = int(np.count_nonzero(border_alpha > 0))
     border_total = int(border_alpha.size)
+    result_bbox = alpha_bbox(result)
     report = {
         "method": method,
         "tolerance": tolerance,
@@ -200,7 +208,7 @@ def remove_background(
         "remaining_visible_pixels": int(np.count_nonzero(rgba[..., 3] > 0)),
         "border_opaque_pixels": border_opaque,
         "border_residual_percent": round(border_opaque / border_total * 100, 2) if border_total else 0.0,
-        "alpha_bbox": list(alpha_bbox(result)) if alpha_bbox(result) else None,
+        "alpha_bbox": list(result_bbox) if result_bbox else None,
         "warning": None,
     }
     if border_opaque > border_total * 0.02:
@@ -312,6 +320,7 @@ def clean_transparency(
         rgba[..., 3] = np.asarray(a, dtype=np.uint8)
 
     result = Image.fromarray(rgba, "RGBA")
+    final_bbox = alpha_bbox(result)
     report = {
         "min_island": min_island,
         "alpha_floor": alpha_floor,
@@ -321,7 +330,7 @@ def clean_transparency(
         "removed_pixels": before_visible - int(np.count_nonzero(rgba[..., 3] > 0)),
         "filled_hole_pixels": filled_pixels,
         "remaining_visible_pixels": int(np.count_nonzero(rgba[..., 3] > 0)),
-        "alpha_bbox": list(alpha_bbox(result)) if alpha_bbox(result) else None,
+        "alpha_bbox": list(final_bbox) if final_bbox else None,
     }
     return result, report
 

@@ -6,7 +6,6 @@
 - [`AGENTS.md`](AGENTS.md) — mandatory operating rules for agents and humans.
 - [`docs/WORKFLOW.md`](docs/WORKFLOW.md) — the phase-by-phase pipeline.
 - [`docs/TROUBLESHOOTING.md`](docs/TROUBLESHOOTING.md) — common failures.
-- [`BUILD_REPORT.md`](BUILD_REPORT.md) — verified results and honest limitations.
 - [`projects/example-project/README.md`](projects/example-project/README.md) —
   a complete worked example with commands and evidence paths.
 

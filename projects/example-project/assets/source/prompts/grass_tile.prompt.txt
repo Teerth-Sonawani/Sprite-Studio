@@ -20,6 +20,10 @@ Art style: mosslight_pixel_16.
 - cozy woodland fantasy, warm firefly accents
 - readable silhouette at 32 pixels tall
 
+SPECIAL CONSTRAINTS:
+- tile must remain fully opaque
+- no directional lighting gradient that breaks tiling
+
 COMPOSITION:
 Single isolated asset, centred with deliberate margins.
 Entire silhouette visible; no cropping at the canvas edge.
@@ -69,5 +73,4 @@ NEGATIVE CONSTRAINTS:
 - pure black outline
 - visible seam
 - text or labels
-- photorealistic texture
 - neon green

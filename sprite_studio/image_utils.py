@@ -11,7 +11,7 @@ import json
 import math
 import re
 from pathlib import Path
-from typing import Iterable, Sequence
+from typing import Any, Iterable, Sequence
 
 import numpy as np
 from PIL import Image, ImageDraw, ImageFont
@@ -43,10 +43,9 @@ def load_image(path: str | Path, mode: str | None = "RGBA") -> Image.Image:
     if not path.is_file():
         raise FileNotFoundError(f"Image not found: {path}")
     try:
-        image = Image.open(path)
-        image.load()
-        if mode:
-            image = image.convert(mode)
+        opened = Image.open(path)
+        opened.load()
+        image: Image.Image = opened.convert(mode) if mode else opened
         return image
     except Exception as exc:  # Pillow raises several different exception types
         raise ValueError(f"Cannot read image {path}: {exc}") from exc
@@ -286,7 +285,7 @@ def palette(image: Image.Image, max_colors: int = 32, alpha_threshold: int = 8) 
         q = strip.quantize(colors=max_colors, method=Image.Quantize.MEDIANCUT)
         pal = q.getpalette() or []
         q_counts = np.bincount(np.asarray(q).ravel(), minlength=max_colors)
-        out = []
+        out: list[dict[str, Any]] = []
         for i, count in enumerate(q_counts):
             if count == 0 or i * 3 + 2 >= len(pal):
                 continue
@@ -320,7 +319,8 @@ def mean_color(image: Image.Image, alpha_threshold: int = 8) -> tuple[float, flo
     if not mask.any():
         return None
     rgb = arr[..., :3][mask]
-    return tuple(float(v) for v in rgb.mean(axis=0))
+    means = rgb.mean(axis=0)
+    return (float(means[0]), float(means[1]), float(means[2]))
 
 
 def color_distance(a: Sequence[int], b: Sequence[int]) -> float:
@@ -371,19 +371,19 @@ def fit_preview(image: Image.Image, size: tuple[int, int], background: str = "ch
 
 
 def parse_color(value: str | Sequence[int]) -> tuple[int, int, int, int]:
-    if isinstance(value, (tuple, list)):
-        vals = list(value)
-        while len(vals) < 4:
-            vals.append(255)
-        return tuple(int(v) for v in vals[:4])  # type: ignore[return-value]
-    text = value.strip().lstrip("#")
-    if len(text) == 3:
-        text = "".join(c * 2 for c in text)
-    if len(text) == 6:
-        text += "ff"
-    if len(text) != 8:
-        raise ValueError(f"Invalid colour {value!r}; use #RGB, #RRGGBB or #RRGGBBAA")
-    return tuple(int(text[i : i + 2], 16) for i in (0, 2, 4, 6))  # type: ignore[return-value]
+    if isinstance(value, str):
+        text = value.strip().lstrip("#")
+        if len(text) == 3:
+            text = "".join(c * 2 for c in text)
+        if len(text) == 6:
+            text += "ff"
+        if len(text) != 8:
+            raise ValueError(f"Invalid colour {value!r}; use #RGB, #RRGGBB or #RRGGBBAA")
+        return (int(text[0:2], 16), int(text[2:4], 16), int(text[4:6], 16), int(text[6:8], 16))
+    vals = list(value)
+    while len(vals) < 4:
+        vals.append(255)
+    return (int(vals[0]), int(vals[1]), int(vals[2]), int(vals[3]))
 
 
 def sha256_file(path: str | Path) -> str:
@@ -410,7 +410,7 @@ def image_info(path: str | Path, include_palette: bool = False, max_colors: int 
     path = Path(path)
     image = load_image(path, None)
     rgba = image.convert("RGBA")
-    info = {
+    info: dict[str, Any] = {
         "path": str(path),
         "filename": path.name,
         "format": image.format,

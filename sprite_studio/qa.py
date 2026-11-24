@@ -8,18 +8,12 @@ review so a manifest cannot accidentally imply human sign-off.
 from __future__ import annotations
 
 import re
-from datetime import datetime, timezone
 from pathlib import Path
 
-from PIL import Image
-
 from .image_utils import alpha_bbox, alpha_stats, image_info, load_image, palette, sha256_file, write_json
+from .timeutil import utcnow as _utcnow
 
 STATUSES = ["PENDING", "TECHNICAL_PASS", "VISUAL_REVIEW", "APPROVED", "REJECTED"]
-
-
-def _utcnow() -> str:
-    return datetime.now(timezone.utc).isoformat(timespec="seconds")
 
 
 def validate_sprite(path: str | Path, spec: dict | None = None, project_root: str | Path | None = None) -> dict:
@@ -168,6 +162,27 @@ def validate_sprite(path: str | Path, spec: dict | None = None, project_root: st
     }
 
 
+def _check_evidence(evidence: list[str], evidence_root: str | Path | None) -> None:
+    """Refuse to record evidence paths that do not exist.
+
+    Approval without a real preview is the one failure this project exists to
+    prevent, so a missing evidence file is an error, not a warning.
+    """
+
+    root = Path(evidence_root) if evidence_root is not None else Path.cwd()
+    missing = []
+    for item in evidence:
+        path = Path(item)
+        candidates = [path] if path.is_absolute() else [root / path, Path.cwd() / path]
+        if not any(candidate.is_file() for candidate in candidates):
+            missing.append(item)
+    if missing:
+        raise FileNotFoundError(
+            "Review evidence does not exist: " + ", ".join(missing) +
+            ". Create the contact sheet/preview first, or correct the paths."
+        )
+
+
 def record_visual_review(
     technical_report: dict,
     decision: str,
@@ -176,11 +191,16 @@ def record_visual_review(
     notes: str = "",
     scores: dict | None = None,
     evidence: list[str] | None = None,
+    evidence_root: str | Path | None = None,
 ) -> dict:
     """Append a visual review to a technical report.
 
     decision: approve / revise / reject
     reviewer_type: ai_agent / human
+
+    `evidence` must name files that exist; pass `evidence_root` when the paths
+    are relative to a project or repository root rather than the working
+    directory.
     """
 
     decision = decision.lower()
@@ -189,8 +209,10 @@ def record_visual_review(
     technical_status = technical_report.get("technical_status") or technical_report.get("qa_status")
     if decision == "approve" and technical_status not in {"TECHNICAL_PASS", "APPROVED"}:
         raise ValueError("Cannot approve an asset that has not passed technical validation")
+    evidence = list(evidence or [])
     if decision == "approve" and not evidence:
         raise ValueError("Approval requires at least one evidence path (contact sheet or preview)")
+    _check_evidence(evidence, evidence_root)
 
     if decision == "approve":
         visual_status = "APPROVED"
@@ -225,11 +247,29 @@ def write_review(report: dict, path: str | Path) -> Path:
     return write_json(path, report)
 
 
-def worst_status(*statuses: str) -> str:
-    """Combine statuses, with REJECTED beating everything."""
+# Blocking severity, worst first.  This is a release-gate ladder, not a quality
+# ladder: a REJECTED asset is a hard stop, a PENDING asset has never been
+# validated (so nothing is known), VISUAL_REVIEW means known defects are being
+# corrected, TECHNICAL_PASS has passed deterministic checks but no human or
+# agent has looked at it, and APPROVED is releasable within its approval scope.
+STATUS_SEVERITY = {
+    "REJECTED": 4,
+    "PENDING": 3,
+    "VISUAL_REVIEW": 2,
+    "TECHNICAL_PASS": 1,
+    "APPROVED": 0,
+}
 
-    priority = {"REJECTED": 5, "PENDING": 4, "VISUAL_REVIEW": 3, "TECHNICAL_PASS": 2, "APPROVED": 1}
+
+def worst_status(*statuses: str) -> str:
+    """Return the most blocking status.
+
+    With no arguments the result is `PENDING`: nothing has been validated yet.
+    """
+
+    if not statuses:
+        return "PENDING"
     for status in statuses:
-        if status not in priority:
+        if status not in STATUS_SEVERITY:
             raise ValueError(f"Unknown status {status!r}")
-    return max(statuses, key=lambda s: priority[s])
+    return max(statuses, key=lambda s: STATUS_SEVERITY[s])

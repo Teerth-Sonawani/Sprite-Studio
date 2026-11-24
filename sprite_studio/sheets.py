@@ -10,13 +10,11 @@ from PIL import Image, ImageDraw
 
 from .image_utils import (
     alpha_bbox,
-    checkerboard,
     default_font,
     ensure_rgba,
     fit_preview,
     load_image,
     natural_key,
-    parse_color,
     save_png,
     write_json,
 )

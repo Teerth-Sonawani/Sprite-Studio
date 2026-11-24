@@ -76,7 +76,7 @@
       "decision": "approve",
       "reviewer": "OpenCode visual review agent",
       "reviewer_type": "ai_agent",
-      "reviewed_at": "2026-11-13T05:12:22+00:00",
+      "reviewed_at": "2023-11-14T22:13:20+00:00",
       "notes": "The 32x32 star icon has a distinct silhouette, consistent optical padding and a clean transparent edge. The amber/paper/white core reads at 1x and the secondary sparkles stay inside the safe margin. Palette matches the Mosslight style guide, including the deliberate emissive white core. Demo/internal approval only.",
       "scores": {
         "silhouette": 5,
@@ -106,10 +106,10 @@
     ],
     "license": "MIT (original procedural demo art for this workspace)",
     "notes": "Original procedural demo art drawn by scripts/build_demo_assets.py. Not AI-generated and not a provider quality showcase.",
-    "created_at": "2026-11-13T05:12:23+00:00"
+    "created_at": "2023-11-14T22:13:20+00:00"
   },
-  "created_at": "2026-11-13T05:12:23+00:00",
-  "updated_at": "2026-11-13T05:12:23+00:00",
+  "created_at": "2023-11-14T22:13:20+00:00",
+  "updated_at": "2023-11-14T22:13:20+00:00",
   "validation": {
     "schema": "schemas/asset_manifest.schema.json",
     "ok": true,

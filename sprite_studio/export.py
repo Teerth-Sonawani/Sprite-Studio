@@ -10,11 +10,11 @@ import copy
 import json
 import re
 import shutil
-from datetime import datetime, timezone
 from pathlib import Path
 
 from .errors import UnsupportedIntegration
 from .image_utils import sha256_file, write_json
+from .timeutil import utcnow as _now
 
 
 def _copy(src: Path, dest: Path, force: bool = False) -> Path:
@@ -35,33 +35,36 @@ def _manifest_files(manifest: dict) -> list[dict]:
 
 
 def _resolve_record_path(record: dict, manifest: dict, manifest_path: Path) -> Path:
-    """Resolve a manifest file record against its documented roots.
+    """Resolve a manifest file record to an existing file.
 
-    Current manifests store paths relative to the manifest folder.  Older or
-    hand-authored manifests may store paths relative to `asset_root` or the
-    working directory; try those as fallbacks rather than silently exporting
-    nothing.
+    Paths are relative to the manifest folder, or to `asset_root` when the
+    manifest declares one.  Absolute paths and paths relative to the current
+    working directory are rejected: a manifest has to be portable, and resolving
+    against the caller's cwd is how an export silently picks up the wrong file.
     """
 
     raw = Path(record["path"])
     if raw.is_absolute():
-        return raw
+        raise ValueError(
+            f"Manifest path for role {record.get('role')!r} is absolute ({raw}). "
+            "Regenerate the manifest so it stores a path relative to the manifest."
+        )
     candidates = [manifest_path.parent / raw]
     asset_root = manifest.get("asset_root")
     if asset_root:
         root = Path(asset_root)
-        if not root.is_absolute():
-            root = manifest_path.parent / root
-        candidates.append(root / raw)
-    candidates.append(Path.cwd() / raw)
+        if root.is_absolute():
+            raise ValueError(
+                f"Manifest asset_root is absolute ({root}). Regenerate the manifest with a relative asset_root."
+            )
+        candidates.append(manifest_path.parent / root / raw)
     for candidate in candidates:
         if candidate.is_file():
             return candidate.resolve()
-    return candidates[0].resolve()
-
-
-def _now() -> str:
-    return datetime.now(timezone.utc).isoformat(timespec="seconds")
+    raise FileNotFoundError(
+        f"Manifest file for role {record.get('role')!r} does not exist: {raw}. "
+        "Tried: " + ", ".join(str(candidate) for candidate in candidates)
+    )
 
 
 def _sheet_metadata(sheet_path: Path) -> dict | None:
@@ -159,8 +162,6 @@ def export_generic(manifest: dict, manifest_path: Path, out_dir: Path, force: bo
     exported_files: dict[str, list[dict]] = {}
     for record in _manifest_files(manifest):
         path = _resolve_record_path(record, manifest, manifest_path)
-        if not path.is_file():
-            continue
         dest = out_dir / record["role"] / path.name
         written.append(str(_copy(path, dest, force=force)))
         updated = copy.deepcopy(record)
@@ -193,6 +194,72 @@ def export_generic(manifest: dict, manifest_path: Path, out_dir: Path, force: bo
     write_json(anim_path, animation_export)
     written.append(str(anim_path))
     return {"profile": "generic_png", "output_dir": str(out_dir), "files": written}
+
+
+def export_generic_sheet(manifest: dict, manifest_path: Path, out_dir: Path, force: bool = False) -> dict:
+    """Export only the sprite sheet(s), their sidecars and the animation metadata.
+
+    This is deliberately different from `generic_png`: individual frames are not
+    copied.  The sheet plus its sidecar JSON is the authoritative artefact, which
+    is what engines that consume sheets expect.
+    """
+
+    sheets = manifest.get("files", {}).get("sheet", [])
+    if not sheets:
+        raise ValueError("generic_sheet requires at least one sprite sheet record")
+    out_dir.mkdir(parents=True, exist_ok=True)
+    wanted = {"sheet", "sheet_metadata"}
+    written = []
+    exported_files: dict[str, list[dict]] = {}
+    for record in _manifest_files(manifest):
+        if record["role"] not in wanted:
+            continue
+        path = _resolve_record_path(record, manifest, manifest_path)
+        dest = out_dir / path.name
+        written.append(str(_copy(path, dest, force=force)))
+        updated = copy.deepcopy(record)
+        updated["path"] = path.name
+        updated["filename"] = path.name
+        exported_files.setdefault(record["role"], []).append(updated)
+
+    if "sheet" not in exported_files:
+        raise ValueError("generic_sheet found no resolvable sprite sheet records")
+
+    export_manifest = copy.deepcopy(manifest)
+    export_manifest["files"] = exported_files
+    export_manifest["asset_root"] = "."
+    export_manifest["export"] = {
+        "profile": "generic_sheet",
+        "exported_at": _now(),
+        "note": "Sheet and sidecar paths are relative to this export folder; frames are not copied.",
+    }
+    manifest_dest = out_dir / "manifest.json"
+    write_json(manifest_dest, export_manifest)
+    written.append(str(manifest_dest))
+
+    animation_export = {
+        "asset_id": manifest.get("asset_id"),
+        "name": manifest.get("name"),
+        "width": manifest.get("width"),
+        "height": manifest.get("height"),
+        "pivot": manifest.get("pivot"),
+        "animations": manifest.get("animations", {}),
+        "sprite_sheets": [record["path"] for record in exported_files["sheet"]],
+    }
+    anim_path = out_dir / "animations.json"
+    write_json(anim_path, animation_export)
+    written.append(str(anim_path))
+
+    notes_path = out_dir / "import_notes.json"
+    write_json(notes_path, {
+        "profile": "generic_sheet",
+        "note": "Frame rects and durations live in the sheet sidecar JSON next to each PNG.",
+        "limitations": [
+            "No individual frame files are exported; rebuild the sheet if a frame changes.",
+        ],
+    })
+    written.append(str(notes_path))
+    return {"profile": "generic_sheet", "output_dir": str(out_dir), "files": written}
 
 
 def export_godot(manifest: dict, manifest_path: Path, out_dir: Path, force: bool = False) -> dict:
@@ -406,16 +473,38 @@ def export_aseprite(manifest: dict, manifest_path: Path, out_dir: Path, force: b
 
 EXPORTERS = {
     "generic_png": export_generic,
-    "generic_sheet": export_generic,
+    "generic_sheet": export_generic_sheet,
     "godot_4": export_godot,
     "unity_2022": export_unity,
     "aseprite": export_aseprite,
 }
 
 
+def documented_profiles(config_path: str | Path | None = None) -> set[str]:
+    """Profile names documented in `config/export_profiles.yaml`.
+
+    Returns an empty set when the configuration file is unavailable, so the
+    library keeps working outside a source checkout.
+    """
+
+    from .config import load_config, load_yaml
+
+    try:
+        data = load_yaml(config_path) if config_path else load_config("export_profiles")
+    except FileNotFoundError:
+        return set()
+    return set((data.get("profiles") or {}).keys())
+
+
 def export_asset(manifest: dict, manifest_path: str | Path, profile: str, out_dir: str | Path, force: bool = False) -> dict:
     if profile not in EXPORTERS:
         raise ValueError(f"Unknown export profile {profile!r}; choose from {sorted(EXPORTERS)}")
+    documented = documented_profiles()
+    if documented and profile not in documented:
+        raise ValueError(
+            f"Export profile {profile!r} is implemented but not documented in config/export_profiles.yaml. "
+            "Document it before use so the written files are predictable."
+        )
     manifest_path = Path(manifest_path)
     out_dir = Path(out_dir)
     if out_dir.exists() and any(out_dir.iterdir()) and not force:

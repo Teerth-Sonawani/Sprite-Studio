@@ -81,6 +81,35 @@ def test_export_refuses_non_empty_directory_without_force(demo_asset, tmp_path):
         export_asset(demo_asset["manifest"], demo_asset["manifest_path"], "generic_png", out, force=False)
 
 
+def test_generic_sheet_exports_only_sheet_and_sidecar(demo_asset, tmp_path):
+    out = tmp_path / "sheet_only"
+    result = export_asset(demo_asset["manifest"], demo_asset["manifest_path"], "generic_sheet", out, force=True)
+    assert result["profile"] == "generic_sheet"
+    names = sorted(p.name for p in out.iterdir())
+    assert "demo__idle__sheet.png" in names
+    assert "demo__idle__sheet.json" in names
+    assert "manifest.json" in names
+    assert "animations.json" in names
+    # The whole point of the profile: no individual frame files.
+    assert not any("frame" in name for name in names)
+    exported = json.loads((out / "manifest.json").read_text(encoding="utf-8"))
+    assert set(exported["files"]) == {"sheet", "sheet_metadata"}
+
+
+def test_generic_export_fails_loudly_on_missing_file(demo_asset, tmp_path):
+    manifest = json.loads(json.dumps(demo_asset["manifest"]))
+    manifest["files"]["frame"][0]["path"] = "../assets/approved/demo/frames/does_not_exist.png"
+    with pytest.raises(FileNotFoundError, match="does not exist"):
+        export_asset(manifest, demo_asset["manifest_path"], "generic_png", tmp_path / "missing", force=True)
+
+
+def test_export_rejects_absolute_manifest_paths(demo_asset, tmp_path):
+    manifest = json.loads(json.dumps(demo_asset["manifest"]))
+    manifest["files"]["frame"][0]["path"] = str(demo_asset["frame_paths"][0])
+    with pytest.raises(ValueError, match="absolute"):
+        export_asset(manifest, demo_asset["manifest_path"], "generic_png", tmp_path / "absolute", force=True)
+
+
 def test_unknown_profile_and_aseprite_are_honest(demo_asset, tmp_path):
     with pytest.raises(ValueError):
         export_asset(demo_asset["manifest"], demo_asset["manifest_path"], "magic", tmp_path / "magic")

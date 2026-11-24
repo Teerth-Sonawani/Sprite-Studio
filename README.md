@@ -56,8 +56,8 @@ The rules are written for agentic use, but they work for a human artist too. See
 | Manifest generation, schema validation and provenance | Implemented and tested | `tools/generate_manifest.py`, `schemas/` |
 | Technical QA and evidence-backed visual review | Implemented and tested | `tools/validate_sprite.py`, `tools/qa_review.py` |
 | Generic, Godot 4 and Unity 2022 exports | Implemented; engine artifacts are practical templates | `tools/export_asset.py`, `docs/GAME_ENGINE_EXPORT.md` |
-| Mock provider (offline, deterministic) | Implemented and tested | `providers/mock/` |
-| Perchance manual handoff | Implemented | `providers/perchance/adapter.py` |
+| Mock provider (offline, deterministic) | Implemented and tested | `sprite_studio/providers/mock/` |
+| Perchance manual handoff | Implemented | `sprite_studio/providers/perchance/adapter.py` |
 | PerchanceAI developer API | Implemented, credential-gated; live model discovery verified | `docs/PERCHANCE_INTEGRATION.md` |
 | `perchance.org/api-tutorial` integration | **Not usable**; documented endpoint returned HTTP 404 | `docs/PERCHANCE_INTEGRATION.md` |
 | Aseprite native `.aseprite` writer | **Not implemented**; the exporter refuses honestly | `sprite_studio/export.py` |
@@ -166,19 +166,16 @@ engine export in that order. Every manifest records real provenance, including
 2d-sprite-studio/
 ├── README.md                 Overview and quick start
 ├── AGENTS.md                 Mandatory operating rules for agents and humans
-├── SKILL.md                  Top-level skill router
-├── CHANGELOG.md              Build history and known limitations
-├── BUILD_REPORT.md           Verified build report, tests and limitations
-├── LICENSES.md               Licensing status and third-party notices
+├── CHANGELOG.md              Release history
 ├── CONTRIBUTING.md           Development setup and contribution rules
 ├── SECURITY.md               Private reporting and security model
 ├── config/                   Style, category, animation, QA and export registries
 ├── docs/                     Workflow, art direction, processing, QA and export docs
 ├── schemas/                  JSON Schemas for briefs, style guides, animations, manifests
-├── skills/                   Eleven focused sub-skills
-├── providers/                Provider interface, registry, mock and Perchance adapters
 ├── sprite_studio/            Reusable Python package behind the CLI tools
-├── tools/                    Twenty thin command-line entry points
+│   ├── providers/            Provider interface, registry, mock and Perchance adapters
+│   └── tools/                Tool implementations (installed as `sprite-*` commands)
+├── tools/                    Thin shims for `python tools/<name>.py`
 ├── templates/                YAML/Markdown starting points
 ├── references/               Style selection notes and worked examples
 ├── projects/example-project/ Complete sample project, demo art, QA and exports
@@ -200,22 +197,45 @@ engine export in that order. Every manifest records real provenance, including
 - [`docs/PERCHANCE_INTEGRATION.md`](docs/PERCHANCE_INTEGRATION.md) — supported modes and verified status.
 - [`docs/TROUBLESHOOTING.md`](docs/TROUBLESHOOTING.md) — common failures and fixes.
 
-The `skills/` folder contains focused, task-specific guides for planning, art
-direction, character design, environment art, pixel art, generation, processing,
-animation, sheet production, QA and engine export.
-
 ## Configuration and extension
 
-- Styles: `config/art_styles.yaml` (13 starting styles; add your own).
+Configuration read by the tools at runtime:
+
+- Providers: `config/providers.yaml`, discovered by
+  `sprite_studio/providers/provider_registry.py`.
+- Studio defaults: `config/studio.yaml` (default provider and generation output
+  folder).
+- QA profiles: `config/quality_profiles.yaml`. Use
+  `python tools/validate_sprite.py IMAGE --profile character`; explicit flags
+  still override the profile.
+- Export profiles: `config/export_profiles.yaml`. Every implemented exporter
+  must have a matching documented profile.
+
+Reference registries used when authoring briefs and documentation (they are not
+read by the runtime):
+
+- Styles: `config/art_styles.yaml` (13 starting styles).
 - Asset categories: `config/asset_categories.yaml`.
 - Animation presets: `config/animation_presets.yaml`.
-- QA profiles: `config/quality_profiles.yaml`.
-- Export profiles: `config/export_profiles.yaml`.
-- Providers: `config/providers.yaml` and `providers/provider_registry.py`.
 
-Custom fields are preserved. Adding a style or category is a data edit, not a
-code change. Adding a provider means implementing the `ImageProvider` interface
-in `providers/base_provider.py`.
+Custom fields in briefs and manifests are preserved. Adding a provider means
+implementing the `ImageProvider` interface in
+`sprite_studio/providers/base_provider.py`.
+
+## Installed commands
+
+`pip install -e ".[all]"` installs twenty console commands named `sprite-*`
+(for example `sprite-inspect-image`, `sprite-validate-sprite` and
+`sprite-export-asset`). The `python tools/<name>.py` form keeps working too.
+
+Every report, manifest and export honours `SOURCE_DATE_EPOCH` (seconds since the
+Unix epoch). Set it to get byte-identical rebuilds; CI builds the example
+project twice and fails if the two runs differ.
+
+Configuration and schemas are resolved relative to the repository root, so an
+editable install (`pip install -e .`) is the supported way to run the tools from
+an arbitrary working directory. A plain wheel does not bundle `config/` or
+`schemas/`.
 
 ## Security and secrets
 
@@ -253,7 +273,7 @@ See [`SECURITY.md`](SECURITY.md) for private reporting and the full model.
 ```bash
 python -m pytest -q
 python scripts/build_demo_assets.py --stage all
-python -m compileall -q sprite_studio providers tools
+python -m compileall -q sprite_studio tools
 ```
 
 The test suite does not make network calls and does not require provider
@@ -264,14 +284,12 @@ request rules. CI is configured to run the tests on Ubuntu and Windows with Pyth
 ## Contributing
 
 Bug reports, focused feature requests and documentation fixes are welcome. Read
-[`CONTRIBUTING.md`](CONTRIBUTING.md), follow the
-[`CODE_OF_CONDUCT.md`](CODE_OF_CONDUCT.md), and use the issue and pull-request
+[`CONTRIBUTING.md`](CONTRIBUTING.md) and use the issue and pull-request
 templates. For support questions, see [`SUPPORT.md`](SUPPORT.md).
 
 ## License
 
-MIT. See [`LICENSE`](LICENSE) for the full text and [`LICENSES.md`](LICENSES.md)
-for third-party notices, provider terms and the release checklist.
+MIT. See [`LICENSE`](LICENSE) for the full text.
 
 The example art is original procedural work. Generated assets remain subject to
 the provider's terms and the model's licence; provenance metadata is not a licence

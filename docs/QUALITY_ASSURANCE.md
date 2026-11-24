@@ -75,7 +75,7 @@ Check:
 
 ### Evidence
 
-Approval requires evidence paths, for example:
+Approval requires evidence paths that exist, for example:
 
 - contact sheet;
 - animated preview;

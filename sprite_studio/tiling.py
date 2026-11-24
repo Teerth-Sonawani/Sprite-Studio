@@ -7,7 +7,7 @@ from pathlib import Path
 import numpy as np
 from PIL import Image, ImageDraw
 
-from .image_utils import default_font, ensure_rgba, flatten_on, load_image, save_png, write_json
+from .image_utils import ensure_rgba, save_png
 
 
 def _edge_pairs(rgba: np.ndarray, axis: str):

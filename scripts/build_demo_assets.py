@@ -12,7 +12,7 @@ reviews  Apply `qa/review_decisions.json` to the technical reports.
 exports  Build manifests and engine exports from the current reviews.
 all      assets -> reviews (when decisions exist) -> exports.
 
-Every generated file is deterministic for the same Pillow build. The script only
+Every generated file is deterministic for the same Pillow build when SOURCE_DATE_EPOCH is set (see sprite_studio/timeutil.py); without it, embedded timestamps use wall-clock time. The script only
 removes folders and reports it owns; authored briefs, style guides and animation
 specs are never deleted.
 """
@@ -24,7 +24,6 @@ import json
 import math
 import shutil
 import sys
-from datetime import datetime, timezone
 from pathlib import Path
 
 from PIL import Image, ImageDraw
@@ -46,6 +45,7 @@ from sprite_studio.prompting import build_prompt, negative_prompt  # noqa: E402
 from sprite_studio.qa import record_visual_review, validate_sprite  # noqa: E402
 from sprite_studio.sheets import build_sheet, contact_sheet  # noqa: E402
 from sprite_studio.tiling import assembled_preview, seam_report, wrap_preview  # noqa: E402
+from sprite_studio.timeutil import utcnow  # noqa: E402
 
 PROJECT = ROOT / "projects" / "example-project"
 BRIEFS = PROJECT / "assets" / "briefs"
@@ -86,7 +86,7 @@ VFX_DURATIONS = [80, 80, 70, 70, 90, 110]
 
 
 def _utcnow() -> str:
-    return datetime.now(timezone.utc).isoformat(timespec="seconds")
+    return utcnow()
 
 
 def _rel(path: Path) -> str:
@@ -304,17 +304,31 @@ def draw_vfx(index: int) -> Image.Image:
 
 
 # --------------------------------------------------------------------- pipeline
-def reset_generated() -> None:
-    """Remove only generated art, reports, manifests and exports."""
+def reset_generated(stage: str) -> None:
+    """Remove only the outputs that `stage` regenerates.
 
-    for folder in (APPROVED, WORKING, PROCEDURAL, PROMPTS, QA / "processing", EXPORTS):
+    `assets` owns working frames, approved frames, source prompts and technical
+    reports.  It deliberately does **not** touch `exports/` or `manifests/`, so
+    running the assets stage alone cannot destroy a previously exported build.
+    `exports` owns the manifests and export folders.
+
+    Authored inputs are never removed: briefs, style guides, animation specs and
+    `qa/review_decisions.json` live outside these folders.
+    """
+
+    if stage == "exports":
+        folders = (MANIFESTS, EXPORTS)
+    else:
+        folders = (WORKING, APPROVED, QA / "processing", PROMPTS, PROCEDURAL)
+
+    for folder in folders:
         if folder.exists():
             shutil.rmtree(folder)
-    for pattern in ("*_technical.json", "*_animation.json", "*_review.json"):
-        for path in QA.glob(pattern):
-            path.unlink()
-    for path in MANIFESTS.glob("*.json"):
-        path.unlink()
+
+    if stage != "exports":
+        for pattern in ("*_technical.json", "*_animation.json", "*_review.json"):
+            for path in QA.glob(pattern):
+                path.unlink()
 
 
 def _processing_report(
@@ -878,6 +892,7 @@ def apply_reviews() -> dict:
             notes=decision.get("notes", ""),
             scores=decision.get("scores", {}),
             evidence=evidence,
+            evidence_root=ROOT,
         )
         out = QA / f"{asset_id}_review.json"
         write_json(out, review)
@@ -942,6 +957,10 @@ def build_manifest_for(
 
 def build_exports(reviews: dict) -> dict:
     summary = {"generated_at": _utcnow(), "assets": {}, "exports": {}}
+    # Exports own the manifests and export folders; rebuild both from scratch so
+    # stale manifests for removed assets cannot survive.
+    reset_generated("exports")
+    MANIFESTS.mkdir(parents=True, exist_ok=True)
 
     definitions = [
         ("moss_slime", APPROVED / "moss_slime", BRIEFS / "moss_slime.yaml", ANIMATIONS),
@@ -964,8 +983,6 @@ def build_exports(reviews: dict) -> dict:
         }
 
     # Remove generated export folders before writing so the script is idempotent.
-    if EXPORTS.exists():
-        shutil.rmtree(EXPORTS)
     EXPORTS.mkdir(parents=True, exist_ok=True)
 
     jobs = [
@@ -1035,7 +1052,7 @@ def build_exports(reviews: dict) -> dict:
 
 
 def build_assets() -> dict:
-    reset_generated()
+    reset_generated("assets")
     for folder in (PROCEDURAL, PROMPTS, WORKING, APPROVED, QA / "processing", MANIFESTS, EXPORTS):
         folder.mkdir(parents=True, exist_ok=True)
 

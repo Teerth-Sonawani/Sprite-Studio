@@ -89,7 +89,7 @@
       "decision": "approve",
       "reviewer": "OpenCode visual review agent",
       "reviewer_type": "ai_agent",
-      "reviewed_at": "2026-11-13T05:12:22+00:00",
+      "reviewed_at": "2023-11-14T22:13:20+00:00",
       "notes": "The 3x3 assembled preview and the 2x2 wrap preview show continuous value structure with no visible grid or seam. The seam report passes both axes (x ratio 0.444, y ratio 0.821) and the tile is fully opaque with no accidental single-pixel noise at 1x. Flowers and blades remain interior or wrap-safe. Demo/internal approval only.",
       "scores": {
         "silhouette": 4,
@@ -120,10 +120,10 @@
     ],
     "license": "MIT (original procedural demo art for this workspace)",
     "notes": "Original procedural demo art drawn by scripts/build_demo_assets.py. Not AI-generated and not a provider quality showcase.",
-    "created_at": "2026-11-13T05:12:23+00:00"
+    "created_at": "2023-11-14T22:13:20+00:00"
   },
-  "created_at": "2026-11-13T05:12:23+00:00",
-  "updated_at": "2026-11-13T05:12:23+00:00",
+  "created_at": "2023-11-14T22:13:20+00:00",
+  "updated_at": "2023-11-14T22:13:20+00:00",
   "validation": {
     "schema": "schemas/asset_manifest.schema.json",
     "ok": true,

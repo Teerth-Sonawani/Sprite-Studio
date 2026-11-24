@@ -22,6 +22,7 @@ paths:
   qa: qa
   animations: animations
   exports: exports
+  generations: generations
 
 generation:
   default_provider: perchance

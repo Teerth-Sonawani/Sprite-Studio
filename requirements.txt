@@ -3,13 +3,3 @@ Pillow>=10.0
 numpy>=1.24
 PyYAML>=6.0
 jsonschema>=4.0
-
-# Optional video previews (MP4/WebM). imageio-ffmpeg bundles a local FFmpeg build.
-imageio>=2.30
-imageio-ffmpeg>=0.4
-
-# Optional faster connected-component labelling. The pipeline has a pure-Python fallback.
-scipy>=1.10
-
-# Tests
-pytest>=8.0

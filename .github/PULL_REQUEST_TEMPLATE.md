@@ -18,13 +18,13 @@ List the commands you actually ran and their results.
 ```text
 python -m pytest -q
 python scripts/build_demo_assets.py --stage all
-python -m compileall -q sprite_studio providers tools
+python -m compileall -q sprite_studio tools
 ```
 
 - [ ] Tests pass.
 - [ ] The example pipeline builds and verifies its manifest hashes.
 - [ ] I added or updated tests for behaviour changes.
-- [ ] I updated the README, docs, CHANGELOG or BUILD_REPORT where claims changed.
+- [ ] I updated the README, docs or CHANGELOG where claims changed.
 
 ## Asset and QA changes
 

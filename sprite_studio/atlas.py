@@ -2,7 +2,6 @@
 
 from __future__ import annotations
 
-import math
 from pathlib import Path
 from typing import Sequence
 
@@ -65,7 +64,6 @@ def pack_atlas(
         width = _next_power_of_two(width)
         if width > max_width:
             raise ValueError(f"power-of-two width {width} exceeds max_width {max_width}")
-    shelves: list[dict] = []
     placements = []
     x = padding
     y = padding
